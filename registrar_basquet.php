@@ -86,5 +86,5 @@ if ($mysqli->query($sql2) === TRUE) {
 
 $mysqli->close();  // Cerrar conexión
 
-echo "<script>history.go(-1);</script>"; 
+echo "<script>history.go(-1);</script>";
 ?>
