@@ -5,3 +5,9 @@ datatables
 popper
 
 jquery
+
+datos sesiones :
+
+presidente : presidente
+
+admin : admin
