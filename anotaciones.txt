@@ -6,8 +6,8 @@ popper
 
 jquery
 
-datos sesiones :
+datos sesiones
 
 presidente : presidente
 
-admin : admin
+usuario : usuario
