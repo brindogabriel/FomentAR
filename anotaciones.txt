@@ -1,0 +1,7 @@
+boostrap 4.1.3
+
+datatables 
+
+popper
+
+jquery
