@@ -1,5 +1,7 @@
 # FomentAR
 
+Proyecto de 7mo de secundaria
+
 ## Para hacer
 
 - [ ] Actualizar
