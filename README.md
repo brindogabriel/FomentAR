@@ -4,7 +4,8 @@
 
 - [ ] Actualizar
 - [ ] Mejorar
-- [ ] Cambiar todo para que sea online    
+- [ ] Cambiar todo para que sea online
+- [ ] Refactorizar  
 
 ## Versiones utilizadas
 
