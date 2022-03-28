@@ -7,7 +7,8 @@ Proyecto de 7mo de secundaria
 - [ ] Actualizar
 - [ ] Mejorar
 - [ ] Cambiar todo para que sea online
-- [ ] Refactorizar  
+- [ ] Refactorizar
+- [ ] Optimizar la carga
 
 ## Versiones utilizadas
 
