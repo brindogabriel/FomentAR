@@ -9,7 +9,7 @@ Proyecto de 7mo de secundaria (2018)
 - [ ] Cambiar todo para que sea online
 - [ ] Refactorizar
 - [ ] Optimizar la carga
-- [ ] Arreglar el registro de clientes ( BD Y VISTA)
+- [x] Arreglar el registro de clientes ( BD Y VISTA) - #fbd3c85 (el principio de todo - commit xd)
 
 ## Versiones utilizadas
 
