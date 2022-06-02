@@ -9,6 +9,7 @@ Proyecto de 7mo de secundaria (2018)
 - [ ] Cambiar todo para que sea online
 - [ ] Refactorizar
 - [ ] Optimizar la carga
+- [ ] Arreglar el registro de clientes ( BD Y VISTA)
 
 ## Versiones utilizadas
 
