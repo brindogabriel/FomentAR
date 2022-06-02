@@ -9,7 +9,7 @@ Proyecto de 7mo de secundaria (2018)
 - [ ] Cambiar todo para que sea online
 - [ ] Refactorizar
 - [ ] Optimizar la carga
-- [x] Arreglar el registro de clientes ( BD Y VISTA) - #fbd3c85 (el principio de todo - commit xd)
+- [x] Arreglar el registro de clientes ( BD Y VISTA) [#fbd3c85](https://github.com/brindogabriel/FomentAR/commit/fbd3c854adb1441a2d90972b13c7eb889018b7d0 "Commit inicial para arreglar todo por si las moscas")  (commit inicial ANDA BIEN)
 
 ## Versiones utilizadas
 
