@@ -10,6 +10,8 @@ $estado = 1;
 $sexo = $_POST["Sexo"];
 $actividades = "basquet"; 
 
+
+
 $Edad = strtotime ($fecha_ingreso) - strtotime ($fecha_nacimiento);
 $diferencia_anios = intval($Edad/60/60/24/365.25);
 
@@ -70,12 +72,12 @@ if ($mysqli->query($sql) === TRUE) {
 }
 
 
-$sqlNro_orden= "SELECT Nro_orden FROM clientes WHERE DNI = $dni LIMIT 1";
-$resultado = mysqli_query($mysqli, $sqlNro_orden);
+$nro_orden= "SELECT nro_orden FROM clientes WHERE DNI = $dni LIMIT 1";
+$resultado = mysqli_query($mysqli, $nro_orden);
 $coso = mysqli_fetch_array($resultado);
-$Nro_orden = $coso['Nro_orden'];
+$nro_orden = $coso['nro_orden'];
 
-$sql2 = "INSERT INTO actividades(Nro_orden, idDisciplina) VALUES ('$Nro_orden', '$idCategoria')";
+$sql2 = "INSERT INTO actividades(nro_orden, idDisciplina) VALUES ('$nro_orden', '$idCategoria')";
 if ($mysqli->query($sql2) === TRUE) {
 	//echo "Nuevo registro creado exitosamente";
 } else {
