@@ -14,10 +14,10 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/general.css">
-    <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="../Resources/material-icons.css">
+    <link rel="stylesheet" href="./Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/general.css">
+    <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./Resources/material-icons.css">
     <title>FomentAR</title>
 </head>
 
@@ -100,4 +100,12 @@ if ($varsesion == "usuario" ) {
             <p class="lead"></p>
         </div>
     </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
     <?php include("./scripts.php");?>
+</body>
+
+</html>
