@@ -42,7 +42,7 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
                     <a class="nav-link" href="./pagina_principal">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class='nav-link' href='./clientes'>Todos los Clientes</a>
+                    <a class='nav-link' href='../clientes'>Todos los Clientes</a>
                 </li>
                 <!-- <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
