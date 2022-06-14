@@ -3,7 +3,7 @@ DarDeBaja($_GET['DNI']);
 
 function DarDeBaja($DNI)
 {
-	include 'conexion.php';
+	include './database/conexion.php';
 
 	$sentencia1="UPDATE `clientes` SET `idEstado` = '2' WHERE `clientes`.`DNI` = $DNI";
 

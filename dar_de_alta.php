@@ -3,7 +3,7 @@ DarDeAlta($_GET['DNI']);
 
 function DarDeAlta($DNI)
 {
-	include 'conexion.php';
+	include './database/conexion.php';
 
 	$sentencia1="UPDATE `clientes` SET `idEstado` = '1' WHERE `clientes`.`DNI` = $DNI";
 
