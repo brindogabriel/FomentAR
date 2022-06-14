@@ -30,6 +30,7 @@
 - [x] - CLIENTES - ARREGLAR RUTA EDITAR CLIENTE TODO OK ✅
 - [x] - RUTA DE "VER TODOS LOS CLIENTES" NAVBAR EN CADA DEPORTE 🚧
 - [ ] - REHACER BASE DE DATOS O POR LO MENOS CATEGORIAS DE BASQUET XD 🚧
+- [ ] - LEER ULTIMAS LINEAS DE [REGISTRAR_CLIENTE.PHP](registrar_cliente.php "Registrar_cliente.php") (HAY UNA EXPLICACION DE LAS CATEGORIAS XD IGUAL VAMOS A HACER TODO DESDE 0 (? )
 
 - [ ] - Warning: Undefined variable $resBasquet in C:\xampp\htdocs\FomentAR2\facturacion.php on line 50
 - [ ] - in C:\xampp\htdocs\FomentAR2\edit/modificar5 on line 54
