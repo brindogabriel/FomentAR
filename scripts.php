@@ -94,7 +94,7 @@ $(document).ready(function() {
     $('#example').DataTable({
         language: {
             "decimal": "",
-            "emptyTable": "No hay datos :(",
+            "emptyTable": "No hay datos :'c",
             "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
             "infoEmpty": "Mostrando 0 a 0 de 0 registros",
             "infoFiltered": "(Filtro de _MAX_ total registros)",

@@ -191,7 +191,7 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
                     </div>
                     <div class="modal-body">
                         <div class="formlogin">
-                            <form action="registrar.php" method="post">
+                            <form action="registrarevento.php" method="POST">
                                 <div class="form-group">
                                     <label for="user">Nombre</label>
                                     <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
