@@ -166,7 +166,7 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 
 					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
-					' . (($dato2=="1") ? '<a class="btn btn-danger m-1" href="./dar_de_baja?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>').'</td>
+					' . (($dato2=="1") ? '<a class="btn btn-danger m-1" href="../dar_de_baja?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>').'</td>
 
 					</tr>';
 				}
