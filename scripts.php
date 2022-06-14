@@ -1,5 +1,4 @@
 <!-- ACTIVAR TOOLTIPS EN TODOS LADOS -->
-
 <script>
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
