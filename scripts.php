@@ -88,9 +88,8 @@ function myFunction() {
 <script type="text/javascript" src="../Resources/DataTables/Buttons-1.5.4/js/buttons.print.js">
 </script>
 <script type="text/javascript" src="../Resources/DataTables/FixedColumns-3.2.5/js/dataTables.fixedColumns.js"></script>
-<script type="text/javascript" src="../Resources/FixedHeader-3.1.4/js/dataTables.fixedHeader.js">
+<script type="text/javascript" src="../Resources/DataTables/FixedHeader-3.1.4/js/dataTables.fixedHeader.js">
 </script>
-
 <script>
 $(document).ready(function() {
     $('#example').DataTable({
