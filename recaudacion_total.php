@@ -3,7 +3,7 @@ session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
 if ($varsesion == null || $varsesion= '') {
-	header("location: ../errors/error_nologueado");
+	header("location: ./errors/error_nologueado");
 	die();
 }
 $conexion=mysqli_connect("localhost","root","","fomentar");
