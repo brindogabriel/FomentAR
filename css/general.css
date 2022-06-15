@@ -239,8 +239,7 @@ input[type="number"] {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url(../CosasParaQueFuncioneSinInternet/MaterialIcons-Regular.woff2)
-    format("woff2");
+  src: url("../Resources/MaterialIcons-Regular.woff2") format("woff2");
 }
 
 .material-icons {

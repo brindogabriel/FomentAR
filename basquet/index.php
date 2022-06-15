@@ -39,7 +39,7 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./pagina_principal">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../pagina_principal">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class='nav-link' href='../clientes'>Todos los Clientes</a>
@@ -49,9 +49,9 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 						Eventos
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./eventos">Este mes</a>
+						<a class="dropdown-item" href="../eventos">Este mes</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="./historico">Historico</a>
+						<a class="dropdown-item" href="../historico">Historico</a>
 					</div>
 				</li>
 			-->
@@ -59,7 +59,7 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 					<?php 
 					$varsesion = $_SESSION['usuario'];
 					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
+						echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
 					}
 					?>							
 				</li> -->
@@ -70,7 +70,7 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
                     <?php 
 					$varsesion = $_SESSION['usuario'];
 					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+						echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
 					}
 					?>
                 </li>

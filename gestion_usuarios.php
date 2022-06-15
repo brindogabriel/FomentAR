@@ -205,8 +205,7 @@ if ($varsesion == "usuario" ) {
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-    <script src="./js/script.js"></script>
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
     <script>
     $(function() {
         $('[data-toggle="tooltip"]').tooltip();
@@ -221,10 +220,9 @@ if ($varsesion == "usuario" ) {
         }
     }
     </script>
-    <?php include './scripts.php'; ?>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="./js/jquery-3.3.1.slim.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
 </body>
