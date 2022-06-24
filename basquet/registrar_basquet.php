@@ -80,9 +80,6 @@ if ($mysqli->query($sql2) === TRUE) {
 	echo "Error: " . $sql2 . "<br>" . $mysqli->error;
 }
 
-// hola soy un comentario xd
-
 $mysqli->close();  // Cerrar conexión
 
-echo "<script>history.go(-1);</script>"; 
-?>
+echo "<script>history.go(-1);</script>";
