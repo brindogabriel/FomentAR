@@ -2,11 +2,11 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
+if ($varsesion == null || $varsesion = '') {
 	header("location: ./errors/error_nologueado");
 	die();
 }
-$conexion=mysqli_connect("localhost","root","","fomentar");
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 ?>
 <!doctype html>
 <html lang="es">
@@ -55,18 +55,18 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 				</li>
 			-->
                 <!-- <li class="nav-item">
-					<?php 
+					<?php
 					$varsesion = $_SESSION['usuario'];
 					if ($varsesion == "presidente") {
 						echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
 					}
-					?>							
+					?>
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
-                    <?php 
+                    <?php
 					$varsesion = $_SESSION['usuario'];
 					if ($varsesion == "presidente") {
 						echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
@@ -83,11 +83,11 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
     </nav>
-    <?php 
-include './database/conexion.php';
-$clientes = "SELECT * FROM clientes";
-$resClientes=mysqli_query($conexion,$clientes);
-?>
+    <?php
+	include './database/conexion.php';
+	$clientes = "SELECT * FROM clientes";
+	$resClientes = mysqli_query($conexion, $clientes);
+	?>
 
     <!-- <div class="botones">
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -132,36 +132,36 @@ $resClientes=mysqli_query($conexion,$clientes);
                     </tr>
                 </tfoot>
                 <tbody>
-                    <?php 
+                    <?php
 
-				while ($mostrar=mysqli_fetch_array($resClientes)) {
-					$dato = $mostrar['idParametro_Socio'];
-					$dato2 = $mostrar['idEstado'];
-					$dato3 = $mostrar['idCategoria'];
-					$dato4 = $mostrar['idSexo'];
-					$Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
-					$Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
-					echo '<tr>
-					<td>'.$mostrar['Nro_orden'].'</td>
-					<td>'.$mostrar['Apellido'].'</td>
-					<td>'.$mostrar['Nombre'].'</td>
-					<td>'.$mostrar['Domicilio'].'</td>
-					<td>'.$mostrar['DNI'].'</td>
-					<td>'.$Fecha_nacimiento.'</td>
-					<td>'.$Fecha_ingreso.'</td>
-					<td>'.$mostrar['idParametro_Socio'].'</td>
-					<td>' . (($dato2==="1") ? 'Activo' : 'Inactivo').'</td>
-					<td>'.$mostrar['idCategoria'].'</td>
-					<td>'.$mostrar['idSexo'].'</td>
+					while ($mostrar = mysqli_fetch_array($resClientes)) {
+						$dato = $mostrar['idParametro_Socio'];
+						$dato2 = $mostrar['idEstado'];
+						$dato3 = $mostrar['idCategoria'];
+						$dato4 = $mostrar['idSexo'];
+						$Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
+						$Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
+						echo '<tr>
+					<td>' . $mostrar['Nro_orden'] . '</td>
+					<td>' . $mostrar['Apellido'] . '</td>
+					<td>' . $mostrar['Nombre'] . '</td>
+					<td>' . $mostrar['Domicilio'] . '</td>
+					<td>' . $mostrar['DNI'] . '</td>
+					<td>' . $Fecha_nacimiento . '</td>
+					<td>' . $Fecha_ingreso . '</td>
+					<td>' . $mostrar['idParametro_Socio'] . '</td>
+					<td>' . (($dato2 === "1") ? 'Activo' : 'Inactivo') . '</td>
+					<td>' . $mostrar['idCategoria'] . '</td>
+					<td>' . $mostrar['idSexo'] . '</td>
 					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
 
-					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
-					' . (($dato2==="1") ? '<a class="btn btn-danger m-1" href="./dar_de_baja?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>').'</td>
+					' . (($dato2 === "1") ? '<a class="btn btn-danger m-1" href="./dar_de_baja?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
 
 					</tr>';
-				}
-				?>
+					}
+					?>
                 </tbody>
             </table>
         </div>

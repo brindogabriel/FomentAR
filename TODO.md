@@ -32,11 +32,17 @@
 - [ ] REHACER BASE DE DATOS O POR LO MENOS CATEGORIAS DE BASQUET XD 🚧
 - [ ] LEER ULTIMAS LINEAS DE [REGISTRAR_CLIENTE.PHP](registrar_cliente.php "registrar_cliente.php") (HAY UNA EXPLICACION DE LAS CATEGORIAS XD IGUAL VAMOS A HACER TODO DESDE 0 (? )
 - [ ] EN BASQUET.PHP APARECE CATEGORIA "BASQUET" EN VEZ DE DETALLECATEGORIA (VER LA QUERY)
+- [ ] RUTA DAR DE BAJA/DAR DE ALTA EN CADA TABLA XD
+- [ ] LOGIN MULTISESION/MULTIDISPOSITIVO? DOBLE FACTOR DE AUTENTICACION?
+- [ ] ENCRIPTAR PASSWORD USUARIOS
+- [ ] ARREGLAR REGISTRAR USUARIOS Y EDITAR
+- [ ] DETALLE USUARIOS EN IDROLE EN GESTION USUARIOS
 
 - [ ] Warning: Undefined variable $resBasquet in C:\xampp\htdocs\FomentAR2\facturacion.php on line 50
 - [ ] in C:\xampp\htdocs\FomentAR2\edit/modificar5 on line 54
 - [ ] $ ( ... ).datepicker is not a function (hay que acomodar bien el jquery o el script con el $ . . de jquery o no c xd)
 - [ ] DevTools failed to load source map: Could not load content for http://localhost/FomentAR/js/popper.min.js.map: HTTP error: status code 404, net::ERR_HTTP_RESPONSE_CODE_FAILURE
+- [ ] Fatal error: Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`fomentar`.`usuarios`, CONSTRAINT `idRole_fk` FOREIGN KEY (`idRole`) REFERENCES `roles` (`idRole`)) in C:\xampp\htdocs\FomentAR\registrar.php:19 Stack trace: #0 C:\xampp\htdocs\FomentAR\registrar.php(19): mysqli->query('INSERT INTO usu...') #1 {main} thrown in C:\xampp\htdocs\FomentAR\registrar.php on line 19
 
 # IF DE REGISTRAR_BASQUET.PHP (ARREGLAR Y TAMBIEN CATEGORIAS EN LA DB)
 
@@ -56,4 +62,3 @@
 | ---- | ----------- |
 | 1    | FEMENINO    |
 | 2    | MASCULINO   |
-| 3    | MIXTO ?     |

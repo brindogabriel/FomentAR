@@ -2,11 +2,11 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
-	header("location: ./errors/error_nologueado");
-	die();
+if ($varsesion == null || $varsesion = '') {
+    header("location: ./errors/error_nologueado");
+    die();
 }
-$conexion=mysqli_connect("localhost","root","","fomentar");
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 ?>
 <!doctype html>
 <html lang="es">
@@ -55,41 +55,41 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 				</li>
 			-->
                 <!-- <li class="nav-item">
-					<?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
-					}
-					?>							
+					<?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
+                    }
+                    ?>							
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
-                    <?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
-					}
-					?>
+                    <?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+                    }
+                    ?>
                 </li>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-				echo $varsesion;
-				?>
+                echo $varsesion;
+                ?>
             </a>
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
     </nav>
     <?php
-$varsesion = $_SESSION['usuario'];
-if ($varsesion == "usuario" ) {
-	header("location: ./error_privilegio");
-	die();
-}
-?>
+    $varsesion = $_SESSION['usuario'];
+    if ($varsesion == "usuario") {
+        header("location: ./error_privilegio");
+        die();
+    }
+    ?>
     <div class="general">
         <div class="contenedor1">
             <div class="table-responsive">
@@ -97,34 +97,34 @@ if ($varsesion == "usuario" ) {
                     <caption>Lista de usuarios</caption>
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Nombre</th>
+                            <th scope="col">Usuario</th>
                             <th scope="col">Contraseña</th>
                             <th scope="col">Tipo</th>
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
-                    <?php 
-				$sql ="SELECT * FROM usuarios";
-				$result=mysqli_query($conexion,$sql);
-				while ($mostrar=mysqli_fetch_array($result)) {
-					?>
+                    <?php
+                    $sql = "SELECT usu.Usuario,usu.Password, rol.Descripcion AS Rol from usuarios usu, roles rol where usu.idRole = rol.idRole;";
+                    $result = mysqli_query($conexion, $sql);
+                    while ($mostrar = mysqli_fetch_array($result)) {
+                    ?>
                     <tbody>
                         <tr>
                             <td scope="col"><?php echo $mostrar['Usuario'] ?></td>
                             <td scope="col"><?php echo $mostrar['Password'] ?></td>
-                            <td scope="col"><?php echo $mostrar['idRole'] ?></td>
+                            <td scope="col"><?php echo $mostrar['Rol'] ?></td>
                             <td scope="col"><?php echo "
-							<a class='btn btn-warning' href='./modificar?Usuario=".$mostrar['Usuario']."' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
+							<a class='btn btn-warning' href='./modificar?Usuario=" . $mostrar['Usuario'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
 							edit
 							</i></a>
-							<a class='btn btn-danger' href='./borrar_usuario?Usuario=".$mostrar['Usuario']."'data-toggle='tooltip' role='button' title='Dar de baja'><i class='material-icons'>
+							<a class='btn btn-danger' href='./borrar_usuario?Usuario=" . $mostrar['Usuario'] . "'data-toggle='tooltip' role='button' title='Dar de baja'><i class='material-icons'>
 							delete
 							</i></a>
 							"; ?></td>
                         </tr>
-                        <?php 
-					}
-					?>
+                        <?php
+                    }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -167,29 +167,29 @@ if ($varsesion == "usuario" ) {
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Tipo De Usuario</label>
                                 <?php
-							include './database/conexion.php';
+                                include './database/conexion.php';
 
-							$consulta="SELECT Usuario, idRole FROM `usuarios`";
-							$result=mysqli_query($conexion,$consulta);
-							$bandera = true;
-							?>
+                                $consulta = "SELECT Usuario, idRole FROM `usuarios`";
+                                $result = mysqli_query($conexion, $consulta);
+                                $bandera = true;
+                                ?>
 
                                 <!-- en lugar del div.cajaselect -->
                                 <select class="form-control" id="exampleFormControlSelect1" name="tipo">
                                     <?php
-								while ($filas=mysqli_fetch_array($result)) {
-					$id_dato = $filas['idRole']; // guarda el id del registro
-					$dato = $filas['Usuario']; // guarda el dato del registro
-					?>
+                                    while ($filas = mysqli_fetch_array($result)) {
+                                        $id_dato = $filas['idRole']; // guarda el id del registro
+                                        $dato = $filas['Usuario']; // guarda el dato del registro
+                                    ?>
                                     <!-- en el value se inyecta el id, con la bandera se verifica que sea la primera iteracion del bucle -->
                                     <option value="<?php echo $tipo; ?>"
                                         <?php echo ($bandera == true) ? "selected" : ""; ?> required>
                                         <?php echo $dato; /* imprime el sector en el option */ ?>
                                     </option>
                                     <?php
-     $bandera = false; // cambia el valor de la bandera para no seleccionar nada en la siguiente iteración
- }
- ?>
+                                        $bandera = false; // cambia el valor de la bandera para no seleccionar nada en la siguiente iteración
+                                    }
+                                    ?>
                                 </select>
                             </div>
                             <div class="dropdown-divider"></div>
