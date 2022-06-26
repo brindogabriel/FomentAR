@@ -2,11 +2,11 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
-	header("location: ./errors/error_nologueado");
-	die();
+if ($varsesion == null || $varsesion = '') {
+    header("location: ./errors/error_nologueado");
+    die();
 }
-$conexion=mysqli_connect("localhost","root","","fomentar");
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 ?>
 <!doctype html>
 <html lang="es">
@@ -55,30 +55,30 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 				</li>
 			-->
                 <!-- <li class="nav-item">
-					<?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
-					}
-					?>							
+					<?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
+                    }
+                    ?>							
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
-                    <?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
-					}
-					?>
+                    <?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+                    }
+                    ?>
                 </li>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-				echo $varsesion;
-				?>
+                echo $varsesion;
+                ?>
             </a>
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
@@ -107,21 +107,19 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
                     </tr>
                 </tfoot>
                 <tbody>
-                    <?php 
-$resBasquet = mysqli_query($conexion, "SELECT * FROM facturacion");
-      while ($mostrar=mysqli_fetch_array($resBasquet)) {
-        echo '<tr>
-        <td>'.$mostrar['Nro_orden'].'</td>
-        <td>'.$mostrar['Apellido'].'</td>
-        <td>'.$mostrar['Nombre'].'</td>
-        <td>'.$mostrar['DNI'].'</td>
-        <td>'.$mostrar['idCategoria'].'</td>
+                    <?php
+                    $resBasquet = mysqli_query($conexion, "SELECT * FROM facturacion");
+                    while ($mostrar = mysqli_fetch_array($resBasquet)) {
+                        echo '<tr>
+        <td>' . $mostrar['Nro_orden'] . '</td>
+        <td>' . $mostrar['Apellido'] . '</td>
+        <td>' . $mostrar['Nombre'] . '</td>
+        <td>' . $mostrar['DNI'] . '</td>
+        <td>' . $mostrar['idCategoria'] . '</td>
 
         </tr>';
-        
-
-      }
-      ?>
+                    }
+                    ?>
                     <!--  <td>'.$mostrar['pago'].'</td> esto va debajo de "idcategoria"  -->
                 </tbody>
             </table>
@@ -131,17 +129,11 @@ $resBasquet = mysqli_query($conexion, "SELECT * FROM facturacion");
     </div>
     </div>
     </div>
-    <script src="../CosasParaQueFuncioneSinInternet/jquery-3.3.1.js"></script>
-
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
-    <script src='https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js'></script>
-    <script src='https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js'></script>
-
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css" />
-
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
-
-
+    <script src="./js/jquery-3.3.1.slim.min.js"></script>
+    <script src='./Resources\DataTables\DataTables-1.10.18\js\jquery.dataTables.min.js'></script>
+    <script src='./Resources\DataTables\DataTables-1.10.18\js\dataTables.bootstrap.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="./Resources/DataTables/datatables.min.css" />
+    <script type="text/javascript" src="./Resources/DataTables/datatables.min.js"></script>
     <script>
     $(document).ready(function() {
         $('#example').DataTable({
@@ -174,10 +166,8 @@ $resBasquet = mysqli_query($conexion, "SELECT * FROM facturacion");
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="./js/jquery-3.3.1.slim.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-    <?php include("./scripts.php");?>
 </body>
 
 </html>
