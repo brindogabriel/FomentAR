@@ -162,7 +162,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 					<td>' . $Fecha_ingreso . '</td>
 					<td>' . $dato = $mostrar['detallepar'] . '</td>
 					<td>' . $mostrar['Estado'] . '</td>
-					<td>' . $dato3 = $mostrar['detalle'] . '</td>
+					<td>' . $dato3 = $mostrar['descripcion'] . '</td>
 					<td>' . $dato4 = $mostrar['detallesex'] . '</td>
 					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
 

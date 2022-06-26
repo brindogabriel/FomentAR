@@ -2,11 +2,11 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
-	header("location: ./errors/error_nologueado");
-	die();
+if ($varsesion == null || $varsesion = '') {
+    header("location: ./errors/error_nologueado");
+    die();
 }
-$conexion=mysqli_connect("localhost","root","","fomentar");
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 ?>
 <!doctype html>
 <html lang="es">
@@ -55,30 +55,30 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 				</li>
 			-->
                 <!-- <li class="nav-item">
-					<?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
-					}
-					?>							
+					<?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
+                    }
+                    ?>							
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
-                    <?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
-					}
-					?>
+                    <?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+                    }
+                    ?>
                 </li>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-				echo $varsesion;
-				?>
+                echo $varsesion;
+                ?>
             </a>
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
@@ -109,39 +109,39 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
-                <?php 
-			$conexion=mysqli_connect("localhost","root","","fomentar");
-			$sql ="SELECT * FROM clientes";
-			$result=mysqli_query($conexion,$sql);
-			while ($mostrar=mysqli_fetch_array($result)) {
-				?>
                 <tbody>
-                    <tr>
-                        <td scope="col"><?php echo $mostrar['dni'] ?></td>
-                        <td scope="col"><?php echo $mostrar['n_matricula'] ?></td>
-                        <td scope="col"><?php echo $mostrar['apellido'] ?></td>
-                        <td scope="col"><?php echo $mostrar['nombre'] ?></td>
-                        <td scope="col"><?php echo $mostrar['domicilio'] ?></td>
-                        <td scope="col"><?php echo $mostrar['nacionalidad'] ?></td>
-                        <td scope="col"><?php echo $mostrar['fecha_nacimiento'] ?></td>
-                        <td scope="col"><?php echo $mostrar['fecha_ingreso'] ?></td>
-                        <td scope="col"><?php echo $mostrar['categoria'] ?></td>
-                        <td scope="col"><?php echo $mostrar['socio'] ?></td>
-                        <td scope="col"><?php echo $mostrar['actividades'] ?></td>
-                        <td scope="col"><?php echo $mostrar['edad'] ?></td>
-                        <td scope="col"><?php echo $mostrar['estado'] ?></td>
-                        <td scope="col" style="display: flex;justify-content: space-between;"><?php echo "
-						<a class='btn btn-warning m-1' href='./modificar5?dni=".$mostrar['dni']."' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
-						edit
-						</i></a>
-						<a class='btn btn-danger m-1' href='./dar_de_baja?dni=".$mostrar['dni']."'data-toggle='tooltip' role='button' title='Dar de baja'><i class='material-icons'>
-						delete
-						</i></a>
-						"; ?></td>
-                    </tr>
-                    <?php 
-				}
-				?>
+                    <?php
+                    include "./database/conexion.php";
+                    $sql = "SELECT * FROM clientes";
+                    $result = mysqli_query($conexion, $sql);
+                    while ($mostrar = mysqli_fetch_array($result)) {
+                        $dato = $mostrar['idParametro_Socio'];
+                        $dato2 = $mostrar['idEstado'];
+                        $dato3 = $mostrar['idCategoria'];
+                        $dato4 = $mostrar['idSexo'];
+                        $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
+                        $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
+                        echo '<tr>
+					<td>' . $mostrar['Nro_orden'] . '</td>
+					<td>' . $mostrar['Apellido'] . '</td>
+					<td>' . $mostrar['Nombre'] . '</td>
+					<td>' . $mostrar['Domicilio'] . '</td>
+					<td>' . $mostrar['DNI'] . '</td>
+					<td>' . $Fecha_nacimiento . '</td>
+					<td>' . $Fecha_ingreso . '</td>
+					<td>' . $mostrar['idParametro_Socio'] . '</td>
+					<td>' . (($dato2 === "1") ? 'Activo' : 'Inactivo') . '</td>
+					<td>' . $mostrar['idCategoria'] . '</td>
+					<td>' . $mostrar['idSexo'] . '</td>
+					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
+
+					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+
+					' . (($dato2 === "1") ? '<a class="btn btn-danger m-1" href="./dar_de_baja?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
+
+					</tr>';
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
