@@ -88,34 +88,37 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
             <table id="example" class="table table-responsive display" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>idFacturacion</th>
                         <th>Nro_orden</th>
-                        <th>Apellido</th>
-                        <th>Nombre</th>
-                        <th>DNI</th>
-                        <th>idCategoria</th>
+                        <th>idDisciplina</th>
+                        <th>Anio</th>
+                        <th>Mes</th>
                         <th>pago</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
+                        <th>idFacturacion</th>
                         <th>Nro_orden</th>
-                        <th>Apellido</th>
-                        <th>Nombre</th>
-                        <th>DNI</th>
-                        <th>idCategoria</th>
+                        <th>idDisciplina</th>
+                        <th>Anio</th>
+                        <th>Mes</th>
                         <th>pago</th>
                     </tr>
                 </tfoot>
+
+
                 <tbody>
                     <?php
                     $resBasquet = mysqli_query($conexion, "SELECT * FROM facturacion");
                     while ($mostrar = mysqli_fetch_array($resBasquet)) {
                         echo '<tr>
+        <td>' . $mostrar['idFacturacion'] . '</td>
         <td>' . $mostrar['Nro_orden'] . '</td>
-        <td>' . $mostrar['Apellido'] . '</td>
-        <td>' . $mostrar['Nombre'] . '</td>
-        <td>' . $mostrar['DNI'] . '</td>
-        <td>' . $mostrar['idCategoria'] . '</td>
+        <td>' . $mostrar['idDisciplina'] . '</td>
+        <td>' . $mostrar['Anio'] . '</td>
+        <td>' . $mostrar['Mes'] . '</td>
+        <td>' . $mostrar['Pago'] . '</td>
 
         </tr>';
                     }
