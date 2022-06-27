@@ -2,33 +2,33 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
-	header("location: ../errors/error_nologueado");
-	die();
+if ($varsesion == null || $varsesion = '') {
+    header("location: ../errors/error_nologueado");
+    die();
 }
 
-$conexion=mysqli_connect("localhost","root","","fomentar");
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 
-$consulta=ConsultarCliente($_GET['DNI']);
+$consulta = ConsultarCliente($_GET['DNI']);
 
-function ConsultarCliente( $DNI )
+function ConsultarCliente($DNI)
 {
-	$conexion=mysqli_connect("localhost","root","","fomentar");
-	$sentencia="SELECT * FROM clientes WHERE DNI='".$DNI."' ";
-	$resultado1= $conexion->query($sentencia) or die ("Error al consultar cliente".mysqli_error($conexion)); 
-	$fila=mysqli_fetch_assoc($resultado1);
+    $conexion = mysqli_connect("localhost", "root", "", "fomentar");
+    $sentencia = "SELECT * FROM clientes WHERE DNI='" . $DNI . "' ";
+    $resultado1 = $conexion->query($sentencia) or die("Error al consultar cliente" . mysqli_error($conexion));
+    $fila = mysqli_fetch_assoc($resultado1);
 
-	return [
-		$fila['Nombre'],
-		$fila['Apellido'],
-		$fila['Nro_orden'],
-		$fila['Domicilio'],
-		$fila['DNI'],
-		$fila['Fecha_nacimiento'],
-		$fila['Fecha_ingreso'],
-		$fila['idParametro_Socio'],
+    return [
+        $fila['Nombre'],
+        $fila['Apellido'],
+        $fila['Nro_orden'],
+        $fila['Domicilio'],
+        $fila['DNI'],
+        $fila['Fecha_nacimiento'],
+        $fila['Fecha_ingreso'],
+        $fila['idParametro_Socio'],
 
-	];
+    ];
 }
 
 
@@ -48,10 +48,10 @@ function ConsultarCliente( $DNI )
 </head>
 
 <body>
-    <div class="contenedor p-1" style="">
+    <div class="contenedor p-1">
         <form action="modificar6.php" method="post">
             <div class="form-group">
-                <input type="hidden" name="Usuario" value="<?php echo $_GET['nro_orden']?>">
+                <input type="hidden" name="Usuario" value="<?php echo $_GET['DNI'] ?>">
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" placeholder="Nombre" name="nombre"
                     value="<?php echo $consulta[0] ?>" required>
