@@ -87,14 +87,11 @@ $nro_orden = $coso['nro_orden'];
 
 $sql2 = "INSERT INTO actividades(nro_orden, idDisciplina) VALUES ('$nro_orden', '$idCategoria')";
 if ($mysqli->query($sql2) === TRUE) {
-	//echo "Nuevo registro creado exitosamente";
+	echo "Nuevo registro creado exitosamente";
 } else {
 	echo "Error: " . $sql2 . "<br>" . $mysqli->error;
 }
 
-// hola soy un comentario xd
-
 $mysqli->close();  // Cerrar conexión
 
-echo "<script>history.go(-1);</script>"; 
-?>
+echo "<script>history.go(-1);</script>";

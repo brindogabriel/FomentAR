@@ -85,7 +85,9 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
     </nav>
     <?php
 	include '../database/conexion.php';
-	$clientes = "SELECT * FROM clientes";
+	$clientes = "SELECT cli.nro_orden, cli.apellido, cli.nombre, cli.domicilio, cli.DNI, cli.fecha_nacimiento, cli.fecha_ingreso, dis.Detalle, paramSoc.detallepar, est.Estado,cat.descripcion, sex.detallesex, est.idEstado 
+	from clientes cli, actividades act, disciplinas dis, parametro_Socio paramSoc, estado est, categorias cat, sexo sex 
+	where act.nro_orden = cli.nro_orden and paramSoc.idParametro_Socio = cli.idParametro_Socio and est.idEstado = cli.idEstado and sex.idSexo = cli.idSexo and cat.idCategoria = cli.idCategoria and dis.idDisciplina = act.idDisciplina;";
 	$resClientes = mysqli_query($conexion, $clientes);
 	?>
 
@@ -106,12 +108,12 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                         <th>DNI</th>
                         <th>Fecha_nacimiento</th>
                         <th>Fecha_ingreso</th>
-                        <th>idParametro_Socio</th>
+                        <th>Deporte</th>
+                        <th>Socio</th>
                         <th>idEstado</th>
-                        <th>idCategoria</th>
-                        <th>idSexo</th>
+                        <th>categoria</th>
+                        <th>Sexo</th>
                         <th>Opciones</th>
-
                     </tr>
                 </thead>
                 <tfoot>
@@ -123,41 +125,40 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                         <th>DNI</th>
                         <th>Fecha_nacimiento</th>
                         <th>Fecha_ingreso</th>
-                        <th>idParametro_Socio</th>
+                        <th>Deporte</th>
+                        <th>Socio</th>
                         <th>idEstado</th>
-                        <th>idCategoria</th>
-                        <th>idSexo</th>
+                        <th>categoria</th>
+                        <th>Sexo</th>
                         <th>Opciones</th>
-
                     </tr>
                 </tfoot>
                 <tbody>
                     <?php
 
 					while ($mostrar = mysqli_fetch_array($resClientes)) {
-						$dato = $mostrar['idParametro_Socio'];
 						$dato2 = $mostrar['idEstado'];
-						$dato3 = $mostrar['idCategoria'];
-						$dato4 = $mostrar['idSexo'];
-						$Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
-						$Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
+
+						$Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
+						$Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
 						echo '<tr>
-					<td>' . $mostrar['Nro_orden'] . '</td>
-					<td>' . $mostrar['Apellido'] . '</td>
-					<td>' . $mostrar['Nombre'] . '</td>
-					<td>' . $mostrar['Domicilio'] . '</td>
+					<td>' . $mostrar['nro_orden'] . '</td>
+					<td>' . $mostrar['apellido'] . '</td>
+					<td>' . $mostrar['nombre'] . '</td>
+					<td>' . $mostrar['domicilio'] . '</td>
 					<td>' . $mostrar['DNI'] . '</td>
 					<td>' . $Fecha_nacimiento . '</td>
 					<td>' . $Fecha_ingreso . '</td>
-					<td>' . $mostrar['idParametro_Socio'] . '</td>
-					<td>' . (($dato2 === "1") ? 'Activo' : 'Inactivo') . '</td>
-					<td>' . $mostrar['idCategoria'] . '</td>
-					<td>' . $mostrar['idSexo'] . '</td>
+					<td>' . $mostrar['Detalle'] . '</td>
+					<td>' . $mostrar['detallepar'] . '</td>
+					<td>' . $mostrar['Estado'] . '</td>
+					<td>' . $mostrar['descripcion'] . '</td>
+					<td>' . $mostrar['detallesex'] . '</td>
 					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
 <a class="btn btn-warning m-1" href="../usuario_info?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
 					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
-					' . (($dato2 === "1") ? '<a class="btn btn-danger m-1" href="./dar_de_baja?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
+					' . (($dato2 === "1") ? '<a class="btn btn-danger m-1" href="../dar_de_baja?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="../dar_de_alta?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
 
 					</tr>';
 					}
