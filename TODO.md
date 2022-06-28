@@ -12,7 +12,7 @@
 - [ ] ARREGLAR REGISTRAR USUARIOS Y EDITAR 🚧
 - [ ] REDIRECCIONAR SI HAY UNA SESION (PARA NO IR AL LOGIN XD) A PAGINA_PRINCIPAL.PHP 🚧
 - [ ] ESCUDO EN ALGUN LADO ?? 🚧
-- [ ] AÑADIR AL MISMO USUARIO A VARIOS DEPORTES XD (NRO ORDEN DUPLICADO ERROR) 🚧
+- [ ] DESCRIPCION EN CLIENTES APARECE BIEN PERO MAL XD EN DESCRIPCION DE CATEGORIA
 
 - [ ] Warning: Undefined variable $resBasquet in C:\xampp\htdocs\FomentAR2\facturacion.php on line 50
 - [ ] in C:\xampp\htdocs\FomentAR2\edit/modificar5 on line 54
@@ -38,3 +38,29 @@
 | ---- | ----------- |
 | 1    | FEMENINO    |
 | 2    | MASCULINO   |
+
+### ANOTACIONES O IDEAS DE POR AHI XD
+
+<!--
+1) cuando el usuario te ingrese el sexo en la pagina, vos vas a tener el valor
+"Masculino", "Femenino" o "Mixto"
+
+vas a guardar en una variable, lo que te trae la siguiente consulta
+
+Select idSexo From Sexo Where Detalle = Variable en donde el usuario cargo el sexo
+en la pagina
+
+2) Buscar el idCategoria
+
+Select idCategoria From Categorias where idSexo = "Variable que tiene el idSexo buscado arriba"
+and "Variable que calculo la edad del cliente" Between Edad_Inicial and Edad_Final
+
+Ejemplo: Edad del cliente es 5 años y sexo es mixto (idSexo = 3)
+
+SELECT idCategoria FROM `categorias` WHERE idSexo = 3 and 5 BETWEEN Edad_Inicial and Edad_Final
+
+---------------------
+
+SELECT act.Nro_Orden, act.idDisciplina, dis.idCategoria, dis.ValorSocio, dis.ValorNoSocio, from actividades act, facturacion fact, disciplinas disc where act.Nro_Orden = fact.Nro_orden and act.idDisciplina = fact.idDisciplina and disc.idCategoria = act.idActividad
+
+-->
