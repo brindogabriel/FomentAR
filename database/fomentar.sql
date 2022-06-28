@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2022 a las 04:22:03
+-- Tiempo de generación: 28-06-2022 a las 04:31:33
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -32,15 +32,6 @@ CREATE TABLE `actividades` (
   `Nro_Orden` int(11) NOT NULL,
   `idDisciplina` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `actividades`
---
-
-INSERT INTO `actividades` (`idActividad`, `Nro_Orden`, `idDisciplina`) VALUES
-(0, 1, 11),
-(1, 1, 7),
-(2, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -99,19 +90,6 @@ CREATE TABLE `clientes` (
   `idCategoria` int(11) DEFAULT NULL,
   `idSexo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `clientes`
---
-
-INSERT INTO `clientes` (`Nro_orden`, `Apellido`, `Nombre`, `Domicilio`, `DNI`, `Fecha_nacimiento`, `Fecha_ingreso`, `idParametro_Socio`, `idEstado`, `idCategoria`, `idSexo`) VALUES
-(1, 'test', 'test', 'calle falsa', 123456789, '1995-10-03', '2022-06-26', 1, 1, 7, 2),
-(2, 'test fem', 'test fem', 'Calle falsa 123', 789456123, '1999-12-24', '2022-06-27', 1, 1, 6, 1),
-(3, 'test', 'test', 'calle falsa', 123456789, '1995-10-03', '2022-06-26', 1, 1, 18, 2),
-(4, 'test', 'test', 'calle falsa', 123456789, '1995-10-03', '2022-06-27', 1, 1, 11, 2),
-(5, 'test', 'test', 'calle falsa', 123456789, '1995-10-03', '2022-06-27', 1, 1, 11, 2),
-(6, 'testt', 'test', 'Calle falsa 123', 123456789, '1995-10-03', '2022-06-27', 1, 1, 11, 2),
-(7, 'testt', 'test', 'Calle falsa 123', 123456789, '1995-10-03', '2022-06-27', 1, 1, 11, 2);
 
 -- --------------------------------------------------------
 
@@ -413,7 +391,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `Nro_orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Nro_orden` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
