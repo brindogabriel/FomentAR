@@ -26,11 +26,13 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
         <a class="navbar-brand mb-0 h1" href="pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="white" />
+                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
+                    fill="white" />
             </svg>
             FomentAR
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -72,7 +74,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     ?>
                 </li>
             </ul>
-            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled style="text-transform: capitalize;">
+            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
+                style="text-transform: capitalize;">
                 <?php
                 echo $varsesion;
                 ?>
@@ -84,14 +87,30 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
         <div class="row">
             <div class="col w-20">
                 <div class="card" style="width: 18rem;">
-                    <a href="futbol.html"><img class="card-img-top" src="./Images/futbol.webp" alt="Card image cap"></a>
                     <div class="card-body">
-                        <h5 class="card-title">Gabriel</h5>
-                        <p class="card-text">
-                            s
-                        </p>
-                        <a href="#" class="badge badge-dark">Futbol</a>
-                        <a href="#" class="badge badge-danger">Taekwondo</a>
+
+                        <?php
+                        $conexion = mysqli_connect("localhost", "root", "", "fomentar");
+                        $sql = "SELECT cli.nro_orden, cli.apellido, cli.nombre, cli.domicilio, cli.DNI, cli.fecha_nacimiento, cli.fecha_ingreso, dis.detalle, paramSoc.detallepar, est.Estado,cat.descripcion, sex.detallesex, est.idEstado
+				from clientes cli,
+				actividades act,
+				disciplinas dis,
+				parametro_Socio paramSoc,
+				estado est,
+				categorias cat,
+				sexo sex
+				where act.nro_orden = cli.nro_orden
+				and paramSoc.idParametro_Socio = cli.idParametro_Socio and 
+				est.idEstado = cli.idEstado and sex.idSexo = cli.idSexo and
+				cat.idCategoria = cli.idCategoria
+				and dis.idDisciplina = act.idDisciplina
+				and cli.DNI = $_GET[DNI]";
+                        $result = mysqli_query($conexion, $sql);
+                        while ($mostrar = mysqli_fetch_assoc($result)) {
+                            echo '
+                            <h5 class="card-title">' . $mostrar['nombre'] . '</h5>
+                        <a href="#" class="badge badge-dark">' . $mostrar['detalle'] . '</a>';
+                        } ?>
                     </div>
                 </div>
             </div>
@@ -129,7 +148,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                                             edit
                                         </i>
                                     </button>
-                                    <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Borrar"><i class="material-icons">
+                                    <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Borrar"><i
+                                            class="material-icons">
                                             delete
                                         </i></button>
                                 </td>
@@ -140,10 +160,12 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                                 <td>$200</td>
                                 <td>27/10/2018</td>
                                 <td><span class="badge badge-danger">Debe $300</span></td>
-                                <td><button type="button" class="btn btn-warning" data-toggle="tooltip" title="Editar"><i class="material-icons">
+                                <td><button type="button" class="btn btn-warning" data-toggle="tooltip"
+                                        title="Editar"><i class="material-icons">
                                             edit
                                         </i></button>
-                                    <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Borrar"><i class="material-icons">
+                                    <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Borrar"><i
+                                            class="material-icons">
                                             delete
                                         </i></button>
                                 </td>
@@ -160,7 +182,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
     <script src="./js/jquery-3.3.1.slim.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-    <?php include("../scripts.php"); ?>
+    <?php include("./scripts.php"); ?>
 </body>
 
 </html>
