@@ -21,6 +21,7 @@ session_destroy();
         <div class="form-login">
             <img src="./Images/login.ico" alt="" class="rounded-circle">
             <form action="./database/validarlogin" method="POST" class="w-100 p-0">
+                <h1>Bienvenido a FomentAR</h1>
                 <div class="form-group w-100">
                     <input type="text" class="form-control w-100" placeholder="Usuario" name="nombre" required
                         id="nombre">

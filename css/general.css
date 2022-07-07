@@ -32,10 +32,9 @@
 */
 
 body {
-  background: url("../Images/fondo.webp");
+  background-image: url("../Images/fondo.webp");
   background-size: 100vw 100vh;
   background-attachment: fixed;
-  background-repeat: no-repeat;
   margin: 0;
 }
 
@@ -254,6 +253,7 @@ input[type="number"] {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
+  font-feature-settings: "liga";
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
