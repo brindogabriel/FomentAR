@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2022 a las 04:31:33
+-- Tiempo de generación: 07-07-2022 a las 18:18:04
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -28,10 +28,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `actividades` (
-  `idActividad` int(11) NOT NULL,
   `Nro_Orden` int(11) NOT NULL,
   `idDisciplina` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `actividades`
+--
+
+INSERT INTO `actividades` (`Nro_Orden`, `idDisciplina`) VALUES
+(1, 7);
 
 -- --------------------------------------------------------
 
@@ -90,6 +96,13 @@ CREATE TABLE `clientes` (
   `idCategoria` int(11) DEFAULT NULL,
   `idSexo` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`Nro_orden`, `Apellido`, `Nombre`, `Domicilio`, `DNI`, `Fecha_nacimiento`, `Fecha_ingreso`, `idParametro_Socio`, `idEstado`, `idCategoria`, `idSexo`) VALUES
+(1, 'test', 'test', 'calle falsa', 123456789, '1995-10-03', '2022-07-07', 1, 1, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -290,8 +303,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `Usuario`, `Password`, `idRole`, `LoggedIn`) VALUES
-(1, 'presidente', 'presidente', 1, 1),
-(2, 'usuario', 'usuario', 2, 2);
+(1, 'presidente', '1c4708df8cb006d2a007b3920a7b92a5', 1, 1),
+(2, 'usuario', 'f8032d5cae3de20fcec887f395ec9a6a', 2, 2);
 
 --
 -- Índices para tablas volcadas
@@ -301,7 +314,6 @@ INSERT INTO `usuarios` (`idUsuario`, `Usuario`, `Password`, `idRole`, `LoggedIn`
 -- Indices de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  ADD PRIMARY KEY (`idActividad`),
   ADD KEY `idDisciplina` (`idDisciplina`),
   ADD KEY `Nro_orden` (`Nro_Orden`) USING BTREE;
 
@@ -391,7 +403,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `Nro_orden` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Nro_orden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `eventos`
