@@ -1,18 +1,19 @@
 # TODO LIST
 
-- [ ] IMPORTAR Y EXPORTAR FUNCIONES JS 🚧
-- [ ] CAMBIAR MYSQL Y MYSQLI A PDO Y ESCAPAR STRINGS XD 🚧
-- [ ] PASAR LOGO A ICO - 🚧 (NO ME CONVENCE EL RESULTADO XD)
 - [ ] REGISTRO DE EVENTOS - 🚧
-- [ ] REHACER BASE DE DATOS 🚧
-- [ ] LEER ULTIMAS LINEAS DE [REGISTRAR_CLIENTE.PHP](registrar_cliente.php "registrar_cliente.php") (HAY UNA EXPLICACION DE LAS CATEGORIAS XD IGUAL VAMOS A HACER TODO DESDE 0 (? ) 🚧
 - [ ] RUTAS EN CADA ARCHIVO 🚧
-- [ ] LOGIN MULTISESION/MULTIDISPOSITIVO? DOBLE FACTOR DE AUTENTICACION? 🚧
-- [ ] ENCRIPTAR PASSWORD USUARIOS 🚧
 - [ ] ARREGLAR REGISTRAR USUARIOS Y EDITAR 🚧
 - [ ] REDIRECCIONAR SI HAY UNA SESION (PARA NO IR AL LOGIN XD) A PAGINA_PRINCIPAL.PHP 🚧
-- [ ] ESCUDO EN ALGUN LADO ?? 🚧
 - [ ] DESCRIPCION EN CLIENTES APARECE BIEN PERO MAL XD EN DESCRIPCION DE CATEGORIA
+- [ ] CAMBIAR CONSULTAS SQL A MYSQLI O PDO
+- [ ] PASAR LOGO A ICO - 🚧 (NO ME CONVENCE EL RESULTADO XD)
+- [ ] REHACER BASE DE DATOS 🚧
+- [ ] LEER ULTIMAS LINEAS DE [REGISTRAR_CLIENTE.PHP](registrar_cliente.php "registrar_cliente.php") (HAY UNA EXPLICACION DE LAS CATEGORIAS XD IGUAL VAMOS A HACER TODO DESDE 0 (? ) 🚧
+- [ ] LOGIN MULTISESION/MULTIDISPOSITIVO? DOBLE FACTOR DE AUTENTICACION? 🚧
+- [ ] ESCUDO DE LA SOCIEDAD DE FOMENTO EN ALGUN LADO ?? 🚧
+- [ ] IMPORTAR Y EXPORTAR FUNCIONES JS 🚧
+
+# ERRORES
 
 - [ ] Warning: Undefined variable $resBasquet in C:\xampp\htdocs\FomentAR2\facturacion.php on line 50
 - [ ] in C:\xampp\htdocs\FomentAR2\edit/modificar5 on line 54
@@ -63,3 +64,5 @@ SELECT idCategoria FROM `categorias` WHERE idSexo = 3 and 5 BETWEEN Edad_Inicial
 query de deportes segun cliente.dni
 
 SELECT act.Nro_Orden, act.idDisciplina, dis.idCategoria, dis.ValorSocio, dis.ValorNoSocio, from actividades act, facturacion fact, disciplinas disc where act.Nro_Orden = fact.Nro_orden and act.idDisciplina = fact.idDisciplina and disc.idCategoria = act.idActividad
+
+---
