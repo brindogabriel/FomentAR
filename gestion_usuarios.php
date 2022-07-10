@@ -98,7 +98,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Usuario</th>
-                            <th scope="col">Contraseña</th>
+
                             <th scope="col">Tipo</th>
                             <th scope="col">Opciones</th>
                         </tr>
@@ -111,7 +111,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     <tbody>
                         <tr>
                             <td scope="col"><?php echo $mostrar['Usuario'] ?></td>
-                            <td scope="col"><?php echo $mostrar['Password'] ?></td>
+
                             <td scope="col"><?php echo $mostrar['Rol'] ?></td>
                             <td scope="col"><?php echo "
 							<a class='btn btn-warning' href='./modificar?Usuario=" . $mostrar['Usuario'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>

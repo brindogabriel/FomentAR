@@ -54,17 +54,17 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 					</div>
 				</li>
 			-->
-                <!-- <li class="nav-item">
-					<?php
+                <li class="nav-item">
+                    <?php
                     $varsesion = $_SESSION['usuario'];
                     if ($varsesion == "presidente") {
                         echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
                     }
-                    ?>							
-				</li> -->
-                <!-- <li class="nav-item">
-					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
-				</li> -->
+                    ?>
+                </li>
+                <li class="nav-item">
+                    <a class='nav-link' href='../reporte_errores'>Reporte Errores</a>
+                </li>
                 <li class="nav-item">
                     <?php
                     $varsesion = $_SESSION['usuario'];
