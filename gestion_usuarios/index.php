@@ -6,7 +6,7 @@ if ($varsesion == null || $varsesion = '') {
     header("location: ./errors/error_nologueado");
     die();
 }
-$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+include '../database/conexion.php';
 ?>
 <!doctype html>
 <html lang="es">
@@ -14,9 +14,9 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="./Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/general.css">
-    <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
     <title>FomentAR</title>
 </head>
 
@@ -80,7 +80,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                 echo $varsesion;
                 ?>
             </a>
-            <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
+            <a class="btn btn-outline-danger" href="../database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
     </nav>
     <?php
@@ -202,9 +202,9 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
             </div>
         </div>
     </div>
-    <script src="./js/jquery-3.3.1.slim.min.js"></script>
-    <script src="./js/popper.min.js"></script>
-    <script src="./Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+    <script src="../js/jquery-3.3.1.slim.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
 
     <script>
     $(function() {
