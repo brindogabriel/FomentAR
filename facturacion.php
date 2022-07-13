@@ -116,6 +116,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
         <td>' . $mostrar['idFacturacion'] . '</td>
         <td>' . $mostrar['Nro_orden'] . '</td>
         <td>' . $mostrar['idDisciplina'] . '</td>
+       
         <td>' . $mostrar['Anio'] . '</td>
         <td>' . $mostrar['Mes'] . '</td>
         <td>' . $mostrar['Pago'] . '</td>
