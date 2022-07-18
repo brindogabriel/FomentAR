@@ -13,7 +13,7 @@
 - [ ] LOGIN MULTISESION/MULTIDISPOSITIVO? DOBLE FACTOR DE AUTENTICACION? COOKIE ? TOKEN ? 🚧
 - [ ] ESCUDO DE LA SOCIEDAD DE FOMENTO EN ALGUN LADO ?? 🚧
 - [ ] IMPORTAR Y EXPORTAR FUNCIONES JS 🚧
-- [ ] USAR STORE PROCEDURES XD (actualizar estado evento y agregar cliente en varios deportes si usamos algun select multiple? automatico xd) 🚧
+- [ ] USAR STORE PROCEDURES?? TRIGGERS?? XD (actualizar estado evento y agregar cliente en varios deportes si usamos algun select multiple? automatico xd) 🚧
 
 # ERRORES
 
