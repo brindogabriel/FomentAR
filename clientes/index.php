@@ -155,7 +155,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 					<td>' . $mostrar['descripcion'] . '</td>
 					<td>' . $mostrar['detallesex'] . '</td>
 					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
-<a class="btn btn-warning m-1" href="../usuario_info?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
+<a class="btn btn-warning m-1" href="./clientes_info?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
 					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
 					' . (($dato2 === "1") ? '<a class="btn btn-danger m-1" href="../dar_de_baja?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="../dar_de_alta?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
