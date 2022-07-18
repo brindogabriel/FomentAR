@@ -6,11 +6,11 @@
 - [ ] REVISAR COMENTARIOS EN CADA ARCHIVO XD
 - [ ] REDIRECCIONAR SI HAY UNA SESION (PARA NO IR AL LOGIN XD) A PAGINA_PRINCIPAL.PHP 🚧
 - [ ] DESCRIPCION EN CLIENTES APARECE BIEN PERO MAL XD EN DESCRIPCION DE CATEGORIA
-- [ ] CAMBIAR CONSULTAS SQL A MYSQLI O PDO
-- [ ] PASAR LOGO A ICO - 🚧 (NO ME CONVENCE EL RESULTADO XD)
+- [ ] CAMBIAR CONSULTAS SQL A MYSQLI O PDO (MAS SEGURO XD) 🚧
+- [ ] PASAR LOGO A ICO - 🚧 (NO ME CONVENCE EL RESULTADO XD) 🚧
 - [ ] REHACER BASE DE DATOS 🚧
 - [ ] LEER ULTIMAS LINEAS DE [REGISTRAR_CLIENTE.PHP](registrar_cliente.php "registrar_cliente.php") (HAY UNA EXPLICACION DE LAS CATEGORIAS XD IGUAL VAMOS A HACER TODO DESDE 0 (? ) 🚧
-- [ ] LOGIN MULTISESION/MULTIDISPOSITIVO? DOBLE FACTOR DE AUTENTICACION? 🚧
+- [ ] LOGIN MULTISESION/MULTIDISPOSITIVO? DOBLE FACTOR DE AUTENTICACION? COOKIE ? TOKEN ? 🚧
 - [ ] ESCUDO DE LA SOCIEDAD DE FOMENTO EN ALGUN LADO ?? 🚧
 - [ ] IMPORTAR Y EXPORTAR FUNCIONES JS 🚧
 - [ ] USAR STORE PROCEDURES XD 🚧
@@ -21,7 +21,6 @@
 - [ ] in C:\xampp\htdocs\FomentAR2\edit/modificar5 on line 54
 - [ ] $ ( ... ).datepicker is not a function (hay que acomodar bien el jquery o el script con el $ . . de jquery o no c xd)
 - [ ] DevTools failed to load source map: Could not load content for http://localhost/FomentAR/js/popper.min.js.map: HTTP error: status code 404, net::ERR_HTTP_RESPONSE_CODE_FAILURE
-- [ ] Fatal error: Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`fomentar`.`usuarios`, CONSTRAINT `idRole_fk` FOREIGN KEY (`idRole`) REFERENCES `roles` (`idRole`)) in C:\xampp\htdocs\FomentAR\registrar.php:19 Stack trace: #0 C:\xampp\htdocs\FomentAR\registrar.php(19): mysqli->query('INSERT INTO usu...') #1 {main} thrown in C:\xampp\htdocs\FomentAR\registrar.php on line 19
 
 ## IF DE REGISTRAR_BASQUET.PHP (ARREGLAR Y TAMBIEN CATEGORIAS EN LA DB)
 
