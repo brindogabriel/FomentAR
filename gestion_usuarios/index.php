@@ -23,7 +23,7 @@ include '../database/conexion.php';
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <a class="navbar-brand mb-0 h1" href="pagina_principal">
+        <a class="navbar-brand mb-0 h1" href="../pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
@@ -38,10 +38,10 @@ include '../database/conexion.php';
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="./pagina_principal">Inicio<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../pagina_principal">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class='nav-link' href='./clientes'>Todos los Clientes</a>
+                    <a class='nav-link' href='../clientes'>Todos los Clientes</a>
                 </li>
                 <!-- <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -58,7 +58,7 @@ include '../database/conexion.php';
 					<?php
                     $varsesion = $_SESSION['usuario'];
                     if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
+                        echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
                     }
                     ?>							
 				</li> -->
@@ -69,7 +69,7 @@ include '../database/conexion.php';
                     <?php
                     $varsesion = $_SESSION['usuario'];
                     if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+                        echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
                     }
                     ?>
                 </li>
@@ -86,7 +86,7 @@ include '../database/conexion.php';
     <?php
     $varsesion = $_SESSION['usuario'];
     if ($varsesion == "usuario") {
-        header("location: ./error_privilegio");
+        header("location: ../errors/error_privilegio");
         die();
     }
     ?>
@@ -149,7 +149,7 @@ include '../database/conexion.php';
                 </div>
                 <div class="modal-body">
                     <div class="formlogin">
-                        <form action="registrar.php" method="post">
+                        <form action="agregar_usuario.php" method="POST">
                             <div class="form-group">
                                 <label for="user">Usuario</label>
                                 <input type="text" class="form-control" placeholder="Usuario" name="nombre" id="user"
@@ -166,30 +166,10 @@ include '../database/conexion.php';
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Tipo De Usuario</label>
-                                <?php
-                                include './database/conexion.php';
-
-                                $consulta = "SELECT Usuario, idRole FROM `usuarios`";
-                                $result = mysqli_query($conexion, $consulta);
-                                $bandera = true;
-                                ?>
-
-                                <!-- en lugar del div.cajaselect -->
                                 <select class="form-control" id="exampleFormControlSelect1" name="tipo">
-                                    <?php
-                                    while ($filas = mysqli_fetch_array($result)) {
-                                        $id_dato = $filas['idRole']; // guarda el id del registro
-                                        $dato = $filas['Usuario']; // guarda el dato del registro
-                                    ?>
-                                    <!-- en el value se inyecta el id, con la bandera se verifica que sea la primera iteracion del bucle -->
-                                    <option value="<?php echo $tipo; ?>"
-                                        <?php echo ($bandera == true) ? "selected" : ""; ?> required>
-                                        <?php echo $dato; /* imprime el sector en el option */ ?>
-                                    </option>
-                                    <?php
-                                        $bandera = false; // cambia el valor de la bandera para no seleccionar nada en la siguiente iteración
-                                    }
-                                    ?>
+                                    <option value="1">Presidente</option>
+                                    <option value="2">Usuario</option>
+
                                 </select>
                             </div>
                             <div class="dropdown-divider"></div>
