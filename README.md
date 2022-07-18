@@ -5,7 +5,6 @@ Proyecto de 7mo de secundaria (2018)
 ## Para hacer
 
 - [ ] LEER [TODO.md](TODO.md "Cositas para revisar xd") (cosas para revisar xd)
-- [x] [#fbd3c85](https://github.com/brindogabriel/FomentAR/commit/fbd3c854adb1441a2d90972b13c7eb889018b7d0 "Commit inicial para arreglar todo por si las moscas") (commit inicial ANDA BIEN)
 
 ## Versiones utilizadas
 
