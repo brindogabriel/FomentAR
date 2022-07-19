@@ -34,8 +34,7 @@ session_destroy();
                         </div>
                     </div>
 
-                    <input type="password" class="form-control w-80" id="myInput" placeholder="Contraseña"
-                        name="password">
+                    <input type="password" class="form-control w-80" id="myInput" placeholder="Contraseña" name="pass">
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary w-100" value="Ingresar">
             </form>
