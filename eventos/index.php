@@ -221,6 +221,13 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+
+                    $nombre = $_POST["nombre"];
+                    $fecha_inicio = $_POST["fecha_inicio"];
+                    $fecha_fin = $_POST["fecha_fin"];
+                    $pagado = $_POST["pagado"];
+                    $importe = $_POST["importe"];
+                    $seña = $_POST["seña"];
                     <div class="modal-body">
                         <div class="formlogin">
                             <form action="registrar_evento.php" method="POST">
@@ -228,20 +235,24 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                                     <label for="user">Nombre</label>
                                     <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="user">N° Matricula</label>
-                                    <input type="number" class="form-control" placeholder="N° Matricula" name="nombre"
-                                        id="cantidad" required>
-                                </div>
+                                    <input type="number" class="form-control" placeholder="N° Matricula" name="nombre" id="cantidad" required>
+                                </div> -->
                                 <div class="form-group">
                                     <label>Fecha de alquiler</label>
-                                    <input type="datetime-local" name="Fecha de alquiler" class="form-control"
+                                    <input type="datetime-local" name="fecha_inicio" class="form-control"
                                         placeholder="Fecha de alquiler" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Dura hasta</label>
-                                    <input type="datetime-local" name="Fecha de alquiler" class="form-control"
+                                    <input type="datetime-local" name="fecha_fin" class="form-control"
                                         placeholder="Fecha de alquiler" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="user">importe</label>
+                                    <input type="number" class="form-control" placeholder="Nombre" name="importe"
+                                        required>
                                 </div>
                                 <div class="dropdown-divider mb-2"></div>
                                 <button type="button" class="btn btn-secondary w-25 float-right"
