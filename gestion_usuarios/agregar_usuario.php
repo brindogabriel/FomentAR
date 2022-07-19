@@ -6,7 +6,7 @@ $tipo = $_POST["tipo"];
 
 include "../database/conexion.php";
 
-$sql = "INSERT INTO `usuarios` (`Usuario`, `Password`, `idRole`) VALUES ('$nombre', '$pass', '$tipo')";
+$sql = "INSERT INTO `usuarios` (`usuario`, `pass`, `idRole`) VALUES ('$nombre', '$pass', '$tipo')";
 
 $conexion->query($sql) or die("Error al actualizar datos " . mysqli_error($conexion));
 echo "<script>history.go(-1);</script>";

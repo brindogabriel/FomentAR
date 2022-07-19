@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2022 a las 04:11:46
+-- Tiempo de generación: 19-07-2022 a las 17:27:40
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -281,8 +281,10 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`idUsuario`, `usuario`, `pass`, `idRole`) VALUES
+(1, 'presidente', '1c4708df8cb006d2a007b3920a7b92a5', 1),
 (2, 'usuario', 'f8032d5cae3de20fcec887f395ec9a6a', 2),
-(4, 'presidente', '1c4708df8cb006d2a007b3920a7b92a5', 1);
+(3, 'test1', '5a105e8b9d40e1329780d62ea2265d8a', 1),
+(4, 'test2', 'ad0234829205b9033196ba818f7a872b', 2);
 
 --
 -- Índices para tablas volcadas

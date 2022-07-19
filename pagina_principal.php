@@ -2,11 +2,13 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
-	header("location: ./errors/error_nologueado");
-	die();
+$rol = $_SESSION['idRole'];
+if ($varsesion == null || $varsesion = '') {
+    header("location: ./errors/error_nologueado");
+    die();
 }
-$conexion=mysqli_connect("localhost","root","","fomentar");
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -55,30 +57,31 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 				</li>
 			-->
                 <!-- <li class="nav-item">
-					<?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
-					}
-					?>							
+					<?php
+                    $rol = $_SESSION['idRole'];
+                    if ($varsesion == 1) {
+                        echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
+                    }
+                    ?>							
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
-                    <?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
-					}
-					?>
+                    <?php
+                    $varsesion = $_SESSION['usuario'];
+                    $rol = $_SESSION['idRole'];
+                    if ($rol == 1) {
+                        echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+                    }
+                    ?>
                 </li>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-				echo $varsesion;
-				?>
+                echo $varsesion;
+                ?>
             </a>
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>

@@ -3,7 +3,7 @@ session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
 if ($varsesion == null || $varsesion = '') {
-    header("location: ./errors/error_nologueado");
+    header("location: ../errors/error_nologueado");
     die();
 }
 include '../database/conexion.php';
@@ -26,11 +26,13 @@ include '../database/conexion.php';
         <a class="navbar-brand mb-0 h1" href="../pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="white" />
+                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
+                    fill="white" />
             </svg>
             FomentAR
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -55,6 +57,7 @@ include '../database/conexion.php';
                 <!-- <li class="nav-item">
 					<?php
                     $varsesion = $_SESSION['usuario'];
+
                     if ($varsesion == "presidente") {
                         echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
                     }
@@ -72,7 +75,8 @@ include '../database/conexion.php';
                     ?>
                 </li>
             </ul>
-            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled style="text-transform: capitalize;">
+            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
+                style="text-transform: capitalize;">
                 <?php
                 echo $varsesion;
                 ?>
@@ -101,31 +105,32 @@ include '../database/conexion.php';
                         </tr>
                     </thead>
                     <?php
-                    $sql = "SELECT usu.Usuario,usu.Password, rol.Descripcion AS Rol from usuarios usu, roles rol where usu.idRole = rol.idRole;";
+                    $sql = "SELECT usu.usuario,usu.pass, rol.Descripcion AS Rol from usuarios usu, roles rol where usu.idRole = rol.idRole;";
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_array($result)) {
                     ?>
-                        <tbody>
-                            <tr>
-                                <td scope="col"><?php echo $mostrar['Usuario'] ?></td>
+                    <tbody>
+                        <tr>
+                            <td scope="col"><?php echo $mostrar['usuario'] ?></td>
 
-                                <td scope="col"><?php echo $mostrar['Rol'] ?></td>
-                                <td scope="col"><?php echo "
-							<a class='btn btn-warning' href='./modificar?Usuario=" . $mostrar['Usuario'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
+                            <td scope="col"><?php echo $mostrar['Rol'] ?></td>
+                            <td scope="col"><?php echo "
+							<a class='btn btn-warning' href='./modificar?usuario=" . $mostrar['usuario'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
 							edit
 							</i></a>
-							<a class='btn btn-danger' href='./borrar_usuario?Usuario=" . $mostrar['Usuario'] . "'data-toggle='tooltip' role='button' title='Dar de baja'><i class='material-icons'>
+							<a class='btn btn-danger' href='./borrar_usuario?usuario=" . $mostrar['usuario'] . "'data-toggle='tooltip' role='button' title='Eliminar usuario'><i class='material-icons'>
 							delete
 							</i></a>
 							"; ?></td>
-                            </tr>
+                        </tr>
                         <?php
                     }
                         ?>
-                        </tbody>
+                    </tbody>
                 </table>
             </div>
-            <button type="button" class="btn btn-primary float-right mt-2" data-toggle="modal" data-target="#exampleModalCenter">
+            <button type="button" class="btn btn-primary float-right mt-2" data-toggle="modal"
+                data-target="#exampleModalCenter">
                 Agregar nuevo
             </button>
         </div>
@@ -133,7 +138,8 @@ include '../database/conexion.php';
 
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -147,7 +153,8 @@ include '../database/conexion.php';
                         <form action="./agregar_usuario.php" method="POST">
                             <div class="form-group">
                                 <label for="user">Usuario</label>
-                                <input type="text" class="form-control" placeholder="Usuario" name="nombre" id="user" required>
+                                <input type="text" class="form-control" placeholder="Usuario" name="nombre" id="user"
+                                    required>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -155,7 +162,8 @@ include '../database/conexion.php';
                                         <input type="checkbox" onclick="myFunction()" title="Mostrar Contraseña">
                                     </div>
                                 </div>
-                                <input type="password" class="form-control" id="myInput" placeholder="Contraseña" name="password" required>
+                                <input type="password" class="form-control" id="myInput" placeholder="Contraseña"
+                                    name="password" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect1">Tipo De Usuario</label>
@@ -166,7 +174,8 @@ include '../database/conexion.php';
                                 </select>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-secondary float-right"
+                                data-dismiss="modal">Cancelar</button>
                             <input type="submit" class="btn btn-primary" name="submit" value="Registrar">
                         </form>
                     </div>
@@ -179,18 +188,18 @@ include '../database/conexion.php';
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
 
     <script>
-        $(function() {
-            $('[data-toggle="tooltip"]').tooltip();
-        });
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 
-        function myFunction() {
-            var x = document.getElementById("myInput");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
+    function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
         }
+    }
     </script>
 </body>
 
