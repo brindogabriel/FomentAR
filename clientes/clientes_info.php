@@ -6,7 +6,7 @@ if ($varsesion == null || $varsesion = '') {
     header("location: ./errors/error_nologueado");
     die();
 }
-$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+include "."
 ?>
 <!doctype html>
 <html lang="es">
@@ -43,28 +43,17 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                 <li class="nav-item">
                     <a class='nav-link' href='../clientes'>Todos los Clientes</a>
                 </li>
-                <!-- <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Eventos
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="../eventos">Este mes</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="../historico">Historico</a>
-					</div>
-				</li>
-			-->
-                <!-- <li class="nav-item">
-					<?php
+                <li class="nav-item">
+                    <?php
                     $varsesion = $_SESSION['usuario'];
                     if ($varsesion == "presidente") {
                         echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
                     }
-                    ?>							
-				</li> -->
-                <!-- <li class="nav-item">
-					<a class='nav-link' href='../reporte_errores'>Reporte Errores</a>
-				</li> -->
+                    ?>
+                </li>
+                <li class="nav-item">
+                    <a class='nav-link' href='../reporte_errores'>Reporte Errores</a>
+                </li>
                 <li class="nav-item">
                     <?php
                     $varsesion = $_SESSION['usuario'];

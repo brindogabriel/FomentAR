@@ -111,7 +111,7 @@ include "../database/conexion.php";
 					<td>' . $fecha_fin  . '</td>
 					<td>' . $mostrar['descripcion'] . '</td>
                     <td>
-                    <a class="btn btn-warning m-1" href="./modif_ev?idevento=' . $mostrar['idevento'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+                    <a class="btn btn-warning m-1" href="./modificar_evento?idevento=' . $mostrar['idevento'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
                     <a class="btn btn-primary m-1"  data-toggle="tooltip" role="button" title="Falta ' . $mostrar['estado'] . ' tiempo"><i class="material-icons" style="color:white;">alarm</i></a>
 
