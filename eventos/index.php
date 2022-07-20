@@ -6,7 +6,7 @@ if ($varsesion == null || $varsesion = '') {
     header("location: ../errors/error_nologueado");
     die();
 }
-$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+include "../database/conexion.php";
 ?>
 <!doctype html>
 <html lang="es">
@@ -43,21 +43,15 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                 <li class="nav-item">
                     <a class='nav-link' href='../clientes'>Todos los Clientes</a>
                 </li>
-                <!-- <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Eventos
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./eventos">Este mes</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="./historico">Historico</a>
-					</div>
-				</li>
-			-->
+                <li class="nav-item">
+                    <a class='nav-link' href='./'>Eventos</a>
+                </li>
+
                 <li class="nav-item">
                     <?php
                     $varsesion = $_SESSION['usuario'];
-                    if ($varsesion == "presidente") {
+                    $rol = $_SESSION['idRole'];
+                    if ($varsesion == 1) {
                         echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
                     }
                     ?>
@@ -89,12 +83,10 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                 <caption>Lista de eventos</caption>
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">idEvento</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Fecha inicio</th>
                         <th scope="col">Fecha fin</th>
                         <th scope="col">estado</th>
-                        <!-- <th scope="col">importe</th> -->
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -106,100 +98,28 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_assoc($result)) {
                         $dato2 = $mostrar['estado'];
-                        // $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
-                        // $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
-                        echo '<tr>
-					<td>' . $mostrar['idevento'] . '</td>					
+                        $fecha_inicio = date("d/m/Y H:m", strtotime($mostrar['fecha_inicio']));
+                        $fecha_fin = date("d/m/Y H:m", strtotime($mostrar['fecha_fin']));
+
+                        //! calcular cuanto falta para el evento xd aunque podria ser desde el backend xd
+                        $rol = $_SESSION['idRole'];
+
+
+                        echo '<tr>					
 					<td>' . $mostrar['nombre'] . '</td>
-					<td>' . $mostrar['fecha_inicio'] . '</td>
-					<td>' . $mostrar['fecha_fin'] . '</td>
+					<td>' . $fecha_inicio . '</td>
+					<td>' . $fecha_fin  . '</td>
 					<td>' . $mostrar['descripcion'] . '</td>
-				
-					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
+                    <td>
+                    <a class="btn btn-warning m-1" href="./modif_ev?idevento=' . $mostrar['idevento'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
-					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI=' . $mostrar['estado'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+                    <a class="btn btn-primary m-1"  data-toggle="tooltip" role="button" title="Falta ' . $mostrar['estado'] . ' tiempo"><i class="material-icons" style="color:white;">alarm</i></a>
 
-					' . (($dato2 == "1") ? '<a class="btn btn-danger m-1" href="../dar_de_baja?DNI=' . $mostrar['estado'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="../dar_de_alta?DNI=' . $mostrar['estado'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
-
+                    ' . (($rol == 1) ? '<a class="btn btn-danger m-1" href="./borrar_evento?idevento=' . $mostrar['idevento'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-danger m-1 disabled" href="./borrar_evento?idevento=' . $mostrar['idevento'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">delete</i></a>') . '</td>
+                    
 					</tr>';
                     }
                     ?>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-toggle="tooltip" title="Falta X tiempo">
-                                <i class="material-icons">
-                                    alarm
-                                </i>
-                            </button>
-                            <button type="button" class="btn btn-success" data-toggle="tooltip" title="Finalizado">
-                                <i class="material-icons">
-                                    done
-                                </i>
-                            </button>
-                            <button type="button" class="btn btn-warning" data-toggle="tooltip" title="En curso">
-                                <i class="material-icons">
-                                    history
-                                </i>
-                            </button>
-
-                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Anular">
-                                <i class="material-icons">
-                                    delete
-                                </i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td><button type="button" class="btn btn-primary" data-toggle="tooltip"
-                                title="Faltan 05:00 horas"><i class="material-icons">
-                                    alarm
-                                </i>05:00</button>
-                            <button type="button" class="btn btn-success" data-toggle="tooltip" title="Finalizado"><i
-                                    class="material-icons">
-                                    done
-                                </i></button>
-                            <button type="button" class="btn btn-warning" data-toggle="tooltip" title="En curso"><i
-                                    class="material-icons">
-                                    history
-                                </i></button>
-                            </button>
-                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Anular"><i
-                                    class="material-icons">
-                                    delete
-                                </i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td><button type="button" class="btn btn-primary" data-toggle="tooltip"
-                                title="Falta X tiempo"><i class="material-icons">
-                                    alarm
-                                </i></button>
-                            <button type="button" class="btn btn-success" data-toggle="tooltip" title="Finalizado"><i
-                                    class="material-icons">
-                                    done
-                                </i></button>
-                            <button type="button" class="btn btn-warning" data-toggle="tooltip" title="En curso"><i
-                                    class="material-icons">
-                                    history
-                                </i></button>
-                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Anular"><i
-                                    class="material-icons">
-                                    delete
-                                </i></button>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
@@ -221,13 +141,6 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-
-                    $nombre = $_POST["nombre"];
-                    $fecha_inicio = $_POST["fecha_inicio"];
-                    $fecha_fin = $_POST["fecha_fin"];
-                    $pagado = $_POST["pagado"];
-                    $importe = $_POST["importe"];
-                    $seña = $_POST["seña"];
                     <div class="modal-body">
                         <div class="formlogin">
                             <form action="registrar_evento.php" method="POST">

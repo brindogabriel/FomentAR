@@ -2,11 +2,11 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
-	header("location: ./errors/error_nologueado");
-	die();
+if ($varsesion == null || $varsesion = '') {
+    header("location: ./errors/error_nologueado");
+    die();
 }
-$conexion=mysqli_connect("localhost","root","","fomentar");
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 ?>
 <!doctype html>
 <html lang="es">
@@ -26,13 +26,11 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
         <a class="navbar-brand mb-0 h1" href="pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
-                    fill="white" />
+                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="white" />
             </svg>
             FomentAR
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -55,30 +53,29 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 				</li>
 			-->
                 <!-- <li class="nav-item">
-					<?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
-					}
-					?>							
+					<?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./recaudacionl'>Recaudacion</a>";
+                    }
+                    ?>							
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
-                    <?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
-					}
-					?>
+                    <?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+                    }
+                    ?>
                 </li>
             </ul>
-            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
-                style="text-transform: capitalize;">
+            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled style="text-transform: capitalize;">
                 <?php
-				echo $varsesion;
-				?>
+                echo $varsesion;
+                ?>
             </a>
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>

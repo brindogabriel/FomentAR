@@ -26,13 +26,11 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
         <a class="navbar-brand mb-0 h1" href="pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
-                    fill="white" />
+                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="white" />
             </svg>
             FomentAR
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -58,7 +56,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 					<?php
                     $varsesion = $_SESSION['usuario'];
                     if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
+                        echo "	<a class='nav-link' href='./recaudacionl'>Recaudacion</a>";
                     }
                     ?>							
 				</li> -->
@@ -74,8 +72,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     ?>
                 </li>
             </ul>
-            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
-                style="text-transform: capitalize;">
+            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled style="text-transform: capitalize;">
                 <?php
                 echo $varsesion;
                 ?>
@@ -139,34 +136,34 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
     <link rel="stylesheet" type="text/css" href="./Resources/DataTables/datatables.min.css" />
     <script type="text/javascript" src="./Resources/DataTables/datatables.min.js"></script>
     <script>
-    $(document).ready(function() {
-        $('#example').DataTable({
-            language: {
-                "decimal": "",
-                "emptyTable": "No hay datos",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
-                "infoEmpty": "Mostrando 0 a 0 de 0 registros",
-                "infoFiltered": "(Filtro de _MAX_ total registros)",
-                "infoPostFix": "",
-                "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "loadingRecords": "Cargando...",
-                "processing": "Procesando...",
-                "search": "Buscar:",
-                "zeroRecords": "No se encontraron coincidencias",
-                "paginate": {
-                    "first": "Primero",
-                    "last": "Ultimo",
-                    "next": "Próximo",
-                    "previous": "Anterior"
-                },
-                "aria": {
-                    "sortAscending": ": Activar orden de columna ascendente",
-                    "sortDescending": ": Activar orden de columna desendente"
+        $(document).ready(function() {
+            $('#example').DataTable({
+                language: {
+                    "decimal": "",
+                    "emptyTable": "No hay datos",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 registros",
+                    "infoFiltered": "(Filtro de _MAX_ total registros)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "No se encontraron coincidencias",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    },
+                    "aria": {
+                        "sortAscending": ": Activar orden de columna ascendente",
+                        "sortDescending": ": Activar orden de columna desendente"
+                    }
                 }
-            }
+            });
         });
-    });
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

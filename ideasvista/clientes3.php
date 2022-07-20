@@ -2,11 +2,11 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
-	header("location: ./errors/error_nologueado");
-	die();
+if ($varsesion == null || $varsesion = '') {
+    header("location: ./errors/error_nologueado");
+    die();
 }
-$conexion=mysqli_connect("localhost","root","","fomentar");
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 ?>
 <!doctype html>
 <html lang="es">
@@ -26,13 +26,11 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
         <a class="navbar-brand mb-0 h1" href="pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
-                    fill="white" />
+                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="white" />
             </svg>
             FomentAR
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -55,39 +53,38 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 				</li>
 			-->
                 <!-- <li class="nav-item">
-					<?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./recaudacion_total'>Recaudacion</a>";
-					}
-					?>							
+					<?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./recaudacionl'>Recaudacion</a>";
+                    }
+                    ?>							
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
-                    <?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
-					}
-					?>
+                    <?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+                    }
+                    ?>
                 </li>
             </ul>
-            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
-                style="text-transform: capitalize;">
+            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled style="text-transform: capitalize;">
                 <?php
-				echo $varsesion;
-				?>
+                echo $varsesion;
+                ?>
             </a>
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
     </nav>
-    <?php 
-include './database/conexion.php';
-$clientes = "SELECT * FROM clientes";
-$resClientes=mysqli_query($conexion,$clientes);
-?>
+    <?php
+    include './database/conexion.php';
+    $clientes = "SELECT * FROM clientes";
+    $resClientes = mysqli_query($conexion, $clientes);
+    ?>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
         Agregar nuevo
     </button>
@@ -130,43 +127,42 @@ $resClientes=mysqli_query($conexion,$clientes);
                     </tr>
                 </tfoot>
                 <tbody>
-                    <?php 
+                    <?php
 
-				while ($mostrar=mysqli_fetch_array($resClientes)) {
-					$dato = $mostrar['idParametro_Socio'];
-					$dato2 = $mostrar['idEstado'];
-					$dato3 = $mostrar['idCategoria'];
-					$dato4 = $mostrar['idSexo'];
-					$Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
-					$Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
-					echo '<tr>
-					<td>'.$mostrar['Nro_orden'].'</td>
-					<td>'.$mostrar['Apellido'].'</td>
-					<td>'.$mostrar['Nombre'].'</td>
-					<td>'.$mostrar['Domicilio'].'</td>
-					<td>'.$mostrar['DNI'].'</td>
-					<td>'.$Fecha_nacimiento.'</td>
-					<td>'.$Fecha_ingreso.'</td>
-					<td>'.$mostrar['idParametro_Socio'].'</td>
-					<td>' . (($dato2==="1") ? 'Activo' : 'Inactivo').'</td>
-					<td>'.$mostrar['idCategoria'].'</td>
-					<td>'.$mostrar['idSexo'].'</td>
+                    while ($mostrar = mysqli_fetch_array($resClientes)) {
+                        $dato = $mostrar['idParametro_Socio'];
+                        $dato2 = $mostrar['idEstado'];
+                        $dato3 = $mostrar['idCategoria'];
+                        $dato4 = $mostrar['idSexo'];
+                        $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
+                        $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
+                        echo '<tr>
+					<td>' . $mostrar['Nro_orden'] . '</td>
+					<td>' . $mostrar['Apellido'] . '</td>
+					<td>' . $mostrar['Nombre'] . '</td>
+					<td>' . $mostrar['Domicilio'] . '</td>
+					<td>' . $mostrar['DNI'] . '</td>
+					<td>' . $Fecha_nacimiento . '</td>
+					<td>' . $Fecha_ingreso . '</td>
+					<td>' . $mostrar['idParametro_Socio'] . '</td>
+					<td>' . (($dato2 === "1") ? 'Activo' : 'Inactivo') . '</td>
+					<td>' . $mostrar['idCategoria'] . '</td>
+					<td>' . $mostrar['idSexo'] . '</td>
 					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
 
-					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
-					' . (($dato2==="1") ? '<a class="btn btn-danger m-1" href="./dar_de_baja?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>').'</td>
+					' . (($dato2 === "1") ? '<a class="btn btn-danger m-1" href="./dar_de_baja?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
 
 					</tr>';
-				}
-				?>
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -195,23 +191,19 @@ $resClientes=mysqli_query($conexion,$clientes);
                             </div>
                             <div class="form-group">
                                 <label for="n_matricula">N° Matricula</label>
-                                <input type="text" class="form-control" placeholder="N° Matricula" name="n_matricula"
-                                    required>
+                                <input type="text" class="form-control" placeholder="N° Matricula" name="n_matricula" required>
                             </div>
                             <div class="form-group">
                                 <label for="domicilio">Domicilio</label>
-                                <input type="text" class="form-control" placeholder="Domicilio" name="domicilio"
-                                    required>
+                                <input type="text" class="form-control" placeholder="Domicilio" name="domicilio" required>
                             </div>
                             <div class="form-group">
                                 <label for="user">DNI</label>
-                                <input type="number" class="form-control" placeholder="DNI" name="dni" id="cantidad"
-                                    required>
+                                <input type="number" class="form-control" placeholder="DNI" name="dni" id="cantidad" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect3">Estado</label>
-                                <select simple class="form-control" id="exampleFormControlSelect3" name="estado"
-                                    required>
+                                <select simple class="form-control" id="exampleFormControlSelect3" name="estado" required>
                                     <option value="1">Activo</option>
                                     <option value="2">Inactivo</option>
                                 </select>
@@ -226,14 +218,11 @@ $resClientes=mysqli_query($conexion,$clientes);
                             </div>
                             <div class="form-group">
                                 <label for="fecha_nacimiento">Fecha de nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" max="3000-12-31" min="1000-01-01"
-                                    class="form-control" placeholder="Fecha de nacimiento" name="fecha_nacimiento"
-                                    required>
+                                <input type="date" name="fecha_nacimiento" max="3000-12-31" min="1000-01-01" class="form-control" placeholder="Fecha de nacimiento" name="fecha_nacimiento" required>
                             </div>
                             <div class="form-group">
                                 <label for="fecha_ingreso">Fecha de ingreso</label>
-                                <input type="date" name="fecha_ingreso" max="3000-12-31" min="1000-01-01"
-                                    class="form-control" placeholder="Fecha de ingreso" name="fecha_ingreso" required>
+                                <input type="date" name="fecha_ingreso" max="3000-12-31" min="1000-01-01" class="form-control" placeholder="Fecha de ingreso" name="fecha_ingreso" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect">¿Es Socio?</label>
@@ -254,8 +243,7 @@ $resClientes=mysqli_query($conexion,$clientes);
                                 </select>
                             </div>
                             <div class="dropdown-divider mb-2"></div>
-                            <button type="button" class="btn btn-secondary w-25 float-right"
-                                data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-secondary w-25 float-right" data-dismiss="modal">Cancelar</button>
                             <input type="submit" class="btn btn-primary w-50" name="submit" value="Registrar">
                         </form>
                     </div>
