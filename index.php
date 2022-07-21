@@ -10,10 +10,9 @@ session_destroy();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="./Images/logo.png" />
-
     <link rel="stylesheet" href="./Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/general.css">
-    <title>FomentAR</title>
+    <title>FomentAR | Login</title>
 </head>
 
 <body>
@@ -29,8 +28,9 @@ session_destroy();
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
+                            <span for="checkk" id="check">Mostrar&nbsp;</span>
                             <input type="checkbox" onclick="myFunction()" title="Mostrar Contraseña"
-                                data-toggle="tooltip" data-placement="top" class="w-20">
+                                data-toggle="tooltip" data-placement="top" class="w-20" id="checkk">
                         </div>
                     </div>
 
@@ -43,17 +43,15 @@ session_destroy();
     <script>
     function myFunction() {
         var x = document.getElementById("myInput");
+        let y = document.getElementById("check");
         if (x.type === "password") {
             x.type = "text";
+            y.innerHTML = "Ocultar&nbsp;";
         } else {
             x.type = "password";
+            y.innerHTML = "Mostrar&nbsp;";
         }
     }
-
-    // $(function() {
-    //     $('[data-toggle="tooltip"]').tooltip()
-    // });
-    // activar tooltip
     </script>
     <!-- <script src="./scripts.php"></script> -->
     <script src="./js/jquery-3.3.1.slim.min.js"></script>

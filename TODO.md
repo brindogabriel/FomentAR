@@ -12,18 +12,21 @@
 - [ ] CAMBIAR CONSULTAS SQL A MYSQLI O PDO (MAS SEGURO XD) 🚧
 - [ ] PASAR LOGO A ICO - 🚧 (NO ME CONVENCE EL RESULTADO XD) 🚧
 - [ ] REHACER BASE DE DATOS 🚧
-- [ ] LEER ULTIMAS LINEAS DE [REGISTRAR_CLIENTE.PHP](registrar_cliente.php "registrar_cliente.php") (HAY UNA EXPLICACION DE LAS CATEGORIAS XD IGUAL VAMOS A HACER TODO DESDE 0 (? ) 🚧
 - [ ] LOGIN MULTISESION/MULTIDISPOSITIVO? DOBLE FACTOR DE AUTENTICACION? COOKIE ? TOKEN ? 🚧
 - [ ] ESCUDO DE LA SOCIEDAD DE FOMENTO EN ALGUN LADO ?? 🚧
 - [ ] IMPORTAR Y EXPORTAR FUNCIONES JS 🚧
 - [ ] USAR STORE PROCEDURES?? TRIGGERS?? XD (actualizar estado evento y agregar cliente en varios deportes si usamos algun select multiple? automatico xd) 🚧
 
+## Fuentes faltan offline
+
+- [ ] https://fonts.googleapis.com/css?family=Open+Sans:400,700 (error login)
+- [ ] monserrat ya descargada (privilegio/no logueado)
+
 # ERRORES
 
 - [ ] Warning: Undefined variable $resBasquet in C:\xampp\htdocs\FomentAR2\facturacion.php on line 50
 - [ ] in C:\xampp\htdocs\FomentAR2\edit/modificar5 on line 54
-- [ ] $ ( ... ).datepicker is not a function (hay que acomodar bien el jquery o el script con el $ . . de jquery o no c xd)
-- [ ] DevTools failed to load source map: Could not load content for http://localhost/FomentAR/js/popper.min.js.map: HTTP error: status code 404, net::ERR_HTTP_RESPONSE_CODE_FAILURE
+- [ ] $ ( ... ).datepicker is not a function (hay que acomodar bien el jquery o el script con el $ . . de jquery o no c xd) (creo que es para el input en eventos y las fechas de registro y nacimiento xd)
 
 ## IF DE REGISTRAR_BASQUET.PHP (ARREGLAR Y TAMBIEN CATEGORIAS EN LA DB)
 

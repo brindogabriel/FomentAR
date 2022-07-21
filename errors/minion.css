@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 body {
   background: #f5f5f5;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   margin: 0;
   padding: 0;
   position: relative;
@@ -32,15 +32,15 @@ a:visited:hover {
   bottom: 0;
   left: 0;
   padding: 0;
-  background-color: #EC7E65;
+  background-color: #ec7e65;
   color: #fff;
 }
 
 #buttonerror {
   clear: both;
   position: absolute;
-  background-color: rgba(255, 255, 255, .05);
-  color: #EC7E65;
+  background-color: rgba(255, 255, 255, 0);
+  color: #ec7e65;
   position: absolute;
   left: 0;
   right: 0;
@@ -51,7 +51,7 @@ a:visited:hover {
   z-index: 99999;
   border-radius: 10px;
   border: 5px solid #fff;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 
 #buttonerror a {
@@ -68,7 +68,7 @@ a:visited:hover {
 
 #buttonerror:hover a,
 #buttonerror a:hover {
-  color: #EC7E65;
+  color: #ec7e65;
 }
 
 .minion {
@@ -113,7 +113,8 @@ a:visited:hover {
   border-radius: 102px;
   position: absolute;
   top: 55px;
-  box-shadow: -4px 4px 0px 0px rgba(50, 50, 50, 0.15), 1px -1px 0px 0px rgba(255, 255, 255, 1);
+  box-shadow: -4px 4px 0px 0px rgba(50, 50, 50, 0.15),
+    1px -1px 0px 0px rgba(255, 255, 255, 1);
 }
 
 .glass1 {
@@ -143,7 +144,7 @@ a:visited:hover {
 
 .glass1:after,
 .glass2:after {
-  background-color: #FFF;
+  background-color: #fff;
   height: 58px;
   width: 78px;
   border-radius: 78px;
@@ -188,7 +189,7 @@ a:visited:hover {
 
 .eye1:after,
 .eye2:after {
-  background-color: #FFF;
+  background-color: #fff;
   height: 8px;
   width: 8px;
   border-radius: 8px;
@@ -210,7 +211,7 @@ a:visited:hover {
 }
 
 .mouth:before {
-  background-color: #FFED41;
+  background-color: #ffed41;
   height: 80px;
   width: 205px;
   position: relative;
@@ -235,7 +236,7 @@ ul.teeth li {
   float: left;
   height: 15px;
   width: 20px;
-  background: #FFF;
+  background: #fff;
   display: inline-block;
   border-radius: 0 0 15px 15px;
 }
@@ -289,12 +290,14 @@ ul.teeth li:last-child {
 
 .belt-left {
   left: -10px;
-  transform: scale(1) rotate(24deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  transform: scale(1) rotate(24deg) translateX(0px) translateY(0px) skewX(0deg)
+    skewY(0deg);
 }
 
 .belt-right {
   right: -10px;
-  transform: scale(1) rotate(-28deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  transform: scale(1) rotate(-28deg) translateX(0px) translateY(0px) skewX(0deg)
+    skewY(0deg);
 }
 
 .belt-left:after,
@@ -340,7 +343,7 @@ ul.teeth li:last-child {
   content: "";
   height: 0;
   width: 0;
-  border-bottom: 22px solid #EC7E65;
+  border-bottom: 22px solid #ec7e65;
   border-right: 10px solid transparent;
 }
 
@@ -349,7 +352,7 @@ ul.teeth li:last-child {
   content: "";
   height: 0;
   width: 0;
-  border-bottom: 22px solid #EC7E65;
+  border-bottom: 22px solid #ec7e65;
   border-left: 10px solid transparent;
   right: 0;
 }
@@ -512,7 +515,8 @@ ul.teeth li:last-child {
   top: -15px;
   border-bottom: 30px solid #424242;
   border-left: 30px solid transparent;
-  transform: scale(1) rotate(45deg) translateX(0px) translateY(0px) skewX(0deg) skewY(0deg);
+  transform: scale(1) rotate(45deg) translateX(0px) translateY(0px) skewX(0deg)
+    skewY(0deg);
 }
 
 .hands .glove-l:before {

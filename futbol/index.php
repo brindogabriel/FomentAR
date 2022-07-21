@@ -2,11 +2,11 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
-	header("location: ../errors/error_nologueado");
-	die();
+if ($varsesion == null || $varsesion = '') {
+    header("location: ../errors/error_nologueado");
+    die();
 }
-$conexion=mysqli_connect("localhost","root","","fomentar");
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 ?>
 <!doctype html>
 <html lang="es">
@@ -56,30 +56,30 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 				</li>
 			-->
                 <!-- <li class="nav-item">
-					<?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
-					}
-					?>							
+					<?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
+                    }
+                    ?>							
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
-                    <?php 
-					$varsesion = $_SESSION['usuario'];
-					if ($varsesion == "presidente") {
-						echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
-					}
-					?>
+                    <?php
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
+                    }
+                    ?>
                 </li>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-				echo $varsesion;
-				?>
+                echo $varsesion;
+                ?>
             </a>
             <a class="btn btn-outline-danger" href="../database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
@@ -128,9 +128,9 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
                     </tr>
                 </tfoot>
                 <tbody>
-                    <?php 
-				$conexion=mysqli_connect("localhost","root","","fomentar");
-				$sql ="SELECT cli.nro_orden, cli.apellido, cli.nombre, cli.domicilio, cli.DNI, cli.fecha_nacimiento, cli.fecha_ingreso, dis.detalle, paramSoc.detallepar, est.Estado,cat.descripcion, sex.detallesex, est.idEstado
+                    <?php
+                    $conexion = mysqli_connect("localhost", "root", "", "fomentar");
+                    $sql = "SELECT cli.nro_orden, cli.apellido, cli.nombre, cli.domicilio, cli.DNI, cli.fecha_nacimiento, cli.fecha_ingreso, dis.detalle, paramSoc.detallepar, est.Estado,cat.descripcion, sex.detallesex, est.idEstado
 				from clientes cli,
 				actividades act,
 				disciplinas dis,
@@ -145,32 +145,32 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 				and dis.idDisciplina = act.idDisciplina
 				and dis.detalle = 'futbol'";
 
-				$result=mysqli_query($conexion,$sql);
-				while ($mostrar=mysqli_fetch_assoc($result)) {
-					$dato2 = $mostrar['idEstado'];
-					$Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
-					$Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
-					echo '<tr>
-					<td>'.$mostrar['nro_orden'].'</td>
-					<td>'.utf8_encode($mostrar['apellido']).'</td>
-					<td>'.$mostrar['nombre'].'</td>
-					<td>'.$mostrar['domicilio'].'</td>
-					<td>'.$mostrar['DNI'].'</td>
-					<td>'.$Fecha_nacimiento.'</td>
-					<td>'.$Fecha_ingreso.'</td>
-					<td>'.$dato = $mostrar['detallepar'].'</td>
-					<td>'.$mostrar['Estado'].'</td>
-					<td>'.$dato3 = $mostrar['detalle'].'</td>
-					<td>'.$dato4 = $mostrar['detallesex'].'</td>
+                    $result = mysqli_query($conexion, $sql);
+                    while ($mostrar = mysqli_fetch_assoc($result)) {
+                        $dato2 = $mostrar['idEstado'];
+                        $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
+                        $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
+                        echo '<tr>
+					<td>' . $mostrar['nro_orden'] . '</td>
+					<td>' . utf8_encode($mostrar['apellido']) . '</td>
+					<td>' . $mostrar['nombre'] . '</td>
+					<td>' . $mostrar['domicilio'] . '</td>
+					<td>' . $mostrar['DNI'] . '</td>
+					<td>' . $Fecha_nacimiento . '</td>
+					<td>' . $Fecha_ingreso . '</td>
+					<td>' . $dato = $mostrar['detallepar'] . '</td>
+					<td>' . $mostrar['Estado'] . '</td>
+					<td>' . $dato3 = $mostrar['detalle'] . '</td>
+					<td>' . $dato4 = $mostrar['detallesex'] . '</td>
 					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
 
-					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
-					' . (($dato2=="1") ? '<a class="btn btn-danger m-1" href="../dar_de_baja?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI='.$mostrar['DNI'].'" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>').'</td>
+					' . (($dato2 == "1") ? '<a class="btn btn-danger m-1" href="../dar_de_baja?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="./dar_de_alta?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
 
 					</tr>';
-				}
-				?>
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -247,7 +247,7 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-    <?php include("../scripts.php");?>
+    <?php include("../scripts.php"); ?>
 
 
 

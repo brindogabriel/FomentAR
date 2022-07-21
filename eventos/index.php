@@ -80,20 +80,22 @@ include "../database/conexion.php";
     <div class="contenedor1" style="padding:2%;">
         <div class="table-responsive">
             <table id="example" class="table table-bordered table-hover">
-                <caption>Lista de eventos</caption>
+                <caption>Lista de eventos | si no puede eliminar un evento, comuniquese con el superior o con el
+                    administrador del sistema</caption>
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Nombre</th>
                         <th scope="col">Fecha inicio</th>
                         <th scope="col">Fecha fin</th>
                         <th scope="col">estado</th>
+                        <th scope="col">IMPORTE</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
                     include "../database/conexion.php";
-                    $sql = "SELECT eventos.idevento,eventos.nombre,eventos.fecha_inicio,eventos.fecha_fin,eventos.estado,estado.descripcion from eventos eventos, eventos_estado estado WHERE estado.estado = eventos.estado;";
+                    $sql = "SELECT eve.idevento,eve.nombre,eve.fecha_inicio,eve.fecha_fin,eve.estado,estado.descripcion,eve.importe from eventos eve, eventos_estado estado WHERE estado.estado = eve.estado;";
 
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_assoc($result)) {
@@ -110,6 +112,7 @@ include "../database/conexion.php";
 					<td>' . $fecha_inicio . '</td>
 					<td>' . $fecha_fin  . '</td>
 					<td>' . $mostrar['descripcion'] . '</td>
+					<td>$ ' . $mostrar['importe']  . '</td>
                     <td>
                     <a class="btn btn-warning m-1" href="./modificar_evento?idevento=' . $mostrar['idevento'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
@@ -122,61 +125,62 @@ include "../database/conexion.php";
                     ?>
                 </tbody>
             </table>
-        </div>
-        <!-- Button trigger modal -->
-        <div class="botones">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
-                style="float: right;">
-                Agregar nuevo
-            </button>
-        </div>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo Evento</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="formlogin">
-                            <form action="registrar_evento.php" method="POST">
-                                <div class="form-group">
-                                    <label for="user">Nombre</label>
-                                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
-                                </div>
-                                <!-- <div class="form-group">
+            <div class="botones">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"
+                    style="float: right;">
+                    Agregar nuevo
+                </button>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo Evento</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="formlogin">
+                                <form action="registrar_evento.php" method="POST">
+                                    <div class="form-group">
+                                        <label for="user">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Nombre" name="nombre"
+                                            required>
+                                    </div>
+                                    <!-- <div class="form-group">
                                     <label for="user">N° Matricula</label>
                                     <input type="number" class="form-control" placeholder="N° Matricula" name="nombre" id="cantidad" required>
                                 </div> -->
-                                <div class="form-group">
-                                    <label>Fecha de alquiler</label>
-                                    <input type="datetime-local" name="fecha_inicio" class="form-control"
-                                        placeholder="Fecha de alquiler" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Dura hasta</label>
-                                    <input type="datetime-local" name="fecha_fin" class="form-control"
-                                        placeholder="Fecha de alquiler" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="user">importe</label>
-                                    <input type="number" class="form-control" placeholder="Nombre" name="importe"
-                                        required>
-                                </div>
-                                <div class="dropdown-divider mb-2"></div>
-                                <button type="button" class="btn btn-secondary w-25 float-right"
-                                    data-dismiss="modal">Cancelar</button>
-                                <input type="submit" class="btn btn-primary w-50" name="submit" value="Registrar">
-                            </form>
+                                    <div class="form-group">
+                                        <label>Fecha de alquiler</label>
+                                        <input type="datetime-local" name="fecha_inicio" class="form-control"
+                                            placeholder="Fecha de alquiler" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Dura hasta</label>
+                                        <input type="datetime-local" name="fecha_fin" class="form-control"
+                                            placeholder="Fecha de alquiler" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user">importe</label>
+                                        <input type="number" class="form-control" placeholder="Nombre" name="importe"
+                                            required>
+                                    </div>
+                                    <div class="dropdown-divider mb-2"></div>
+                                    <button type="button" class="btn btn-secondary w-25 float-right"
+                                        data-dismiss="modal">Cancelar</button>
+                                    <input type="submit" class="btn btn-primary w-50" name="submit" value="Registrar">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

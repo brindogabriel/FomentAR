@@ -8,7 +8,7 @@
 
 -- Servidor: 127.0.0.1
 
--- Tiempo de generación: 20-07-2022 a las 22:21:20
+-- Tiempo de generación: 21-07-2022 a las 20:32:57
 
 -- Versión del servidor: 10.4.24-MariaDB
 
