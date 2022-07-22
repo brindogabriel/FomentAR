@@ -1,6 +1,11 @@
 <?php
 session_start();
-session_destroy();
+
+if (isset($_SESSION['usuario'])) {
+    header("location: ./pagina_principal");
+    die();
+}
+
 ?>
 
 <!doctype html>

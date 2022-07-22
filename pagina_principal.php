@@ -7,7 +7,8 @@ if ($varsesion == null || $varsesion = '') {
     header("location: ./errors/error_nologueado");
     die();
 }
-$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+
+include "./database/conexion.php";
 
 ?>
 <!doctype html>
