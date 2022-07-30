@@ -7,7 +7,6 @@
 - [ ] MOSTRAR CONTRASEÑA DESENCRIPTADA EN MODIFICAR GESTION USUARIOS - 🚧
 - [ ] RUTAS EN CADA ARCHIVO 🚧
 - [ ] REVISAR COMENTARIOS EN CADA ARCHIVO XD
-- [ ] REDIRECCIONAR SI HAY UNA SESION (PARA NO IR AL LOGIN XD) A PAGINA_PRINCIPAL.PHP 🚧
 - [ ] DESCRIPCION EN CLIENTES APARECE BIEN PERO MAL XD EN DESCRIPCION DE CATEGORIA
 - [ ] CAMBIAR CONSULTAS SQL A MYSQLI O PDO (MAS SEGURO XD) 🚧
 - [ ] PASAR LOGO A ICO - 🚧 (NO ME CONVENCE EL RESULTADO XD) 🚧
@@ -15,12 +14,7 @@
 - [ ] LOGIN MULTISESION/MULTIDISPOSITIVO? DOBLE FACTOR DE AUTENTICACION? COOKIE ? TOKEN ? 🚧
 - [ ] ESCUDO DE LA SOCIEDAD DE FOMENTO EN ALGUN LADO ?? 🚧
 - [ ] IMPORTAR Y EXPORTAR FUNCIONES JS 🚧
-- [ ] USAR STORE PROCEDURES?? TRIGGERS?? XD (actualizar estado evento y agregar cliente en varios deportes si usamos algun select multiple? automatico xd) 🚧
-
-## Fuentes faltan offline
-
-- [ ] https://fonts.googleapis.com/css?family=Open+Sans:400,700 (error login)
-- [ ] monserrat ya descargada (privilegio/no logueado)
+- [ ] USAR STORE PROCEDURES ?? TRIGGERS ?? FUNCTIONS ?? XD (actualizar estado evento y agregar cliente en varios deportes si usamos algun select multiple? automatico xd) 🚧
 
 # ERRORES
 
