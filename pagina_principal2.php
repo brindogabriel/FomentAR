@@ -29,13 +29,11 @@ include "./database/conexion.php";
         <a class="navbar-brand mb-0 h1" href="pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
-                    fill="white" />
+                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="white" />
             </svg>
             FomentAR
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -69,8 +67,7 @@ include "./database/conexion.php";
                     ?>
                 </li>
             </ul>
-            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
-                style="text-transform: capitalize;">
+            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled style="text-transform: capitalize;">
                 <?php
                 $varsesion = $_SESSION['usuario'];
                 echo $varsesion;
@@ -83,57 +80,38 @@ include "./database/conexion.php";
         <div class="card">
             <a href="./futbol/"><img class="card-img-top " src="Images/futbol.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
-                <p class="card-text">Fútbol</p>
+                <p class="card-text">Actividades</p>
                 <div class="dropdown-divider"></div>
-                <a class="btn btn-secondary btn-block mt-3" href="./futbol/" role="button">Ver Clientes</a>
+                <a class="btn btn-secondary btn-block mt-3" href="./pagina_principal" role="button">Ver Actividades</a>
             </div>
         </div>
         <div class="card">
             <a href="./arte/"><img class="card-img-top " src="Images/arte.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
-                <p class="card-text">Arte</p>
+                <p class="card-text">Eventos</p>
                 <div class="dropdown-divider"></div>
-                <a class="btn btn-secondary btn-block mt-3" href="./arte/" role="button">Ver Clientes</a>
+                <a class="btn btn-secondary btn-block mt-3" href="./eventos/" role="button">Ver Eventos</a>
             </div>
         </div>
-        <div class="card">
+        <?php
+        $rol = $_SESSION['idRole'];
+        if ($rol == 1) {
+            echo '
+            <div class="card">
             <a href="./basquet/"><img class="card-img-top " src="Images/basquet.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
-                <p class="card-text">Basquet</p>
+                <p class="card-text">fdsafdsa</p>
                 <div class="dropdown-divider"></div>
                 <a class="btn btn-secondary btn-block mt-3" href="./basquet/" role="button">Ver Clientes</a>
             </div>
         </div>
-        <div class="card">
-            <a href="./taekwondo"><img class="card-img-top " src="Images/taekwondo.jpg" alt="Card image cap"></a>
-            <div class="card-body text-center">
-                <p class="card-text">Taekwondo</p>
-                <div class="dropdown-divider"></div>
-                <a class="btn btn-secondary btn-block mt-3" href="./taekwondo" role="button">Ver Clientes</a>
-            </div>
-        </div>
-        <div class="card">
-            <a href="./voley/"><img class="card-img-top " src="Images/voley.jpg" alt="Card image cap"></a>
-            <div class="card-body text-center">
-                <p class="card-text">Voley</p>
-                <div class="dropdown-divider"></div>
-                <a class="btn btn-secondary btn-block mt-3" href="./voley/" role="button">Ver Clientes</a>
-            </div>
-        </div>
-        <div class="card">
-            <a href="./patin"><img class="card-img-top " src="Images/patin.jpg" alt="Card image cap"></a>
-            <div class="card-body text-center">
-                <p class="card-text">Patín</p>
-                <div class="dropdown-divider"></div>
-                <a class="btn btn-secondary btn-block mt-3" href="./patin" role="button">Ver Clientes</a>
-            </div>
-        </div>
+            ';
+        } ?>
     </div>
     <!-- Begin page content -->
-    <footer class="footer bg-dark p-4 text-center">
+    <footer class="footer bg-dark p-4 text-center" style="bottom: 0;position: absolute;width: 100%;">
         <div class="container">
-            <span class="text-white">Página diseñada y desarrollada por Brindo Gabriel y Villavicencio Cristian - 2018
-                ©</span>
+            <span class="text-white">Página diseñada por Brindo Gabriel y Villavicencio Cristian - 2018 ©</span>
         </div>
     </footer>
 
