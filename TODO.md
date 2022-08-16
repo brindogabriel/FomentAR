@@ -42,6 +42,14 @@
 | 1    | FEMENINO    |
 | 2    | MASCULINO   |
 
+| CATEGORIAS | DEPORTE   |
+| ---------- | --------- |
+| 1-7        | BASQUET   |
+| 8-10       | VOLEY     |
+| 11-15      | PATIN     |
+| 16-17      | TAEKWONDO |
+| 18         | ARTE      |
+
 ### ANOTACIONES O IDEAS DE POR AHI XD
 
 1. cuando el usuario te ingrese el sexo en la pagina, vos vas a tener el valor
