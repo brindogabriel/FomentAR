@@ -44,13 +44,14 @@
 | 2    | MASCULINO   |
 | 3    | Mixto ??    |
 
-| CATEGORIAS | DEPORTE   |
-| ---------- | --------- |
-| 1 < > 7    | BASQUET   |
-| 8 < > 10   | VOLEY     |
-| 11 < > 15  | PATIN     |
-| 16 < > 17  | TAEKWONDO |
-| 18         | ARTE      |
+| CATEGORIAS    | DEPORTE   |
+| ------------- | --------- |
+| 1 < > 7       | BASQUET   |
+| 8 < > 10      | VOLEY     |
+| 11 < > 15     | PATIN     |
+| 16 < > 17     | TAEKWONDO |
+| 18            | ARTE      |
+| 19 - infinito | fulbo     |
 
 ### ANOTACIONES O IDEAS DE POR AHI XD
 
