@@ -42,6 +42,7 @@
 | ---- | ----------- |
 | 1    | FEMENINO    |
 | 2    | MASCULINO   |
+| 3    | Mixto ??    |
 
 | CATEGORIAS | DEPORTE   |
 | ---------- | --------- |
