@@ -40,7 +40,6 @@ $(document).ready(function() {
 <!-- HACER ANDAR EL INPUT DEL CALENDARIO -->
 
 <script>
-$('.datepicker').datepicker();
 $(function() {
     $('[data-toggle="popover"]').popover();
 });
