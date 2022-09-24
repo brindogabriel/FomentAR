@@ -10,7 +10,6 @@ $estado = 1;
 $sexo = $_POST["Sexo"];
 $actividades = "futbol";
 
-
 $categoria_fut = explode($fecha_nacimiento, "-");
 
 /*

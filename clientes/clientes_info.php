@@ -6,7 +6,8 @@ if ($varsesion == null || $varsesion = '') {
     header("location: ./errors/error_nologueado");
     die();
 }
-include "."
+
+include "../database/conexion.php";
 ?>
 <!doctype html>
 <html lang="es">
