@@ -20,9 +20,8 @@
 
 # ERRORES
 
-- [ ] Warning: Undefined variable $resBasquet in C:\xampp\htdocs\FomentAR2\facturacion.php on line 50
-- [ ] in C:\xampp\htdocs\FomentAR2\edit/modificar5 on line 54
-- [ ] $ ( ... ).datepicker is not a function (hay que acomodar bien el jquery o el script con el $ . . de jquery o no c xd) (creo que es para el input en eventos y las fechas de registro y nacimiento xd)
+- [ ] -
+
 
 ## IF DE REGISTRAR_BASQUET.PHP (ARREGLAR Y TAMBIEN CATEGORIAS EN LA DB)
 
