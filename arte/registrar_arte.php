@@ -17,8 +17,6 @@ if ($sexo == "1" && $diferencia_anios >= 5 && $diferencia_anios <= 70) {
 	$idCategoria = 18;
 } elseif ($sexo == "2" && $diferencia_anios >= 5 && $diferencia_anios <= 70) {
 	$idCategoria = 18;
-} elseif ($sexo == "3" && $diferencia_anios >= 5 && $diferencia_anios <= 70) {
-	$idCategoria = 18;
 }
 
 $mysqli = new mysqli("localhost", "root", "", "fomentar");

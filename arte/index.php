@@ -61,7 +61,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     if ($varsesion == "presidente") {
                         echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
                     }
-                    ?>							
+                    ?>
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
@@ -231,7 +231,6 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                                 <select simple class="form-control" id="exampleFormrControlSelect" name="Sexo" required>
                                     <option value="1">Femenino</option>
                                     <option value="2">Masculino</option>
-                                    <option value="3">transformista</option>
                                 </select>
                             </div>
                             <div class="dropdown-divider"></div>
