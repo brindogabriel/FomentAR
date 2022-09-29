@@ -85,9 +85,38 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
     </nav>
     <?php
 	include '../database/conexion.php';
-	$clientes = "SELECT cli.nro_orden, cli.apellido, cli.nombre, cli.domicilio, cli.DNI, cli.fecha_nacimiento, cli.fecha_ingreso, dis.Detalle, paramSoc.detallepar, est.Estado,cat.descripcion, sex.detallesex, est.idEstado 
+
+	/*
+
+ , sex.detallesex, est.idEstado 
 	from clientes cli, actividades act, disciplinas dis, parametro_Socio paramSoc, estado est, categorias cat, sexo sex 
-	where act.nro_orden = cli.nro_orden and paramSoc.idParametro_Socio = cli.idParametro_Socio and est.idEstado = cli.idEstado and sex.idSexo = cli.idSexo and cat.idCategoria = cli.idCategoria and dis.idDisciplina = act.idDisciplina;";
+	where act.nro_orden = cli.nro_orden and paramSoc.idParametro_Socio = cli.idParametro_Socio and est.idEstado = cli.idEstado and sex.idSexo = cli.idSexo and cat.idCategoria = cli.idCategoria and act.idDisciplina = dis.idDisciplina;
+
+
+ where cli.idParametro_Socio = param.idParametro_Socio and cli.idEstado = est.idEstado and cli.idCategoria = dis.idDisciplina and cli.idCategoria = cat.idCategoria and cli.idSexo = sexo.idSexo;
+
+SELECT cli.Nro_orden,cli.Apellido,cli.Nombre,cli.Domicilio,cli.DNI,cli.Fecha_nacimiento,cli.Fecha_ingreso,param.Detallepar as socio,est.Estado,dis.Detalle as Deporte,sexo.detallesex, cat.Descripcion from clientes cli,parametro_socio param,estado est, disciplinas dis,categorias cat,sexo  where cli.idParametro_Socio = param.idParametro_Socio and cli.idEstado = est.idEstado and cli.idCategoria = dis.idDisciplina and cli.idCategoria = cat.idCategoria and cli.idSexo = sexo.idSexo;
+
+
+
+*/
+
+
+
+
+
+
+
+
+	$clientes = "SELECT cli.Nro_orden,cli.Apellido,cli.Nombre,cli.Domicilio,cli.DNI,cli.Fecha_nacimiento,cli.Fecha_ingreso,param.Detallepar as socio,est.Estado,dis.Detalle as Deporte,sexo.detallesex, cat.Descripcion, cli.idEstado
+
+from clientes cli,parametro_socio param,estado est, disciplinas dis,categorias cat,sexo 
+
+where param.idParametro_Socio = cli.idParametro_Socio 
+and est.idEstado = cli.idEstado 
+and dis.idDisciplina =  cli.idCategoria
+and cat.idCategoria = cli.idCategoria 
+and sexo.idSexo = cli.idSexo;";
 	$resClientes = mysqli_query($conexion, $clientes);
 	?>
 
@@ -139,20 +168,20 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 					while ($mostrar = mysqli_fetch_array($resClientes)) {
 						$dato2 = $mostrar['idEstado'];
 
-						$Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
-						$Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
+						$Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
+						$Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
 						echo '<tr>
-					<td>' . $mostrar['nro_orden'] . '</td>
-					<td>' . $mostrar['apellido'] . '</td>
-					<td>' . $mostrar['nombre'] . '</td>
-					<td>' . $mostrar['domicilio'] . '</td>
+					<td>' . $mostrar['Nro_orden'] . '</td>
+					<td>' . $mostrar['Apellido'] . '</td>
+					<td>' . $mostrar['Nombre'] . '</td>
+					<td>' . $mostrar['Domicilio'] . '</td>
 					<td>' . $mostrar['DNI'] . '</td>
 					<td>' . $Fecha_nacimiento . '</td>
 					<td>' . $Fecha_ingreso . '</td>
-					<td>' . $mostrar['Detalle'] . '</td>
-					<td>' . $mostrar['detallepar'] . '</td>
+					<td>' . $mostrar['Deporte'] . '</td>
+					<td>' . $mostrar['socio'] . '</td>
 					<td>' . $mostrar['Estado'] . '</td>
-					<td>' . $mostrar['descripcion'] . '</td>
+					<td>' . $mostrar['Descripcion'] . '</td>
 					<td>' . $mostrar['detallesex'] . '</td>
 					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
 <a class="btn btn-warning m-1" href="./clientes_info?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
