@@ -327,7 +327,7 @@ CREATE TABLE
 
 INSERT INTO
     `sexo` (`idSexo`, `detallesex`)
-VALUES (1, 'femenino'), (2, 'masculino'), (3, 'transformista');
+VALUES (1, 'femenino'), (2, 'masculino'), (3, 'mixto');
 
 -- --------------------------------------------------------
 
@@ -407,8 +407,7 @@ ADD
 ALTER TABLE `categorias`
 ADD
     PRIMARY KEY (`idCategoria`),
-ADD
-    KEY `idSexo_fk` (`idSexo`);
+ADD KEY `idSexo_fk` (`idSexo`);
 
 --
 
@@ -454,8 +453,7 @@ ALTER TABLE `estado` ADD PRIMARY KEY (`idEstado`);
 --
 
 ALTER TABLE `eventos`
-ADD
-    PRIMARY KEY (`idevento`),
+ADD PRIMARY KEY (`idevento`),
 ADD KEY `estado` (`estado`);
 
 --
@@ -520,8 +518,7 @@ ALTER TABLE `sexo` ADD PRIMARY KEY (`idSexo`);
 --
 
 ALTER TABLE `usuarios`
-ADD
-    PRIMARY KEY (`idUsuario`),
+ADD PRIMARY KEY (`idUsuario`),
 ADD KEY `idRole` (`idRole`);
 
 --
