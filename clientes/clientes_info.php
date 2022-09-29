@@ -94,12 +94,30 @@ include "../database/conexion.php";
 				est.idEstado = cli.idEstado and sex.idSexo = cli.idSexo and
 				cat.idCategoria = cli.idCategoria
 				and dis.idDisciplina = act.idDisciplina
+				and cli.DNI = $_GET[DNI] LIMIT 1";
+                        $result = mysqli_query($conexion, $sql);
+                        while ($mostrar = mysqli_fetch_assoc($result)) {
+                            echo '<h5 class="card-title">Deportes de: ' . $mostrar['nombre'] . '</h5>';
+                        } ?>
+                        <?php
+                        $conexion = mysqli_connect("localhost", "root", "", "fomentar");
+                        $sql = "SELECT cli.nro_orden, cli.apellido, cli.nombre, cli.domicilio, cli.DNI, cli.fecha_nacimiento, cli.fecha_ingreso, dis.detalle, paramSoc.detallepar, est.Estado,cat.descripcion, sex.detallesex, est.idEstado
+				from clientes cli,
+				actividades act,
+				disciplinas dis,
+				parametro_Socio paramSoc,
+				estado est,
+				categorias cat,
+				sexo sex
+				where act.nro_orden = cli.nro_orden
+				and paramSoc.idParametro_Socio = cli.idParametro_Socio and 
+				est.idEstado = cli.idEstado and sex.idSexo = cli.idSexo and
+				cat.idCategoria = cli.idCategoria
+				and dis.idDisciplina = act.idDisciplina
 				and cli.DNI = $_GET[DNI]";
                         $result = mysqli_query($conexion, $sql);
                         while ($mostrar = mysqli_fetch_assoc($result)) {
-                            echo '
-                            <h5 class="card-title">Deportes de: ' . $mostrar['nombre'] . '</h5>
-                             <a href="#" class="badge badge-dark">' . $mostrar['detalle'] . '</a>';
+                            echo '<a href="#" class="badge badge-dark mr-2">' . $mostrar['detalle'] . '</a>';
                         } ?>
                     </div>
                 </div>
