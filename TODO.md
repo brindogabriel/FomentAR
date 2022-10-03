@@ -2,7 +2,7 @@
 
 - 🚧 REVISAR
 - ✅ TODO BIEN
-- ✖ TODO MAL
+- ❌ TODO MAL
 
 - [ ] ARREGLAR REGISTRAR DE TODAS LAS ACTIVDADES Y LAS CATEGORIAS Y LA BASE DE DATOS 🚧 (VOLEY,PATIN,FUTBOL)
 - [ ] REVISAR COMENTARIOS EN CADA ARCHIVO XD
@@ -18,4 +18,8 @@
 
 query de deportes segun cliente.dni
 
-SELECT act.Nro_Orden, act.idDisciplina, dis.idCategoria, dis.ValorSocio, dis.ValorNoSocio, from actividades act, facturacion fact, disciplinas disc where act.Nro_Orden = fact.Nro_orden and act.idDisciplina = fact.idDisciplina and disc.idCategoria = act.idActividad
+SELECT act.Nro_Orden, act.idDisciplina, disc.idCategoria, disc.ValorSocio, disc.ValorNoSocio
+from actividades act, facturacion fact, disciplinas disc
+where act.Nro_Orden = fact.Nro_orden
+and act.idDisciplina = fact.idDisciplina
+and disc.idCategoria = act.idDisciplina ;

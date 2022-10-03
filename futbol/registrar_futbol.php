@@ -10,21 +10,31 @@ $estado = 1;
 $sexo = $_POST["Sexo"];
 $actividades = "futbol";
 
-$categoria_fut = explode($fecha_nacimiento, "-");
+$año = date("Y"); // 2022
 
+
+
+
+$Edad = strtotime($fecha_ingreso) - strtotime($fecha_nacimiento);
+$diferencia_anios = intval($Edad / 60 / 60 / 24 / 365.25);
+
+// Cuarta División: Para jugadores que no cumplan más de 20 años al 31 de diciembre del año respectivo.
+// Quinta División: Para jugadores que no cumplan más de 18 años al 31 de diciembre del año respectivo.
+// Sexta División: Para jugadores que no cumplan más de 17 años al 31 de diciembre del año respectivo.
+// Séptima División: Para jugadores que no cumplan más de 16 años al 31 de diciembre del año respectivo.
+// Octava División: Para jugadores que no cumplan más de 15 años al 31 de diciembre del año respectivo.
+// Novena División: Para jugadores que no cumplan más de 14 años al 31 de diciembre del año respectivo.
+// Papi futbol - escuelita 13 o menos ?
 /*
-$Edad = strtotime ($fecha_ingreso) - strtotime ($fecha_nacimiento);
-$diferencia_anios = intval($Edad/60/60/24/365.25);
+if ($sexo == "1" && $diferencia_anios >= 19 && $diferencia_anios <= 20 && $fecha_ingreso = date(now)) {
+    $idCategoria = 19 ;
+    // Cuarta División FEM
+} 
+elseif ($sexo == "2" && $diferencia_anios >=  && $diferencia_anios <= ) {
+    $idCategoria = 19;
+    // Cuarta División MASC
+}
 
-if ($sexo == "" && $diferencia_anios >=  && $diferencia_anios <=  ) {
-    $idCategoria = 1 ;
-} 
-elseif ($sexo == "" && $diferencia_anios >=  && $diferencia_anios <= ) {
-    $idCategoria = 1;
-} 
-elseif ($sexo == "" && $diferencia_anios >=  && $diferencia_anios <= ) {
-    $idCategoria = ;
-} 
 */
 $mysqli = new mysqli("localhost", "root", "", "fomentar");
 
