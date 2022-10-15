@@ -1,13 +1,10 @@
 <?php
 session_start();
-
-if (isset($_SESSION['usuario'])) {
+if (isset($_SESSION['usuario'])){
     header("location: ./pagina_principal");
     die();
 }
-
 ?>
-
 <!doctype html>
 <html lang="es">
 
@@ -38,7 +35,6 @@ if (isset($_SESSION['usuario'])) {
                                 data-toggle="tooltip" data-placement="top" class="w-20" id="checkk">
                         </div>
                     </div>
-
                     <input type="password" class="form-control w-80" id="myInput" placeholder="Contraseña" name="pass">
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary w-100" value="Ingresar">
@@ -58,7 +54,6 @@ if (isset($_SESSION['usuario'])) {
         }
     }
     </script>
-    <!-- <script src="./scripts.php"></script> -->
     <script src="./js/jquery-3.3.1.slim.min.js"></script>
     <script src="./js/popper.min.js"></script>
     <script src="./Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
