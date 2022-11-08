@@ -105,20 +105,20 @@ include '../database/conexion.php';
                         </tr>
                     </thead>
                     <?php
-                    $sql = "SELECT usu.usuario,usu.pass, rol.Descripcion AS Rol from usuarios usu, roles rol where usu.idRole = rol.idRole;";
+                    $sql = "SELECT usu.Nombre,usu.clave, rol.Descripcion AS Rol from usuario usu, roles rol where usu.idRoles = rol.idRoles;";
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_array($result)) {
                     ?>
                     <tbody>
                         <tr>
-                            <td scope="col"><?php echo $mostrar['usuario'] ?></td>
+                            <td scope="col"><?php echo $mostrar['Nombre'] ?></td>
 
                             <td scope="col"><?php echo $mostrar['Rol'] ?></td>
                             <td scope="col"><?php echo "
-							<a class='btn btn-warning' href='./modificar?usuario=" . $mostrar['usuario'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
+							<a class='btn btn-warning' href='./modificar?Nombre=" . $mostrar['Nombre'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
 							edit
 							</i></a>
-							<a class='btn btn-danger' href='./borrar_usuario?usuario=" . $mostrar['usuario'] . "'data-toggle='tooltip' role='button' title='Eliminar usuario'><i class='material-icons'>
+							<a class='btn btn-danger' href='./borrar_usuario?Nombre=" . $mostrar['Nombre'] . "'data-toggle='tooltip' role='button' title='Eliminar usuario'><i class='material-icons'>
 							delete
 							</i></a>
 							"; ?></td>

@@ -8,19 +8,19 @@ if ($varsesion == null || $varsesion = '') {
 }
 $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 
-$consulta = ConsultarProducto($_GET['Usuario']);
+$consulta = ConsultarProducto($_GET['Nombre']);
 
-function ConsultarProducto($Usuario)
+function ConsultarProducto($Nombre)
 {
     $conexion = mysqli_connect("localhost", "root", "", "fomentar");
-    $sentencia = "SELECT * FROM usuarios WHERE Usuario='" . $Usuario . "' ";
+    $sentencia = "SELECT * FROM usuario WHERE Nombre='" . $Nombre . "' ";
     $resultado = $conexion->query($sentencia) or die("Error al consultar usuario" . mysqli_error($conexion));
     $fila = $resultado->fetch_assoc();
 
     return [
-        $fila['Usuario'],
-        $fila['Password'],
-        $fila['idRole']
+        $fila['Nombre'],
+        $fila['clave'],
+        $fila['idRoles']
     ];
 }
 ?>
@@ -47,7 +47,7 @@ function ConsultarProducto($Usuario)
     <div class="form-login">
         <form action="modificar2.php" method="post">
             <div class="form-group">
-                <input type="hidden" name="Usuario" value="<?php echo $_GET['Usuario'] ?>">
+                <input type="hidden" name="Usuario" value="<?php echo $_GET['Nombre'] ?>">
                 <label>Modificar Usuario</label>
                 <input type="text" class="form-control" placeholder="Usuario" name="nombre"
                     value="<?php echo $consulta[0] ?>">
@@ -66,7 +66,7 @@ function ConsultarProducto($Usuario)
                 <?php
                 include '../database/conexion.php';
 
-                $consulta = "SELECT Usuario,idRole FROM `usuarios`";
+                $consulta = "SELECT Nombre,idRoles FROM `usuario`";
                 $result = mysqli_query($conexion, $consulta);
                 $bandera = true;
                 ?>
@@ -75,8 +75,8 @@ function ConsultarProducto($Usuario)
                 <select class="form-control" id="exampleFormControlSelect1" name="tipo">
                     <?php
                     while ($filas = mysqli_fetch_array($result)) {
-                        $id_dato = $filas['idUsuario']; // guarda el id del registro
-                        $dato = $filas['idRole']; // guarda el dato del registro
+                        $id_dato = $filas['idusuario']; // guarda el id del registro
+                        $dato = $filas['idRoles']; // guarda el dato del registro
                     ?>
                     <!-- en el value se inyecta el id, con la bandera se verifica que sea la primera iteracion del bucle -->
                     <option value="<?php echo $dato; ?>">

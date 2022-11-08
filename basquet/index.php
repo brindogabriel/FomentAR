@@ -27,11 +27,13 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
         <a class="navbar-brand mb-0 h1" href="../pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="white" />
+                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
+                    fill="white" />
             </svg>
             FomentAR
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -59,7 +61,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     if ($varsesion == "presidente") {
                         echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
                     }
-                    ?>							
+                    ?>
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
@@ -73,7 +75,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     ?>
                 </li>
             </ul>
-            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled style="text-transform: capitalize;">
+            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
+                style="text-transform: capitalize;">
                 <?php
                 echo $varsesion;
                 ?>
@@ -129,20 +132,13 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                 <tbody>
                     <?php
                     $conexion = mysqli_connect("localhost", "root", "", "fomentar");
-                    $sql = "SELECT cli.nro_orden, cli.apellido, cli.nombre, cli.domicilio, cli.DNI, cli.fecha_nacimiento, cli.fecha_ingreso, dis.detalle, paramSoc.detallepar, est.Estado,cat.descripcion, sex.detallesex, est.idEstado
+                    $sql = "SELECT cli.nro_cliente, cli.apellido, cli.nombre, cli.Direccion, cli.DNI, cli.fecha_nacimiento, cli.fecha_ingreso, act.Nombre_Actividad, cat.descripcion, sex.detalleSexo, cli.idestado, cli.idCategorias
 				from clientes cli,
-				actividades act,
-				disciplinas dis,
-				parametro_Socio paramSoc,
-				estado est,
-				categorias cat,
+				actividades act,categorias cat,
 				sexo sex
-				where act.nro_orden = cli.nro_orden
-				and paramSoc.idParametro_Socio = cli.idParametro_Socio and 
-				est.idEstado = cli.idEstado and sex.idSexo = cli.idSexo and
-				cat.idCategoria = cli.idCategoria
-				and dis.idDisciplina = act.idDisciplina
-				and dis.detalle = 'basquet'";
+				where
+				cat.idCategoria = cli.idCategorias
+				and act.Nombre_Actividad = 'basquet'";
 
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_assoc($result)) {
@@ -175,7 +171,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -197,15 +194,19 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                             </div>
                             <div class="form-group">
                                 <label for="domicilio">Domicilio</label>
-                                <input type="text" class="form-control" placeholder="Domicilio" name="domicilio" required>
+                                <input type="text" class="form-control" placeholder="Domicilio" name="domicilio"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="DNI">DNI</label>
-                                <input type="number" class="form-control" placeholder="DNI" name="DNI" id="cantidad" required>
+                                <input type="number" class="form-control" placeholder="DNI" name="DNI" id="cantidad"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="fecha_nacimiento">Fecha de nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" max="3000-12-31" min="1000-01-01" class="form-control" placeholder="Fecha de nacimiento" name="fecha_nacimiento" required>
+                                <input type="date" name="fecha_nacimiento" max="3000-12-31" min="1000-01-01"
+                                    class="form-control" placeholder="Fecha de nacimiento" name="fecha_nacimiento"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect">¿Es Socio?</label>
@@ -222,7 +223,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                                 </select>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-secondary float-right"
+                                data-dismiss="modal">Cancelar</button>
                             <input type="submit" class="btn btn-primary" name="submit" value="Registrar">
                         </form>
                     </div>
@@ -233,7 +235,7 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-    <?php include("../scripts.php"); ?>
+    <?php include "../scripts.php"; ?>
 
 
 
