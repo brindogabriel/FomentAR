@@ -27,11 +27,13 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
         <a class="navbar-brand mb-0 h1" href="../pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
-                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z" fill="white" />
+                <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
+                    fill="white" />
             </svg>
             FomentAR
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -73,7 +75,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     ?>
                 </li>
             </ul>
-            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled style="text-transform: capitalize;">
+            <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
+                style="text-transform: capitalize;">
                 <?php
                 echo $varsesion;
                 ?>
@@ -173,7 +176,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -195,19 +199,24 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                             </div>
                             <div class="form-group">
                                 <label for="domicilio">Domicilio</label>
-                                <input type="text" class="form-control" placeholder="Domicilio" name="domicilio" required>
+                                <input type="text" class="form-control" placeholder="Domicilio" name="domicilio"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="DNI">DNI</label>
-                                <input type="number" class="form-control" placeholder="DNI" name="DNI" id="cantidad" required>
+                                <input type="number" class="form-control" placeholder="DNI" name="DNI" id="cantidad"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="fecha_nacimiento">Fecha de nacimiento</label>
-                                <input type="date" name="fecha_nacimiento" max="3000-12-31" min="1000-01-01" class="form-control" placeholder="Fecha de nacimiento" name="fecha_nacimiento" required>
+                                <input type="date" name="fecha_nacimiento" max="3000-12-31" min="1000-01-01"
+                                    class="form-control" placeholder="Fecha de nacimiento" name="fecha_nacimiento"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="fecha_ingreso">Fecha de ingreso</label>
-                                <input type="date" name="fecha_ingreso" max="3000-12-31" min="1000-01-01" class="form-control" placeholder="Fecha de ingreso" name="fecha_ingreso" required>
+                                <input type="date" name="fecha_ingreso" max="3000-12-31" min="1000-01-01"
+                                    class="form-control" placeholder="Fecha de ingreso" name="fecha_ingreso" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect">¿Es Socio?</label>
@@ -225,7 +234,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                                 </select>
                             </div>
                             <div class="dropdown-divider"></div>
-                            <button type="button" class="btn btn-secondary float-right" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-secondary float-right"
+                                data-dismiss="modal">Cancelar</button>
                             <input type="submit" class="btn btn-primary" name="submit" value="Registrar">
                         </form>
                     </div>

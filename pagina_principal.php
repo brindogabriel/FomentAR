@@ -101,7 +101,7 @@ include "./database/conexion.php";
             <div class="card-body text-center">
                 <p class="card-text">Basquet</p>
                 <div class="dropdown-divider"></div>
-                <a class="btn btn-secondary btn-block mt-3" href="./basquet/" role="button">Ver Clientes</a>
+                <a class="btn btn-secondary btn-block mt-3" href="./basquet/index2.php" role="button">Ver Clientes</a>
             </div>
         </div>
         <div class="card">
