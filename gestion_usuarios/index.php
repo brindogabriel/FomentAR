@@ -98,27 +98,27 @@ include '../database/conexion.php';
                     <caption>Lista de usuarios</caption>
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">Usuario</th>
+                            <th scope="col">Nombre de usuario</th>
 
                             <th scope="col">Tipo</th>
                             <th scope="col">Opciones</th>
                         </tr>
                     </thead>
                     <?php
-                    $sql = "SELECT usu.Nombre,usu.clave, rol.Descripcion AS Rol from usuario usu, roles rol where usu.idRoles = rol.idRoles;";
+                    $sql = "SELECT usu.username,usu.password, rol.name_rol AS Rol from usuarios usu, roles rol where usu.id_rol = rol.id_rol;";
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_array($result)) {
                     ?>
                     <tbody>
                         <tr>
-                            <td scope="col"><?php echo $mostrar['Nombre'] ?></td>
+                            <td scope="col"><?php echo $mostrar['username'] ?></td>
 
                             <td scope="col"><?php echo $mostrar['Rol'] ?></td>
                             <td scope="col"><?php echo "
-							<a class='btn btn-warning' href='./modificar?Nombre=" . $mostrar['Nombre'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
+							<a class='btn btn-warning' href='./modificar?username=" . $mostrar['username'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
 							edit
 							</i></a>
-							<a class='btn btn-danger' href='./borrar_usuario?Nombre=" . $mostrar['Nombre'] . "'data-toggle='tooltip' role='button' title='Eliminar usuario'><i class='material-icons'>
+							<a class='btn btn-danger' href='./borrar_usuario?username=" . $mostrar['username'] . "'data-toggle='tooltip' role='button' title='Eliminar usuario'><i class='material-icons'>
 							delete
 							</i></a>
 							"; ?></td>

@@ -8,21 +8,21 @@ include "./conexion.php";
 
 $pass = md5($pass);
 
-$consulta = "SELECT * FROM usuario WHERE Nombre='$usuario' AND Clave='$pass'";
+$consulta = "SELECT * FROM usuarios WHERE username='$usuario' AND password='$pass'";
 
 $resultado = mysqli_query($conexion, $consulta);
 $filas = mysqli_fetch_array($resultado);
 
 if ($filas > 0) {
-	$_SESSION['usuario'] = $usuario;
-	$_SESSION['IdRoles'] = $filas['IdRoles'];
+    $_SESSION['usuario'] = $usuario;
+    $_SESSION['id_rol'] = $filas['id_rol'];
 
-	$usuariologueado = $_SESSION['usuario'];
-	$rollogueado = $_SESSION['IdRoles'];
+    $usuariologueado = $_SESSION['usuario'];
+    $rollogueado = $_SESSION['id_rol'];
 
-	header("location: ../pagina_principal");
+    header("location: ../pagina_principal");
 } else {
-	header("location: ../errors/error_login");
+    header("location: ../errors/error_login");
 }
 
 mysqli_free_result($resultado);

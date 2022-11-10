@@ -50,7 +50,7 @@ include "../database/conexion.php";
                 <li class="nav-item">
                     <?php
                     $varsesion = $_SESSION['usuario'];
-                    $rol = $_SESSION['idRole'];
+                    $rol = $_SESSION['id_rol'];
                     if ($varsesion == 1) {
                         echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
                     }
@@ -95,30 +95,34 @@ include "../database/conexion.php";
                 <tbody>
                     <?php
                     include "../database/conexion.php";
-                    $sql = "SELECT eve.idevento,eve.nombre,eve.fecha_inicio,eve.fecha_fin,eve.estado,estado.descripcion,eve.importe from eventos eve, eventos_estado estado WHERE estado.estado = eve.estado;";
+                    $sql = "SELECT
+	s.id_evento, s.nombre_evento, s.fecha_inicio, s.fecha_fin, e.detalle_estado_evento, importe, opciones, a_nombre_de
+FROM
+	fomentar.eventos s, estado_eventos e where s.id_estado_evento = e.id_estado_evento;";
 
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_assoc($result)) {
-                        $dato2 = $mostrar['estado'];
+
                         $fecha_inicio = date("d/m/Y H:m", strtotime($mostrar['fecha_inicio']));
                         $fecha_fin = date("d/m/Y H:m", strtotime($mostrar['fecha_fin']));
 
                         //! calcular cuanto falta para el evento xd aunque podria ser desde el backend xd
-                        $rol = $_SESSION['idRole'];
+                        //? triggers ?? cron ??
+                        $rol = $_SESSION['id_rol'];
 
 
                         echo '<tr>					
-					<td>' . $mostrar['nombre'] . '</td>
+					<td>' . $mostrar['nombre_evento'] . '</td>
 					<td>' . $fecha_inicio . '</td>
 					<td>' . $fecha_fin  . '</td>
-					<td>' . $mostrar['descripcion'] . '</td>
+					<td>' . $mostrar['detalle_estado_evento'] . '</td>
 					<td>$ ' . $mostrar['importe']  . '</td>
                     <td>
-                    <a class="btn btn-warning m-1" href="./modificar_evento?idevento=' . $mostrar['idevento'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+                    <a class="btn btn-warning m-1" href="./modificar_evento?id_evento=' . $mostrar['id_evento'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
-                    <a class="btn btn-primary m-1"  data-toggle="tooltip" role="button" title="Falta ' . $mostrar['estado'] . ' tiempo"><i class="material-icons" style="color:white;">alarm</i></a>
+                    <a class="btn btn-primary m-1"  data-toggle="tooltip" role="button" title="Falta ' . $mostrar['id_evento'] . ' tiempo"><i class="material-icons" style="color:white;">alarm</i></a>
 
-                    ' . (($rol == 1) ? '<a class="btn btn-danger m-1" href="./borrar_evento?idevento=' . $mostrar['idevento'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-danger m-1 disabled" href="./borrar_evento?idevento=' . $mostrar['idevento'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">delete</i></a>') . '</td>
+                    ' . (($rol == 1) ? '<a class="btn btn-danger m-1" href="./borrar_evento?idevento=' . $mostrar['id_evento'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-danger m-1 disabled" href="./borrar_evento?idevento=' . $mostrar['id_evento'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">delete</i></a>') . '</td>
                     
 					</tr>';
                     }

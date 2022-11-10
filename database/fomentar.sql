@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2022 a las 20:59:51
+-- Tiempo de generación: 10-11-2022 a las 23:09:18
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -128,6 +128,43 @@ CREATE TABLE `estados_socio` (
 INSERT INTO `estados_socio` (`estado_socio`, `estado_detalle`) VALUES
 (0, 'no socio'),
 (1, 'socio');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estado_eventos`
+--
+
+CREATE TABLE `estado_eventos` (
+  `id_estado_evento` int(11) NOT NULL,
+  `detalle_estado_evento` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `estado_eventos`
+--
+
+INSERT INTO `estado_eventos` (`id_estado_evento`, `detalle_estado_evento`) VALUES
+(1, 'falta'),
+(2, 'está pasando'),
+(3, 'ya paso');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `eventos`
+--
+
+CREATE TABLE `eventos` (
+  `id_evento` int(11) NOT NULL,
+  `nombre_evento` varchar(45) NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `id_estado_evento` int(11) NOT NULL,
+  `importe` int(11) NOT NULL,
+  `opciones` int(11) NOT NULL,
+  `a_nombre_de` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -264,6 +301,19 @@ ALTER TABLE `estados_socio`
   ADD PRIMARY KEY (`estado_socio`);
 
 --
+-- Indices de la tabla `estado_eventos`
+--
+ALTER TABLE `estado_eventos`
+  ADD PRIMARY KEY (`id_estado_evento`);
+
+--
+-- Indices de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  ADD PRIMARY KEY (`id_evento`),
+  ADD KEY `idx_eventos_id_estado_evento` (`id_estado_evento`);
+
+--
 -- Indices de la tabla `generos`
 --
 ALTER TABLE `generos`
@@ -326,6 +376,12 @@ ALTER TABLE `cliente_factura`
   MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -378,6 +434,12 @@ ALTER TABLE `cliente_factura`
   ADD CONSTRAINT `fk_cliente_factura_clientes_actividad_1` FOREIGN KEY (`id_actividad`) REFERENCES `clientes_actividad` (`id_actividad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_cliente_factura_clientes_actividad_2` FOREIGN KEY (`id_categoria`) REFERENCES `clientes_actividad` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_cliente_factura_valores` FOREIGN KEY (`id_valor`) REFERENCES `valores` (`id_valor`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `eventos`
+--
+ALTER TABLE `eventos`
+  ADD CONSTRAINT `fk_eventos_estado_eventos` FOREIGN KEY (`id_estado_evento`) REFERENCES `estado_eventos` (`id_estado_evento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `usuarios`

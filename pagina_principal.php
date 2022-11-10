@@ -2,7 +2,7 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
-$rol = $_SESSION['IdRoles'];
+$rol = $_SESSION['id_rol'];
 if ($varsesion == null || $varsesion = '') {
     header("location: ./errors/error_nologueado");
     die();
@@ -51,7 +51,7 @@ include "./database/conexion.php";
                 </li>
                 <li class="nav-item">
                     <?php
-                    $rol = $_SESSION['IdRoles'];
+                    $rol = $_SESSION['id_rol'];
                     if ($rol = 1) {
                         echo "	<a class='nav-link' href='./recaudacion'>Recaudacion</a>";
                     }
@@ -62,7 +62,7 @@ include "./database/conexion.php";
                 </li>
                 <li class="nav-item">
                     <?php
-                    $rol = $_SESSION['IdRoles'];
+                    $rol = $_SESSION['id_rol'];
                     if ($rol == 1) {
                         echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
                     }
