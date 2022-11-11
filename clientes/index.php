@@ -18,7 +18,9 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
     <link rel="stylesheet" href="../css/general.css">
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+
     <title>FomentAR</title>
 </head>
 
@@ -58,39 +60,39 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 			-->
                 <!-- <li class="nav-item">
 					<?php
-                    $varsesion = $_SESSION['usuario'];
-                    if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
-                    }
-                    ?>
+$varsesion = $_SESSION['usuario'];
+if ($varsesion == "presidente") {
+    echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
+}
+?>
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
                     <?php
-                    $varsesion = $_SESSION['usuario'];
-                    if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
-                    }
-                    ?>
+$varsesion = $_SESSION['usuario'];
+if ($varsesion == "presidente") {
+    echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
+}
+?>
                 </li>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-                echo $varsesion;
-                ?>
+echo $varsesion;
+?>
             </a>
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
     </nav>
     <?php
-    include '../database/conexion.php';
+include '../database/conexion.php';
 
-    $clientes = "SELECT cli.id_cliente,cli.Nombre,param.estado_detalle as socio,act.nombre_actividad as Deporte,generos.genero_descripcion, cat.categoria_detalle, cli.estado_socio FROM clientes cli,estados_socio param,categorias cat,generos, actividades act WHERE param.estado_socio = cli.estado_socio and generos.id_genero = cli.id_genero;";
-    $resClientes = mysqli_query($conexion, $clientes);
-    ?>
+$clientes = "SELECT cli.id_cliente,cli.Nombre,param.estado_detalle as socio,act.nombre_actividad as Deporte,generos.genero_descripcion, cat.categoria_detalle, cli.estado_socio FROM clientes cli,estados_socio param,categorias cat,generos, actividades act WHERE param.estado_socio = cli.estado_socio and generos.id_genero = cli.id_genero;";
+$resClientes = mysqli_query($conexion, $clientes);
+?>
 
     <div class="botones">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -137,12 +139,12 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                 <tbody>
                     <?php
 
-                    while ($mostrar = mysqli_fetch_array($resClientes)) {
-                        $dato2 = $mostrar['idEstado'];
+while ($mostrar = mysqli_fetch_array($resClientes)) {
+    $dato2 = $mostrar['idEstado'];
 
-                        $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
-                        $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
-                        echo '<tr>
+    $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
+    $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
+    echo '<tr>
 					<td>' . $mostrar['Nro_orden'] . '</td>
 					<td>' . $mostrar['Apellido'] . '</td>
 					<td>' . $mostrar['Nombre'] . '</td>
@@ -162,8 +164,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 					' . (($dato2 === "1") ? '<a class="btn btn-danger m-1" href="../dar_de_baja?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="../dar_de_alta?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
 
 					</tr>';
-                    }
-                    ?>
+}
+?>
                 </tbody>
             </table>
         </div>
@@ -236,8 +238,8 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                             </div>
                             <div class="form-group">
                                 <label for="mySelect2">Actividad</label>
-                                <select id="mySelect2" required class="js-example-basic-multiple" name="actividades[]"
-                                    multiple="multiple">
+                                <select class="form-control js-example-basic-multiple" id="mySelect2"
+                                    name="actividades[]" multiple="multiple" style="width: 100%" required>
                                     <option value="basquet">Basquet</option>
                                     <option value="patin">Patín</option>
                                     <option value="futbol">Futbol</option>
@@ -246,6 +248,10 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                                     <option value="voley">Voley</option>
                                 </select>
                             </div>
+
+
+
+
                             <div class="dropdown-divider mb-2"></div>
                             <button type="button" class="btn btn-secondary w-25 float-right"
                                 data-dismiss="modal">Cancelar</button>
@@ -256,17 +262,18 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
             </div>
         </div>
     </div>
-    <script>
-    // Do this before you initialize any of your modals
-    $.fn.modal.Constructor.prototype.enforceFocus = function() {};
-    </script>
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-    <?php include '../scripts.php'; ?>
+    <?php include '../scripts.php';?>
     <script>
     $('#mySelect2').select2({
         dropdownParent: $('#exampleModalCenter')
+    });
+
+    $('#mySelect2').select2({
+        theme: 'bootstrap4',
     });
     </script>
     <!-- Optional JavaScript -->
