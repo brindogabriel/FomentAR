@@ -17,10 +17,6 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
     <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/general.css">
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
-
     <title>FomentAR</title>
 </head>
 
@@ -173,7 +169,7 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
 
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo cliente</h5>
@@ -236,10 +232,10 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
                                     <option value="2">No</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group ">
                                 <label for="mySelect2">Actividad</label>
                                 <select class="form-control js-example-basic-multiple" id="mySelect2"
-                                    name="actividades[]" multiple="multiple" style="width: 100%" required>
+                                    name="actividades[]" multiple="multiple" required>
                                     <option value="basquet">Basquet</option>
                                     <option value="patin">Patín</option>
                                     <option value="futbol">Futbol</option>
@@ -263,21 +259,9 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
         </div>
     </div>
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
     <?php include '../scripts.php';?>
-    <script>
-    $('#mySelect2').select2({
-        dropdownParent: $('#exampleModalCenter')
-    });
-
-    $('#mySelect2').select2({
-        theme: 'bootstrap4',
-    });
-    </script>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 </body>
 
 </html>
