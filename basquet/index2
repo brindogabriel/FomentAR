@@ -1,7 +1,7 @@
 <?php
 session_start();
 //error_reporting(0); -descomentar cuando se termina
-$varsesion = $_SESSION['usuario'];
+$varsesion = $_SESSION['usuarios'];
 if ($varsesion == null || $varsesion = '') {
     header("location: ../errors/error_nologueado");
     die();
