@@ -6,7 +6,7 @@ $password = $_POST['password'];
 
 include "./conexion.php";
 
-$password = md5($password);
+$pass = md5($password);
 
 $consulta = "SELECT * FROM usuarios WHERE username='$usuario' AND password='$pass'";
 

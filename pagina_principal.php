@@ -1,13 +1,12 @@
 <?php
 session_start();
 //error_reporting(0); -descomentar cuando se termina
-<<<<<<< HEAD
 $varsesion = $_SESSION['usuarios'];
 $rol = $_SESSION['roles'];
-=======
+
 $varsesion = $_SESSION['usuario'];
 $rol = $_SESSION['id_rol'];
->>>>>>> 1e3615c3b70d4059f13d97b61b9210f1f7634da1
+
 if ($varsesion == null || $varsesion = '') {
     header("location: ./errors/error_nologueado");
     die();
