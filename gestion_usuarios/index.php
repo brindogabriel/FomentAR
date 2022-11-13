@@ -1,7 +1,7 @@
 <?php
 session_start();
 //error_reporting(0); -descomentar cuando se termina
-$varsesion = $_SESSION['usuario'];
+$varsesion = $_SESSION['usuarios'];
 if ($varsesion == null || $varsesion = '') {
     header("location: ../errors/error_nologueado");
     die();
@@ -56,7 +56,7 @@ include '../database/conexion.php';
 			-->
                 <!-- <li class="nav-item">
 					<?php
-                    $varsesion = $_SESSION['usuario'];
+                    $varsesion = $_SESSION['usuarios'];
 
                     if ($varsesion == "presidente") {
                         echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
@@ -68,7 +68,7 @@ include '../database/conexion.php';
 				</li> -->
                 <li class="nav-item">
                     <?php
-                    $varsesion = $_SESSION['usuario'];
+                    $varsesion = $_SESSION['usuarios'];
                     if ($varsesion == "presidente") {
                         echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
                     }
@@ -85,7 +85,7 @@ include '../database/conexion.php';
         </div>
     </nav>
     <?php
-    $varsesion = $_SESSION['usuario'];
+    $varsesion = $_SESSION['usuarios'];
     if ($varsesion == "usuario") {
         header("location: ../errors/error_privilegio");
         die();
@@ -105,20 +105,20 @@ include '../database/conexion.php';
                         </tr>
                     </thead>
                     <?php
-                    $sql = "SELECT usu.usuario,usu.pass, rol.Descripcion AS Rol from usuarios usu, roles rol where usu.idRole = rol.idRole;";
+                    $sql = "SELECT usu.Nombre,usu.clave, rol.Descripcion AS Rol from usuario usu, roles rol where usu.idRoles = rol.idRoles;";
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_array($result)) {
                     ?>
                     <tbody>
                         <tr>
-                            <td scope="col"><?php echo $mostrar['usuario'] ?></td>
+                            <td scope="col"><?php echo $mostrar['Nombre'] ?></td>
 
                             <td scope="col"><?php echo $mostrar['Rol'] ?></td>
                             <td scope="col"><?php echo "
-							<a class='btn btn-warning' href='./modificar?usuario=" . $mostrar['usuario'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
+							<a class='btn btn-warning' href='./modificar?Nombre=" . $mostrar['Nombre'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
 							edit
 							</i></a>
-							<a class='btn btn-danger' href='./borrar_usuario?usuario=" . $mostrar['usuario'] . "'data-toggle='tooltip' role='button' title='Eliminar usuario'><i class='material-icons'>
+							<a class='btn btn-danger' href='./borrar_usuario?Nombre=" . $mostrar['Nombre'] . "'data-toggle='tooltip' role='button' title='Eliminar usuario'><i class='material-icons'>
 							delete
 							</i></a>
 							"; ?></td>

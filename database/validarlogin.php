@@ -1,29 +1,25 @@
 <?php
 session_start();
 
-$usuario = $_POST['nombre'];
-$pass = $_POST['pass'];
-
-
+$usuario = $_POST['username'];
+$password = $_POST['password'];
 
 include "./conexion.php";
 
-$pass = md5($pass);
-$consulta = "SELECT * FROM usuarios WHERE usuario='$usuario' AND pass='$pass'";
+$password = md5($password);
+
+$consulta = "SELECT * FROM usuario WHERE Nombre='$usuarios' AND Clave='$password'";
 
 $resultado = mysqli_query($conexion, $consulta);
 $filas = mysqli_fetch_array($resultado);
 
 if ($filas > 0) {
-	$_SESSION['usuario'] = $usuario;
-	$_SESSION['idRole'] = $filas['idRole'];
+	$_SESSION['usuarios'] = $usuario;
+	$_SESSION['roles'] = $filas['id_rol'];
 
-	$usuariologueado = $_SESSION['usuario'];
-	$rollogueado = $_SESSION['idRole'];
+	$usuariologueado = $_SESSION['usuarios'];
+	$rollogueado = $_SESSION['id_rol'];
 
-	// access session variables
-	echo $_SESSION['logged_in_user_id'];
-	echo $_SESSION['logged_in_user_name'];
 	header("location: ../pagina_principal");
 } else {
 	header("location: ../errors/error_login");

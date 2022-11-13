@@ -1,10 +1,10 @@
 <?php
-EliminarCliente($_GET['Usuario']);
+EliminarCliente($_GET['Nombre']);
 
-function EliminarCliente($Usuario)
+function EliminarCliente($Nombre)
 {
 	include '../database/conexion.php';
-	$sentencia="DELETE FROM usuarios WHERE usuario='".$Usuario."' ";
+	$sentencia="DELETE FROM usuario WHERE Nombre='".$Nombre."' ";
 	$conexion->query($sentencia) or die ("Error al eliminar".mysqli_error($conexion));
 	echo "<script>history.go(-1);</script>"; 
 
