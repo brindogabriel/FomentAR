@@ -24,7 +24,7 @@ if (isset($_SESSION['usuarios'])){
             <form action="./database/validarlogin" method="POST" class="w-100 p-0">
                 <h1>Bienvenido a FomentAR</h1>
                 <div class="form-group w-100">
-                    <input type="text" class="form-control w-100" placeholder="Usuario" name="nombre" required
+                    <input type="text" class="form-control w-100" placeholder="Usuario" name="username" required
                         id="nombre">
                 </div>
                 <div class="input-group mb-3">
@@ -35,7 +35,8 @@ if (isset($_SESSION['usuarios'])){
                                 data-toggle="tooltip" data-placement="top" class="w-20" id="checkk">
                         </div>
                     </div>
-                    <input type="password" class="form-control w-80" id="myInput" placeholder="Contraseña" name="pass">
+                    <input type="password" class="form-control w-80" id="myInput" placeholder="Contraseña"
+                        name="password">
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary w-100" value="Ingresar">
             </form>
