@@ -86,7 +86,9 @@ echo $varsesion;
     <?php
 include '../database/conexion.php';
 
-$clientes = "SELECT cli.id_cliente,cli.Nombre,param.estado_detalle as socio,act.nombre_actividad as Deporte,generos.genero_descripcion, cat.categoria_detalle, cli.estado_socio FROM clientes cli,estados_socio param,categorias cat,generos, actividades act WHERE param.estado_socio = cli.estado_socio and generos.id_genero = cli.id_genero;";
+$clientes = "SELECT cli.id_cliente,cli.Nombre,act.nombre_actividad as Deporte,generos.genero_descripcion, cat.categoria_detalle, cli.num_socio 
+FROM clientes cli,categorias cat,generos, actividades act 
+WHERE generos.id_genero = cli.id_genero;";
 $resClientes = mysqli_query($conexion, $clientes);
 ?>
 
@@ -136,7 +138,6 @@ $resClientes = mysqli_query($conexion, $clientes);
                     <?php
 
 while ($mostrar = mysqli_fetch_array($resClientes)) {
-    $dato2 = $mostrar['idEstado'];
 
     $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
     $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
