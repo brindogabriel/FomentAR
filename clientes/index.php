@@ -86,9 +86,17 @@ echo $varsesion;
     <?php
 include '../database/conexion.php';
 
+<<<<<<< HEAD
 $clientes = "SELECT cli.id_cliente,cli.Nombre,act.nombre_actividad as Deporte,generos.genero_descripcion, cat.categoria_detalle, cli.num_socio 
 FROM clientes cli,categorias cat,generos, actividades act 
 WHERE generos.id_genero = cli.id_genero;";
+=======
+$clientes = "SELECT
+	c.id_cliente, c.num_socio, c.nombre, c.edad, g.genero_descripcion, c.domicilio, c.num_domicilio, c.telefono, c.DNI, c.fecha_nacimiento, c.fecha_ingreso
+FROM
+	clientes c,generos g
+WHERE g.id_genero = c.id_genero ORDER BY c.id_cliente ASC";
+>>>>>>> b717756b50e4c89eca95e22a9df69066234fa1d5
 $resClientes = mysqli_query($conexion, $clientes);
 ?>
 
@@ -102,35 +110,27 @@ $resClientes = mysqli_query($conexion, $clientes);
             <table id="example" class="table table-responsive display" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Nro_orden</th>
-                        <th>Apellido</th>
+
                         <th>Nombre</th>
                         <th>Domicilio</th>
                         <th>DNI</th>
                         <th>Fecha_nacimiento</th>
                         <th>Fecha_ingreso</th>
-                        <th>Deporte</th>
-                        <th>Socio</th>
-                        <th>idEstado</th>
-                        <th>categoria</th>
                         <th>Sexo</th>
+                        <th>Numero de socio</th>
                         <th>Opciones</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Nro_orden</th>
-                        <th>Apellido</th>
+
                         <th>Nombre</th>
                         <th>Domicilio</th>
                         <th>DNI</th>
                         <th>Fecha_nacimiento</th>
                         <th>Fecha_ingreso</th>
-                        <th>Deporte</th>
-                        <th>Socio</th>
-                        <th>idEstado</th>
-                        <th>categoria</th>
                         <th>Sexo</th>
+                        <th>Numero de socio</th>
                         <th>Opciones</th>
                     </tr>
                 </tfoot>
@@ -138,27 +138,27 @@ $resClientes = mysqli_query($conexion, $clientes);
                     <?php
 
 while ($mostrar = mysqli_fetch_array($resClientes)) {
+<<<<<<< HEAD
 
     $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
     $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
+=======
+    $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
+    $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
+>>>>>>> b717756b50e4c89eca95e22a9df69066234fa1d5
     echo '<tr>
-					<td>' . $mostrar['Nro_orden'] . '</td>
-					<td>' . $mostrar['Apellido'] . '</td>
-					<td>' . $mostrar['Nombre'] . '</td>
-					<td>' . $mostrar['Domicilio'] . '</td>
+
+					<td>' . $mostrar['nombre'] . '</td>
+					<td>' . $mostrar['domicilio'] . '</td>
 					<td>' . $mostrar['DNI'] . '</td>
 					<td>' . $Fecha_nacimiento . '</td>
 					<td>' . $Fecha_ingreso . '</td>
-					<td>' . $mostrar['Deporte'] . '</td>
-					<td>' . $mostrar['socio'] . '</td>
-					<td>' . $mostrar['Estado'] . '</td>
-					<td>' . $mostrar['Descripcion'] . '</td>
-					<td>' . $mostrar['detallesex'] . '</td>
-					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
-<a class="btn btn-warning m-1" href="./clientes_info?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
-					<a class="btn btn-warning m-1" href="../edit/modificar5?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
-
-					' . (($dato2 === "1") ? '<a class="btn btn-danger m-1" href="../dar_de_baja?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Baja"><i class="material-icons">delete</i></a>' : '<a class="btn btn-success m-1" href="../dar_de_alta?DNI=' . $mostrar['DNI'] . '" data-toggle="tooltip" role="button" title="Dar De Alta"><i class="material-icons">restore</i></a>') . '</td>
+					<td>' . $mostrar['genero_descripcion'] . '</td>
+					<td>' . (($mostrar['num_socio']) ? $mostrar['num_socio'] : "No es socio") . '</td>
+                    <td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
+<a class="btn btn-warning m-1" href="./clientes_info?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
+					<a class="btn btn-warning m-1" href="../edit/modificar5?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+                    </td>
 
 					</tr>';
 }

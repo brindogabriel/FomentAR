@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['usuarios'])){
+if (isset($_SESSION['usuario'])) {
     header("location: ./pagina_principal");
     die();
 }

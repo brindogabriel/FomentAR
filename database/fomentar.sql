@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2022 a las 17:52:58
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 14-11-2022 a las 15:45:05
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,8 +29,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `actividades` (
   `id_actividad` int(11) NOT NULL,
-  `nombre_actividad` varchar(45) NOT NULL
+  `nombre_actividad` varchar(45) NOT NULL,
+  `color_act` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `actividades`
+--
+
+INSERT INTO `actividades` (`id_actividad`, `nombre_actividad`, `color_act`) VALUES
+(1, 'basquet', 'primary'),
+(2, 'futbol', 'secondary'),
+(3, 'voley', 'success'),
+(4, 'patin', 'danger'),
+(5, 'taekwondo', 'warning'),
+(6, 'arte', 'info');
 
 -- --------------------------------------------------------
 
@@ -66,7 +78,7 @@ CREATE TABLE `clientes` (
   `num_domicilio` int(11) NOT NULL,
   `telefono` int(11) NOT NULL,
   `DNI` int(11) NOT NULL,
-  `fecha_namiento` date NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
   `fecha_ingreso` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -124,8 +136,8 @@ CREATE TABLE `generos` (
 --
 
 INSERT INTO `generos` (`id_genero`, `genero_descripcion`) VALUES
-(0, 'Cindy met Rolph. '),
-(1, 'John is visiting Adrian. ');
+(1, 'femenino'),
+(2, 'masculino');
 
 -- --------------------------------------------------------
 
@@ -244,25 +256,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_actividad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes_actividad`
 --
 ALTER TABLE `clientes_actividad`
-  MODIFY `auto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `auto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_factura`
@@ -310,7 +322,8 @@ ALTER TABLE `clientes`
 --
 ALTER TABLE `clientes_actividad`
   ADD CONSTRAINT `fk_clientes_actividad_actividades` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_clientes_actividad_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_clientes_actividad_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_clientes_actividad_clientes` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `detalle_factura`
