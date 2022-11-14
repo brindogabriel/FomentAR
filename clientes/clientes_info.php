@@ -78,20 +78,22 @@ echo $varsesion;
             <div class="col w-20">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
-
-                        <?php
+                        <h5 class="card-title">Deportes de:
+                            <?php
 $conexion = mysqli_connect("localhost", "root", "", "fomentar");
-$sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente]";
+$sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente] LIMIT 1";
 $result = mysqli_query($conexion, $sql);
 while ($mostrar = mysqli_fetch_assoc($result)) {
-    echo '<h5 class="card-title">Deportes de: ' . $mostrar['nombre'] . '</h5>';
-}?>
+    echo $mostrar['nombre'];
+}
+?>
+                        </h5>
                         <?php
 $conexion = mysqli_connect("localhost", "root", "", "fomentar");
-$sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente]";
+$sql = "SELECT cli.nombre, act.nombre_actividad, act.color_act FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente]";
 $result = mysqli_query($conexion, $sql);
 while ($mostrar = mysqli_fetch_assoc($result)) {
-    echo '<a href="#" class="badge badge-dark mr-2">' . $mostrar['nombre_actividad'] . '</a>';
+    echo '<a href="#" class="badge badge-' . $mostrar['color_act'] . ' mr-2">' . $mostrar['nombre_actividad'] . '</a>';
 }?>
                     </div>
                 </div>

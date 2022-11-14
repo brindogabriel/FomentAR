@@ -90,7 +90,10 @@ function myFunction() {
 </script>
 <script>
 $(document).ready(function() {
+
+
     $('#example').DataTable({
+        "order": [],
         language: {
             "decimal": "",
             "emptyTable": "No hay datos :'c",
@@ -113,7 +116,7 @@ $(document).ready(function() {
             "aria": {
                 "sortAscending": ": Activar orden de columna ascendente",
                 "sortDescending": ": Activar orden de columna desendente"
-            }
+            },
         }
     });
 });

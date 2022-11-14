@@ -53,30 +53,30 @@ include "./database/conexion.php";
                 </li>
                 <li class="nav-item">
                     <?php
-                    $rol = $_SESSION['id_rol'];
-                    if ($rol = 1) {
-                        echo "	<a class='nav-link' href='./recaudacion'>Recaudacion</a>";
-                    }
-                    ?>
+$rol = $_SESSION['id_rol'];
+if ($rol = 1) {
+    echo "	<a class='nav-link' href='./recaudacion'>Recaudacion</a>";
+}
+?>
                 </li>
                 <li class="nav-item">
                     <a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
                 </li>
                 <li class="nav-item">
                     <?php
-                    $rol = $_SESSION['id_rol'];
-                    if ($rol == 1) {
-                        echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
-                    }
-                    ?>
+$rol = $_SESSION['id_rol'];
+if ($rol == 1) {
+    echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+}
+?>
                 </li>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-                $varsesion = $_SESSION['usuario'];
-                echo $varsesion;
-                ?>
+$varsesion = $_SESSION['usuario'];
+echo $varsesion;
+?>
             </a>
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
@@ -86,6 +86,16 @@ include "./database/conexion.php";
             <a href="./futbol/"><img class="card-img-top " src="Images/futbol.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
                 <p class="card-text">Fútbol</p>
+                <p class="card-text"> <?php
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+$sql = "SELECT COALESCE(COUNT(id_cliente), 0) as personas  from clientes_actividad where id_actividad = 2;";
+
+$result = mysqli_query($conexion, $sql);
+while ($mostrar = mysqli_fetch_assoc($result)) {
+
+    echo $mostrar['personas'];
+}
+?> clientes</p>
                 <div class="dropdown-divider"></div>
                 <a class="btn btn-secondary btn-block mt-3" href="./futbol/" role="button">Ver Clientes</a>
             </div>
@@ -94,6 +104,16 @@ include "./database/conexion.php";
             <a href="./arte/"><img class="card-img-top " src="Images/arte.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
                 <p class="card-text">Arte</p>
+                <p class="card-text"> <?php
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+$sql = "SELECT COALESCE(COUNT(id_cliente), 0) as personas  from clientes_actividad where id_actividad = 6;";
+
+$result = mysqli_query($conexion, $sql);
+while ($mostrar = mysqli_fetch_assoc($result)) {
+
+    echo $mostrar['personas'];
+}
+?> clientes</p>
                 <div class="dropdown-divider"></div>
                 <a class="btn btn-secondary btn-block mt-3" href="./arte/" role="button">Ver Clientes</a>
             </div>
@@ -102,14 +122,34 @@ include "./database/conexion.php";
             <a href="./basquet/"><img class="card-img-top " src="Images/basquet.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
                 <p class="card-text">Basquet</p>
+                <p class="card-text"> <?php
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+$sql = "SELECT COALESCE(COUNT(id_cliente), 0) as personas  from clientes_actividad where id_actividad = 1;";
+
+$result = mysqli_query($conexion, $sql);
+while ($mostrar = mysqli_fetch_assoc($result)) {
+
+    echo $mostrar['personas'];
+}
+?> clientes</p>
                 <div class="dropdown-divider"></div>
-                <a class="btn btn-secondary btn-block mt-3" href="./basquet/index2.php" role="button">Ver Clientes</a>
+                <a class="btn btn-secondary btn-block mt-3" href="./basquet/index.php" role="button">Ver Clientes</a>
             </div>
         </div>
         <div class="card">
             <a href="./taekwondo"><img class="card-img-top " src="Images/taekwondo.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
                 <p class="card-text">Taekwondo</p>
+                <p class="card-text"> <?php
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+$sql = "SELECT COALESCE(COUNT(id_cliente), 0) as personas  from clientes_actividad where id_actividad = 5;";
+
+$result = mysqli_query($conexion, $sql);
+while ($mostrar = mysqli_fetch_assoc($result)) {
+
+    echo $mostrar['personas'];
+}
+?> clientes</p>
                 <div class="dropdown-divider"></div>
                 <a class="btn btn-secondary btn-block mt-3" href="./taekwondo" role="button">Ver Clientes</a>
             </div>
@@ -118,6 +158,16 @@ include "./database/conexion.php";
             <a href="./voley/"><img class="card-img-top " src="Images/voley.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
                 <p class="card-text">Voley</p>
+                <p class="card-text"> <?php
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+$sql = "SELECT COALESCE(COUNT(id_cliente), 0) as personas  from clientes_actividad where id_actividad = 3;";
+
+$result = mysqli_query($conexion, $sql);
+while ($mostrar = mysqli_fetch_assoc($result)) {
+
+    echo $mostrar['personas'];
+}
+?> clientes</p>
                 <div class="dropdown-divider"></div>
                 <a class="btn btn-secondary btn-block mt-3" href="./voley/" role="button">Ver Clientes</a>
             </div>
@@ -126,6 +176,16 @@ include "./database/conexion.php";
             <a href="./patin"><img class="card-img-top " src="Images/patin.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
                 <p class="card-text">Patín</p>
+                <p class="card-text"> <?php
+$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+$sql = "SELECT COALESCE(COUNT(id_cliente), 0) as personas  from clientes_actividad where id_actividad = 4;";
+
+$result = mysqli_query($conexion, $sql);
+while ($mostrar = mysqli_fetch_assoc($result)) {
+
+    echo $mostrar['personas'];
+}
+?> clientes</p>
                 <div class="dropdown-divider"></div>
                 <a class="btn btn-secondary btn-block mt-3" href="./patin" role="button">Ver Clientes</a>
             </div>

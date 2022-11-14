@@ -90,7 +90,7 @@ $clientes = "SELECT
 	c.id_cliente, c.num_socio, c.nombre, c.edad, g.genero_descripcion, c.domicilio, c.num_domicilio, c.telefono, c.DNI, c.fecha_nacimiento, c.fecha_ingreso
 FROM
 	clientes c,generos g
-WHERE g.id_genero = c.id_genero;";
+WHERE g.id_genero = c.id_genero ORDER BY c.id_cliente ASC";
 $resClientes = mysqli_query($conexion, $clientes);
 ?>
 
@@ -104,6 +104,7 @@ $resClientes = mysqli_query($conexion, $clientes);
             <table id="example" class="table table-responsive display" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+
                         <th>Nombre</th>
                         <th>Domicilio</th>
                         <th>DNI</th>
@@ -116,6 +117,7 @@ $resClientes = mysqli_query($conexion, $clientes);
                 </thead>
                 <tfoot>
                     <tr>
+
                         <th>Nombre</th>
                         <th>Domicilio</th>
                         <th>DNI</th>
@@ -133,14 +135,15 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
     $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
     $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
     echo '<tr>
+
 					<td>' . $mostrar['nombre'] . '</td>
 					<td>' . $mostrar['domicilio'] . '</td>
 					<td>' . $mostrar['DNI'] . '</td>
 					<td>' . $Fecha_nacimiento . '</td>
 					<td>' . $Fecha_ingreso . '</td>
 					<td>' . $mostrar['genero_descripcion'] . '</td>
-					<td>' . $mostrar['num_socio'] . '</td>
-					<td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
+					<td>' . (($mostrar['num_socio']) ? $mostrar['num_socio'] : "No es socio") . '</td>
+                    <td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
 <a class="btn btn-warning m-1" href="./clientes_info?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
 					<a class="btn btn-warning m-1" href="../edit/modificar5?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
                     </td>
