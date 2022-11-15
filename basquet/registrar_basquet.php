@@ -74,7 +74,7 @@ $resultado = mysqli_query($mysqli, $nro_orden);
 $coso = mysqli_fetch_array($resultado);
 $nro_orden = $coso['nro_orden'];
 
-$sql2 = "INSERT INTO actividades(nro_orden, idDisciplina) VALUES ('$nro_orden', '$idCategoria')";
+$sql2 = "INSERT INTO actividades(nro_orden, idDisciplina) VALUES ('$nro_orden', 'egor$idCatia')";
 if ($mysqli->query($sql2) === true) {
     //echo "Nuevo registro creado exitosamente";
 } else {

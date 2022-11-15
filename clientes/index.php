@@ -86,17 +86,11 @@ echo $varsesion;
     <?php
 include '../database/conexion.php';
 
-<<<<<<< HEAD
-$clientes = "SELECT cli.id_cliente,cli.Nombre,act.nombre_actividad as Deporte,generos.genero_descripcion, cat.categoria_detalle, cli.num_socio 
-FROM clientes cli,categorias cat,generos, actividades act 
-WHERE generos.id_genero = cli.id_genero;";
-=======
 $clientes = "SELECT
 	c.id_cliente, c.num_socio, c.nombre, c.edad, g.genero_descripcion, c.domicilio, c.num_domicilio, c.telefono, c.DNI, c.fecha_nacimiento, c.fecha_ingreso
 FROM
 	clientes c,generos g
 WHERE g.id_genero = c.id_genero ORDER BY c.id_cliente ASC";
->>>>>>> b717756b50e4c89eca95e22a9df69066234fa1d5
 $resClientes = mysqli_query($conexion, $clientes);
 ?>
 
@@ -138,14 +132,8 @@ $resClientes = mysqli_query($conexion, $clientes);
                     <?php
 
 while ($mostrar = mysqli_fetch_array($resClientes)) {
-<<<<<<< HEAD
-
-    $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
-    $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
-=======
     $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
     $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
->>>>>>> b717756b50e4c89eca95e22a9df69066234fa1d5
     echo '<tr>
 
 					<td>' . $mostrar['nombre'] . '</td>
@@ -227,11 +215,9 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
                                     class="form-control" placeholder="Fecha de ingreso" name="fecha_ingreso" required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlSelect">¿Es Socio?</label>
-                                <select simple class="form-control" id="exampleFormControlSelect" name="socio" required>
-                                    <option value="1">Si</option>
-                                    <option value="2">No</option>
-                                </select>
+                                <label for="exampleFormControlSelect">¿Es socio?</label>
+                                <input type="number" class="form-control" placeholder="¿Es socio?" name="num_socio"
+                                    id="cantidad">
                             </div>
                             <div class="form-group ">
                                 <label for="mySelect2">Actividad</label>
