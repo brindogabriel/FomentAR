@@ -104,7 +104,6 @@ $resClientes = mysqli_query($conexion, $clientes);
             <table id="example" class="table table-responsive display" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-
                         <th>Nombre</th>
                         <th>Domicilio</th>
                         <th>DNI</th>
@@ -117,7 +116,6 @@ $resClientes = mysqli_query($conexion, $clientes);
                 </thead>
                 <tfoot>
                     <tr>
-
                         <th>Nombre</th>
                         <th>Domicilio</th>
                         <th>DNI</th>
@@ -140,10 +138,10 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
 					<td>' . $mostrar['domicilio'] . '</td>
 					<td>' . $mostrar['DNI'] . '</td>
 					<td>' . $Fecha_nacimiento . '</td>
-					<td>' . $Fecha_ingreso . '</td>
+				<td>' . $Fecha_ingreso . '</td>
 					<td>' . $mostrar['genero_descripcion'] . '</td>
 					<td>' . (($mostrar['num_socio']) ? $mostrar['num_socio'] : "No es socio") . '</td>
-                    <td scope="col" style="display: flex;justify-content: space-between;margin: 0 auto;">
+                 <td  style="display: flex;justify-content: space-between;margin: 0 auto;">
 <a class="btn btn-warning m-1" href="./clientes_info?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
 					<a class="btn btn-warning m-1" href="../edit/modificar5?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
                     </td>
@@ -223,18 +221,14 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
                                 <label for="mySelect2">Actividad</label>
                                 <select class="form-control js-example-basic-multiple" id="mySelect2"
                                     name="actividades[]" multiple="multiple" required>
-                                    <option value="basquet">Basquet</option>
-                                    <option value="patin">Patín</option>
-                                    <option value="futbol">Futbol</option>
-                                    <option value="arte">Arte</option>
-                                    <option value="taekwondo">Taekwondo</option>
-                                    <option value="voley">Voley</option>
+                                    <option value="1">Basquet</option>
+                                    <option value="2">Futbol</option>
+                                    <option value="3">Voley</option>
+                                    <option value="4">Patín</option>
+                                    <option value="5">Taekwondo</option>
+                                    <option value="6">Arte</option>
                                 </select>
                             </div>
-
-
-
-
                             <div class="dropdown-divider mb-2"></div>
                             <button type="button" class="btn btn-secondary w-25 float-right"
                                 data-dismiss="modal">Cancelar</button>

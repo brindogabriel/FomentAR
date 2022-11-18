@@ -107,7 +107,7 @@
                                     <option value="6">Arte</option>
                                 </select>
                             </div>
-
+                            //? hola soy un comentario anashe
                             <div class="dropdown-divider"></div>
                             <button type="button" class="btn btn-secondary float-right"
                                 data-dismiss="modal">Cancelar</button>
