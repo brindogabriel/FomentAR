@@ -6,6 +6,7 @@ if (isset($_POST['submit'])) {
 
     //? VARIABLES DEL FORMULARIO
     $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
     $domicilio = $_POST["domicilio"];
     $num_domicilio = $_POST["domicilio"];
     $telefono = $_POST["telefono"];
@@ -21,11 +22,11 @@ if (isset($_POST['submit'])) {
 
     //? INSERT EN TABLA CLIENTE
     $queryidcliente = "INSERT INTO clientes
-	(num_socio, nombre, edad, id_genero, domicilio, num_domicilio, telefono, DNI, fecha_ingreso, fecha_nacimiento) VALUES ( '$num_socio', '$nombre', '$edad','$id_genero','$domicilio', '$num_domicilio', '$telefono', '$dni', '$fecha_ingreso', '$fecha_nacimiento');";
+	(num_socio, nombre,apellido, edad, id_genero, domicilio, num_domicilio, telefono, DNI, fecha_ingreso, fecha_nacimiento) VALUES ( '$num_socio', '$nombre','$apellido', '$edad','$id_genero','$domicilio', '$num_domicilio', '$telefono', '$dni', '$fecha_ingreso', '$fecha_nacimiento');";
     $query_correr = mysqli_query($conexion, $queryidcliente);
 
     //? SELECCIONA EL CLIENTE QUE SE ACABA DE REGISTRAR
-    $queryid_cliente = "SELECT id_cliente,id_genero FROM clientes WHERE DNI = $dni LIMIT 1";
+    $queryid_cliente = "SELECT id AS id_cliente,id_genero FROM clientes WHERE DNI = $dni LIMIT 1";
     $resultado = mysqli_query($conexion, $queryid_cliente);
     $coso = mysqli_fetch_array($resultado);
     $id_cli = $coso['id_cliente'];
@@ -36,23 +37,28 @@ if (isset($_POST['submit'])) {
     foreach ($actividades as $lista_actividades) {
         //? SELECCIONA ID_CATEGORIA DE CADA ACTIVIDAD SELECCIONADA
 
-        $queryid_categoria = "SELECT cat.id_actividad,cat.id_categoria, act.nombre_actividad, cat.categoria_detalle, cli.id_cliente
+        $queryid_categoria = "SELECT cat.id_actividad,cat.id_categoria, act.nombre_actividad, cat.categoria_detalle, cli.id
         FROM categorias cat,clientes cli,actividades act
         WHERE
         cli.edad BETWEEN cat.edad_inicial and cat.edad_final
         AND
         cli.id_genero = cat.id_genero
         AND
-        $lista_actividades = act.id_actividad
-        AND cli.id_cliente = $id_cli";
+         $lista_actividades = act.id
+        AND
+        act.id = cat.id_actividad
+        AND cli.id = $id_cli";
         $resultado = mysqli_query($conexion, $queryid_categoria);
         $coso = mysqli_fetch_array($resultado);
         $id_categoria = $coso['id_categoria'];
 
         //? INSERTA EN CLIENTES_ACTIVIDAD CADA ACTIVIDAD CON SU CLIENTE Y SU CATEGORIA RESPECTIVA
 
-        $query = "INSERT INTO clientes_actividad (id_cliente,id_actividad,id_categoria)
+        $query = "INSERT INTO clientes_actividad (id_cli,id_act,id_cat)
         VALUES ('$id_cli','$lista_actividades','$id_categoria')";
         $query_run = mysqli_query($conexion, $query);
     }
+    echo "Se ha registrado el cliente con exito!, revisar la db xdddd";
+} else {
+    echo "no se ha presionado nada, vuelta y llene el formulario xd";
 }

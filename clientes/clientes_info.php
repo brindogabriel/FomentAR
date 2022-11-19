@@ -80,7 +80,7 @@ echo $varsesion;
                     <div class="card-body">
                         <h5 class="card-title">Deportes de:
                             <?php
-$sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente] LIMIT 1";
+$sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cli = cli.id and cli_act.id_act = act.id and cli.id = $_GET[id] LIMIT 1";
 $result = mysqli_query($conexion, $sql);
 while ($mostrar = mysqli_fetch_assoc($result)) {
     echo $mostrar['nombre'];
@@ -88,7 +88,7 @@ while ($mostrar = mysqli_fetch_assoc($result)) {
 ?>
                         </h5>
                         <?php
-$sql = "SELECT cli.nombre, act.nombre_actividad, act.color_act FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente]";
+$sql = "SELECT cli.nombre, act.nombre_actividad, act.color_act FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cli = cli.id and cli_act.id_act = act.id and cli.id = $_GET[id]";
 $result = mysqli_query($conexion, $sql);
 while ($mostrar = mysqli_fetch_assoc($result)) {
     echo '<a href="#" class="badge badge-' . $mostrar['color_act'] . ' mr-2">' . $mostrar['nombre_actividad'] . '</a>';

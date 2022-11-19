@@ -53,9 +53,8 @@ include "./database/conexion.php";
                 </li>
                 <li class="nav-item">
                     <?php
-$rol = $_SESSION['id_rol'];
-if ($rol = 1) {
-    echo "	<a class='nav-link' href='./recaudacion'>Recaudacion</a>";
+if ($rol == 1) {
+    echo "<a class='nav-link' href='./recaudacion'>Recaudacion</a>";
 }
 ?>
                 </li>
@@ -64,9 +63,9 @@ if ($rol = 1) {
                 </li>
                 <li class="nav-item">
                     <?php
-$rol = $_SESSION['id_rol'];
+
 if ($rol == 1) {
-    echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
+    echo "<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
 }
 ?>
                 </li>

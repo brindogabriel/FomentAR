@@ -1,11 +1,18 @@
 <?php
 session_start();
 //error_reporting(0); -descomentar cuando se termina
-$varsesion = $_SESSION['usuarios'];
+$varsesion = $_SESSION['usuario'];
+$rol = $_SESSION['id_rol'];
+
 if ($varsesion == null || $varsesion = '') {
     header("location: ../errors/error_nologueado");
     die();
 }
+if ($rol != 1) {
+    header("location: ../errors/error_privilegio");
+    die();
+}
+
 include '../database/conexion.php';
 ?>
 <!doctype html>
@@ -56,41 +63,33 @@ include '../database/conexion.php';
 			-->
                 <!-- <li class="nav-item">
 					<?php
-                    $varsesion = $_SESSION['usuarios'];
-
-                    if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
-                    }
-                    ?>							
+if ($rol == 1) {
+    echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
+}
+?>
 				</li> -->
                 <!-- <li class="nav-item">
 					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
 				</li> -->
                 <li class="nav-item">
                     <?php
-                    $varsesion = $_SESSION['usuarios'];
-                    if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
-                    }
-                    ?>
+if ($rol == 1) {
+    echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
+}
+?>
                 </li>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-                echo $varsesion;
-                ?>
+                $varsesion = $_SESSION['usuario'];
+
+echo $varsesion;
+?>
             </a>
             <a class="btn btn-outline-danger" href="../database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
     </nav>
-    <?php
-    $varsesion = $_SESSION['usuarios'];
-    if ($varsesion == "usuario") {
-        header("location: ../errors/error_privilegio");
-        die();
-    }
-    ?>
     <div class="general">
         <div class="contenedor1">
             <div class="table-responsive">
@@ -105,10 +104,10 @@ include '../database/conexion.php';
                         </tr>
                     </thead>
                     <?php
-                    $sql = "SELECT usu.username,usu.password, rol.name_rol AS Rol from usuarios usu, roles rol where usu.id_rol = rol.id_rol;";
-                    $result = mysqli_query($conexion, $sql);
-                    while ($mostrar = mysqli_fetch_array($result)) {
-                    ?>
+$sql = "SELECT usu.username,usu.password, rol.name_rol AS Rol from usuarios usu, roles rol where usu.id_rol = rol.id;";
+$result = mysqli_query($conexion, $sql);
+while ($mostrar = mysqli_fetch_array($result)) {
+    ?>
                     <tbody>
                         <tr>
                             <td scope="col"><?php echo $mostrar['username'] ?></td>
@@ -124,8 +123,8 @@ include '../database/conexion.php';
 							"; ?></td>
                         </tr>
                         <?php
-                    }
-                        ?>
+}
+?>
                     </tbody>
                 </table>
             </div>

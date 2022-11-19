@@ -1,23 +1,31 @@
 <?php
 session_start();
 //error_reporting(0); -descomentar cuando se termina
+//? VARIABLES GLOBALES ?????
 $varsesion = $_SESSION['usuario'];
+$rol = $_SESSION['id_rol'];
+
 if ($varsesion == null || $varsesion = '') {
     header("location: ./errors/error_nologueado");
     die();
 }
-$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+include '..\database\conexion.php';
 ?>
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/general.css">
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
-    <title>FomentAR</title>
+    <link rel="stylesheet" href="../Resources/material-icons.css">
+    <link href="../css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/select2-bootstrap4.min.css">
+    <title>Document</title>
 </head>
 
 <body>
@@ -41,14 +49,14 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
                     <a class="nav-link" href="../pagina_principal">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class='nav-link' href='./'>Todos los Clientes</a>
+                    <a class='nav-link' href='../clientes'>Todos los Clientes</a>
                 </li>
                 <!-- <li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Eventos
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./eventos">Este mes</a>
+						<a class="dropdown-item" href="../eventos">Este mes</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="./historico">Historico</a>
 					</div>
@@ -80,20 +88,9 @@ if ($varsesion == "presidente") {
 echo $varsesion;
 ?>
             </a>
-            <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
+            <a class="btn btn-outline-danger" href="../database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
     </nav>
-    <?php
-include '../database/conexion.php';
-
-$clientes = "SELECT
-	c.id_cliente, c.num_socio, c.nombre, c.edad, g.genero_descripcion, c.domicilio, c.num_domicilio, c.telefono, c.DNI, c.fecha_nacimiento, c.fecha_ingreso
-FROM
-	clientes c,generos g
-WHERE g.id_genero = c.id_genero ORDER BY c.id_cliente ASC";
-$resClientes = mysqli_query($conexion, $clientes);
-?>
-
     <div class="botones">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
             Agregar nuevo
@@ -105,6 +102,7 @@ $resClientes = mysqli_query($conexion, $clientes);
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Apellido</th>
                         <th>Domicilio</th>
                         <th>DNI</th>
                         <th>Fecha_nacimiento</th>
@@ -117,6 +115,7 @@ $resClientes = mysqli_query($conexion, $clientes);
                 <tfoot>
                     <tr>
                         <th>Nombre</th>
+                        <th>Apellido</th>
                         <th>Domicilio</th>
                         <th>DNI</th>
                         <th>Fecha_nacimiento</th>
@@ -128,22 +127,29 @@ $resClientes = mysqli_query($conexion, $clientes);
                 </tfoot>
                 <tbody>
                     <?php
+$clientes = "SELECT
+	c.id, c.num_socio, c.nombre, c.apellido,c.edad, g.genero_descripcion, c.domicilio, c.num_domicilio, c.telefono, c.DNI, c.fecha_nacimiento, c.fecha_ingreso
+FROM
+	clientes c,generos g
+WHERE g.id = c.id_genero ORDER BY c.id ASC";
+$resClientes = mysqli_query($conexion, $clientes);
 
 while ($mostrar = mysqli_fetch_array($resClientes)) {
     $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
     $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
     echo '<tr>
 
-					<td>' . $mostrar['nombre'] . '</td>
-					<td>' . $mostrar['domicilio'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['nombre'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['apellido'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['domicilio'] . '</td>
 					<td>' . $mostrar['DNI'] . '</td>
 					<td>' . $Fecha_nacimiento . '</td>
 				<td>' . $Fecha_ingreso . '</td>
-					<td>' . $mostrar['genero_descripcion'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['genero_descripcion'] . '</td>
 					<td>' . (($mostrar['num_socio']) ? $mostrar['num_socio'] : "No es socio") . '</td>
                  <td  style="display: flex;justify-content: space-between;margin: 0 auto;">
-<a class="btn btn-warning m-1" href="./clientes_info?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
-					<a class="btn btn-warning m-1" href="../edit/modificar5?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+<a class="btn btn-warning m-1" href="./clientes_info?id=' . $mostrar['id'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
+					<a class="btn btn-warning m-1" href="../edit/modificar5?id=' . $mostrar['id'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
                     </td>
 
 					</tr>';
@@ -153,20 +159,20 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
             </table>
         </div>
     </div>
-
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+    <!-- Modal -->
+    <div class="modal hide fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo cliente</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo socio</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="formlogin">
-                        <form action="registrar_cliente.php" method="post">
+                        <form action="add_clientes.php" method="POST">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
                                 <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
@@ -181,25 +187,24 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
                                     required>
                             </div>
                             <div class="form-group">
-                                <label for="user">DNI</label>
-                                <input type="number" class="form-control" placeholder="DNI" name="dni" id="cantidad"
+                                <label for="domicilio">num Domicilio</label>
+                                <input type="number" class="form-control" placeholder="num_domicilio"
+                                    name="num_domicilio" id="cantidad" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="domicilio">telefono</label>
+                                <input type="number" class="form-control" placeholder="telefono" name="telefono"
+                                    id="cantidad" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="DNI">DNI</label>
+                                <input type="number" class="form-control" placeholder="DNI" name="DNI" id="cantidad"
                                     required>
                             </div>
                             <div class="form-group">
-                                <label for="exampleFormControlSelect3">Estado</label>
-                                <select simple class="form-control" id="exampleFormControlSelect3" name="estado"
+                                <label for="DNI">EDAD</label>
+                                <input type="number" class="form-control" placeholder="EDAD" name="edad" id="cantidad"
                                     required>
-                                    <option value="1">Activo</option>
-                                    <option value="2">Inactivo</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleFormControlSelect4">Sexo</label>
-                                <select simple class="form-control" id="exampleFormControlSelect4" name="sexo" required>
-                                    <option value="1">femenino</option>
-                                    <option value="2">masculino</option>
-                                    <option value="3">Mixto</option>
-                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="fecha_nacimiento">Fecha de nacimiento</label>
@@ -214,25 +219,31 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
                             </div>
                             <div class="form-group">
                                 <label for="exampleFormControlSelect">¿Es socio?</label>
-                                <input type="number" class="form-control" placeholder="¿Es socio?" name="num_socio"
+                                <input type="number" class="form-control" placeholder="numero o vacio" name="num_socio"
                                     id="cantidad">
                             </div>
-                            <div class="form-group ">
-                                <label for="mySelect2">Actividad</label>
-                                <select class="form-control js-example-basic-multiple" id="mySelect2"
-                                    name="actividades[]" multiple="multiple" required>
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect">Sexo</label>
+                                <select simple class="form-control" id="exampleFormrControlSelect" name="Sexo" required>
+                                    <option value="1">Femenino</option>
+                                    <option value="2">Masculino</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control js-example-basic-multiple" name="actividades[]"
+                                    multiple="multiple" style="width:100%;" id="mySelect2" lang="es">
                                     <option value="1">Basquet</option>
                                     <option value="2">Futbol</option>
                                     <option value="3">Voley</option>
-                                    <option value="4">Patín</option>
+                                    <option value="4">Patin</option>
                                     <option value="5">Taekwondo</option>
                                     <option value="6">Arte</option>
                                 </select>
                             </div>
-                            <div class="dropdown-divider mb-2"></div>
-                            <button type="button" class="btn btn-secondary w-25 float-right"
+                            <div class="dropdown-divider"></div>
+                            <button type="button" class="btn btn-secondary float-right"
                                 data-dismiss="modal">Cancelar</button>
-                            <input type="submit" class="btn btn-primary w-50" name="submit" value="Registrar">
+                            <input type="submit" class="btn btn-primary" name="submit" value="Registrar">
                         </form>
                     </div>
                 </div>
@@ -242,7 +253,19 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-    <?php include '../scripts.php';?>
+    <?php include "../scripts.php";?>
+    <script src="../js/select2.min.js"></script>
+    <script>
+    $.fn.modal.Constructor.prototype._enforceFocus = function() {};
+    $(document).ready(function() {
+        $('#mySelect2').select2({
+            dropdownParent: $('#exampleModalCenter .modal-content'),
+            placeholder: 'Seleccione una o varias actividades',
+            theme: 'classic',
+            language: 'es',
+        });
+    });
+    </script>
 </body>
 
 </html>
