@@ -94,7 +94,7 @@
                             </div>
                             <div class="form-group">
                                 <select class="form-control js-example-basic-multiple" name="actividades[]"
-                                    multiple="multiple" style="width:100%;" id="mySelect2">
+                                    multiple="multiple" style="width:100%;" id="mySelect2" lang="es">
                                     <option value="1">Basquet</option>
                                     <option value="2">Futbol</option>
                                     <option value="3">Voley</option>
@@ -113,7 +113,6 @@
             </div>
         </div>
     </div>
-
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
@@ -126,16 +125,10 @@
             dropdownParent: $('#exampleModalCenter .modal-content'),
             placeholder: 'Seleccione una o varias actividades',
             theme: 'classic',
-            language: "es",
+            language: 'es',
         });
     });
     </script>
-
-
-
-
-
-
 </body>
 
 </html>
