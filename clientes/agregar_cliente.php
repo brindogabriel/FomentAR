@@ -9,12 +9,8 @@
     <link rel="stylesheet" href="../css/general.css">
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../Resources/material-icons.css">
-
-
-
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
+    <link href="../css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/select2-bootstrap4.min.css">
     <title>Document</title>
 </head>
 
@@ -107,7 +103,6 @@
                                     <option value="6">Arte</option>
                                 </select>
                             </div>
-                            //? hola soy un comentario anashe
                             <div class="dropdown-divider"></div>
                             <button type="button" class="btn btn-secondary float-right"
                                 data-dismiss="modal">Cancelar</button>
@@ -123,13 +118,15 @@
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
     <?php include "../scripts.php";?>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="../js/select2.min.js"></script>
     <script>
     $.fn.modal.Constructor.prototype._enforceFocus = function() {};
     $(document).ready(function() {
         $('#mySelect2').select2({
             dropdownParent: $('#exampleModalCenter .modal-content'),
             placeholder: 'Seleccione una o varias actividades',
+            theme: 'classic',
+            language: "es",
         });
     });
     </script>

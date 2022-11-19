@@ -80,7 +80,6 @@ echo $varsesion;
                     <div class="card-body">
                         <h5 class="card-title">Deportes de:
                             <?php
-$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 $sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente] LIMIT 1";
 $result = mysqli_query($conexion, $sql);
 while ($mostrar = mysqli_fetch_assoc($result)) {
@@ -89,7 +88,6 @@ while ($mostrar = mysqli_fetch_assoc($result)) {
 ?>
                         </h5>
                         <?php
-$conexion = mysqli_connect("localhost", "root", "", "fomentar");
 $sql = "SELECT cli.nombre, act.nombre_actividad, act.color_act FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente]";
 $result = mysqli_query($conexion, $sql);
 while ($mostrar = mysqli_fetch_assoc($result)) {
