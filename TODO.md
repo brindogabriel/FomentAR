@@ -1,16 +1,31 @@
 # TODO LIST
 
--   🚧 REVISAR
--   ✅ TODO BIEN
--   ❌ TODO MAL
-
--   [x] ARREGLAR REGISTRAR DE TODAS LAS ACTIVDADES Y LAS CATEGORIAS Y LA BASE DE DATOS 🚧 (VOLEY,PATIN,FUTBOL)
+-   [ ] CATEGORIAS POR DEPORTE Y BASE DE DATOS (RELACIONES)
 -   [ ] REVISAR COMENTARIOS EN CADA ARCHIVO XD
--   [ ] ARCHIVO DE ACCIONES (dar de alta/baja) ??????
--   [ ] SOLO PODER DAR DE BAJA DE A UN DEPORTE POR SOCIO (POR SI SE BAJA DE UN DEPORTE PERO SIGUE HACIENDO OTRO PARA QUE NO SE LE ACUMULEN LAS CUOTAS XD) ???????????
+-   [ ] EDITAR DEPORTES DE CLIENTES (POR SI HUBO ERROR EN EL REGISTRO O SI SE REGISTRA EN OTRO DEPORTE ALGUN DIA XD)
 
 # ERRORES
 
--   [ ] -   Relaciones en db (facturacion xd)
+-   [ ] -
 
 ### ANOTACIONES O IDEAS DE POR AHI XD
+
+<!--
+1) cuando el usuario te ingrese el sexo en la pagina, vos vas a tener el valor
+"Masculino", "Femenino" o "Mixto"
+
+vas a guardar en una variable, lo que te trae la siguiente consulta
+
+Select idSexo From Sexo Where Detalle = Variable en donde el usuario cargo el sexo
+en la pagina
+
+2) Buscar el idCategoria
+
+Select idCategoria From Categorias where idSexo = "Variable que tiene el idSexo buscado arriba"
+and "Variable que calculo la edad del cliente" Between Edad_Inicial and Edad_Final
+
+Ejemplo: Edad del cliente es 5 años y sexo es mixto (idSexo = 3)
+
+SELECT idCategoria FROM `categorias` WHERE idSexo = 3 and 5 BETWEEN Edad_Inicial and Edad_Final
+
+-->

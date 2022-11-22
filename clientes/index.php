@@ -256,13 +256,14 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
     <?php include "../scripts.php";?>
     <script src="../js/select2.min.js"></script>
     <script>
+    $.fn.select2.defaults.set("language", "es");
     $.fn.modal.Constructor.prototype._enforceFocus = function() {};
     $(document).ready(function() {
         $('#mySelect2').select2({
             dropdownParent: $('#exampleModalCenter .modal-content'),
+            language: "es",
             placeholder: 'Seleccione una o varias actividades',
             theme: 'classic',
-            language: 'es',
         });
     });
     </script>
