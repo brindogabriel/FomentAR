@@ -1,0 +1,6 @@
+# TODO LIST
+
+-   [x] INDEX.PHP
+-   [x] LOGIN
+-   [x] PAGINA PRINCIPAL
+-   [ ] CLIENTES

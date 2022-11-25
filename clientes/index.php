@@ -127,11 +127,9 @@ echo $varsesion;
                 </tfoot>
                 <tbody>
                     <?php
-$clientes = "SELECT
-	c.id, c.num_socio, c.nombre, c.apellido,c.edad, g.genero_descripcion, c.domicilio, c.num_domicilio, c.telefono, c.DNI, c.fecha_nacimiento, c.fecha_ingreso
+$clientes = "SELECT *
 FROM
-	clientes c,generos g
-WHERE g.id = c.id_genero ORDER BY c.id ASC";
+	clientes";
 $resClientes = mysqli_query($conexion, $clientes);
 
 while ($mostrar = mysqli_fetch_array($resClientes)) {
@@ -159,7 +157,6 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
             </table>
         </div>
     </div>
-    <!-- Modal -->
     <div class="modal hide fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

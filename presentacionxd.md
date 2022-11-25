@@ -1,6 +1,6 @@
 # FomentAR
 
-Bueno voy a pasar a mostrar un proyecto que diseñe ya hace un tiempo.
+Bueno voy a pasar a mostrar un proyecto que desarrollé ya hace un tiempo.
 
 (les mostrar el inicio de usuario) Es un sistema de gestión, control y optimización (en aquel momento)
 
