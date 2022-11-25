@@ -1,6 +1,7 @@
 # TODO LIST
 
 -   [ ] CATEGORIAS POR DEPORTE Y BASE DE DATOS (RELACIONES)
+-   [ ] CLIENTE - ACTIVIDADES - CATEGORIA
 -   [ ] REVISAR COMENTARIOS EN CADA ARCHIVO XD
 -   [ ] EDITAR DEPORTES DE CLIENTES (POR SI HUBO ERROR EN EL REGISTRO O SI SE REGISTRA EN OTRO DEPORTE ALGUN DIA XD)
 
@@ -12,7 +13,7 @@
 
 <!--
 1) cuando el usuario te ingrese el sexo en la pagina, vos vas a tener el valor
-"Masculino", "Femenino" o "Mixto"
+"Masculino", "Femenino"
 
 vas a guardar en una variable, lo que te trae la siguiente consulta
 
