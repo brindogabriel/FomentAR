@@ -25,7 +25,7 @@ include '..\database\conexion.php';
     <link rel="stylesheet" href="../Resources/material-icons.css">
     <link href="../css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/select2-bootstrap4.min.css">
-    <title>Document</title>
+    <title>FomentAR</title>
 </head>
 
 <body>
@@ -133,21 +133,21 @@ FROM
 $resClientes = mysqli_query($conexion, $clientes);
 
 while ($mostrar = mysqli_fetch_array($resClientes)) {
-    $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
-    $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
+    $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
+    $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
     echo '<tr>
 
-					<td style="text-transform:capitalize;">' . $mostrar['nombre'] . '</td>
-					<td style="text-transform:capitalize;">' . $mostrar['apellido'] . '</td>
-					<td style="text-transform:capitalize;">' . $mostrar['domicilio'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['Nombre'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['Apellido'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['Domicilio'] . '</td>
 					<td>' . $mostrar['DNI'] . '</td>
 					<td>' . $Fecha_nacimiento . '</td>
 				<td>' . $Fecha_ingreso . '</td>
-					<td style="text-transform:capitalize;">' . $mostrar['genero_descripcion'] . '</td>
-					<td>' . (($mostrar['num_socio']) ? $mostrar['num_socio'] : "No es socio") . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['idSexo'] . '</td>
+					<td>' . $mostrar['idParametro_Socio'] . '</td>
                  <td  style="display: flex;justify-content: space-between;margin: 0 auto;">
-<a class="btn btn-warning m-1" href="./clientes_info?id=' . $mostrar['id'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
-					<a class="btn btn-warning m-1" href="../edit/modificar5?id=' . $mostrar['id'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+<a class="btn btn-warning m-1" href="./clientes_info?id=' . $mostrar['Nro_orden'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
+					<a class="btn btn-warning m-1" href="../edit/modificar5?id=' . $mostrar['Nro_orden'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
                     </td>
 
 					</tr>';

@@ -60,13 +60,11 @@ if (isset($_POST['submit'])) {
         cli.Nro_orden = $Nro_orden";
         $resultado = mysqli_query($conexion, $queryid_categoria);
         $coso = mysqli_fetch_array($resultado);
-        $id_categoria = $coso['id_categoria'];
+        $id_categoria = $coso['idCategoria'];
 
-        $query = "INSERT INTO actividades(Nro_orden, idDisciplina,idDisciplina) VALUES ('$Nro_orden', '$id_categoria','$lista_actividades')";
+        $query = "INSERT INTO actividades (Nro_Orden, idDisciplina) VALUES ('$Nro_orden', '$id_categoria')";
         $query_run = mysqli_query($conexion, $query);
     }
-
-    $mysqli->close(); // Cerrar conexión
 
 /*echo "<script>history.go(-1);</script>"; */
     echo "todo ok";
