@@ -169,7 +169,7 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
                 </div>
                 <div class="modal-body">
                     <div class="formlogin">
-                        <form action="add_clientes.php" method="POST">
+                        <form action="registrar_cliente.php" method="POST">
                             <div class="form-group">
                                 <label for="nombre">Nombre</label>
                                 <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
@@ -231,10 +231,10 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
                                     multiple="multiple" style="width:100%;" id="mySelect2" lang="es">
                                     <option value="1">Basquet</option>
                                     <option value="2">Futbol</option>
-                                    <option value="3">Voley</option>
-                                    <option value="4">Patin</option>
-                                    <option value="5">Taekwondo</option>
-                                    <option value="6">Arte</option>
+                                    <option value="8">Voley</option>
+                                    <option value="11">Patin</option>
+                                    <option value=16">Taekwondo</option>
+                                    <option value="18">Arte</option>
                                 </select>
                             </div>
                             <div class="dropdown-divider"></div>
