@@ -22,11 +22,6 @@ if (isset($_POST['submit'])) {
     $Edad = strtotime($fecha_ingreso) - strtotime($fecha_nacimiento);
     $diferencia_anios = intval($Edad / 60 / 60 / 24 / 365.25);
 
-//! HACER SELECT DE QUE CATEGORIA ES CON EL BETWEEN XD
-    // if ($actividades == "basquet" && $sexo = 2 && $diferencia_anios <= 6 || $diferencia_anios >= 10) {
-    //     $idCategoria = 1;
-    // }
-
 // crear cadena de inserción SQL
     $sql = "INSERT INTO clientes(Nombre,Apellido,Domicilio,DNI,Fecha_nacimiento,Fecha_ingreso,idParametro_Socio,idEstado,idSexo,edad) VALUES ('$nombre','$apellido','$domicilio','$dni','$fecha_nacimiento','$fecha_ingreso','$socio','$estado','$sexo', '$edad')";
 
