@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
         AND
         dis.idCategoria = cat.idCategoria
         AND
-        cli.Nro_orden = 1";
+        cli.Nro_orden = $Nro_orden";
         $resultado = mysqli_query($conexion, $queryid_categoria);
         $coso = mysqli_fetch_array($resultado);
         $id_categoria = $coso['id_categoria'];
