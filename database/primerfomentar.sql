@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-12-2018 a las 00:40:41
--- Versión del servidor: 10.1.36-MariaDB
--- Versión de PHP: 7.2.10
+-- Tiempo de generación: 26-11-2022 a las 04:00:44
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `fomentar`
+-- Base de datos: `primerfomentar`
 --
 
 -- --------------------------------------------------------
@@ -53,7 +52,7 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`idCategoria`, `Descripcion`, `Edad_Inicial`, `Edad_Final`, `idSexo`) VALUES
-(1, 'pre-mini-basq', 6, 10, 3),
+(1, 'pre-mini-basq', 6, 10, 2),
 (2, 'mini-mixto-basq', 11, 12, 3),
 (3, 'sub-15-fem-basq', 13, 17, 1),
 (4, 'sub-15-masc-basq', 13, 15, 2),
@@ -89,7 +88,8 @@ CREATE TABLE `clientes` (
   `idParametro_Socio` int(11) DEFAULT NULL,
   `idEstado` int(11) DEFAULT NULL,
   `idCategoria` int(11) DEFAULT NULL,
-  `idSexo` int(1) NOT NULL
+  `idSexo` int(1) NOT NULL,
+  `edad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -253,8 +253,8 @@ INSERT INTO `usuarios` (`idUsuario`, `Usuario`, `Password`, `idRole`, `LoggedIn`
 --
 ALTER TABLE `actividades`
   ADD PRIMARY KEY (`idActividad`),
-  ADD UNIQUE KEY `Nro_orden` (`Nro_Orden`),
-  ADD KEY `idDisciplina` (`idDisciplina`);
+  ADD KEY `idDisciplina` (`idDisciplina`),
+  ADD KEY `Nro_orden` (`Nro_Orden`) USING BTREE;
 
 --
 -- Indices de la tabla `categorias`
