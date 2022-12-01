@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2022 a las 20:18:46
+-- Tiempo de generación: 01-12-2022 a las 21:04:07
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -95,6 +95,7 @@ CREATE TABLE `clientes` (
   `id_cliente` int(11) NOT NULL,
   `num_socio` int(11) DEFAULT NULL,
   `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
   `edad` int(11) NOT NULL,
   `id_genero` int(11) NOT NULL,
   `domicilio` varchar(32) NOT NULL,
@@ -344,8 +345,8 @@ ALTER TABLE `clientes`
 -- Filtros para la tabla `clientes_actividad`
 --
 ALTER TABLE `clientes_actividad`
+  ADD CONSTRAINT `clientes_actividad_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_cat`),
   ADD CONSTRAINT `fk_clientes_actividad_actividades` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_clientes_actividad_categorias` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_clientes_actividad_clientes` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
