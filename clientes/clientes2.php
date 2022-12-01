@@ -167,6 +167,7 @@ include "../database/conexion.php";
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+    <?php include "../scripts.php" ?>
 </body>
 
 </html>
