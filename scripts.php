@@ -1,10 +1,10 @@
-//* ACTIVAR TOOLTIPS EN TODOS LADOS
+<!-- //* ACTIVAR TOOLTIPS EN TODOS LADOS -->
 <script>
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
-//? ACTIVAR ACORDEON ????
+<!-- //? ACTIVAR ACORDEON ???? -->
 <script>
 var acc = document.getElementsByClassName("accordion");
 var i;
@@ -21,7 +21,7 @@ for (i = 0; i < acc.length; i++) {
     });
 }
 </script>
-//* NO PERMITIR LETRA E NI OTRAS COSAS EN INPUT NUMBER
+<!-- //* NO PERMITIR LETRA E NI OTRAS COSAS EN INPUT NUMBER -->
 <script>
 $(document).ready(function() {
     $('input#cantidad')
@@ -32,13 +32,13 @@ $(document).ready(function() {
         });
 });
 </script>
-//? HACER ANDAR EL INPUT DEL CALENDARIO
+<!-- //? HACER ANDAR EL INPUT DEL CALENDARIO -->
 <script>
 $(function() {
     $('[data-toggle="popover"]').popover();
 });
 </script>
-//* LOGIN (VER PASSWORD)
+<!-- //* LOGIN (VER PASSWORD) -->
 <script>
 function myFunction() {
     var x = document.getElementById("myInput");
@@ -49,7 +49,7 @@ function myFunction() {
     }
 }
 </script>
-//* ACTIVAR TOOLTIPS EN TODOS LADOS
+<!-- //* ACTIVAR TOOLTIPS EN TODOS LADOS -->
 <script>
 $(function() {
     $('[data-toggle="tooltip"]').tooltip();
@@ -57,7 +57,7 @@ $(function() {
 </script>
 
 
-//* DATATABLES ( VER CUAL FUNCIONA )
+<!-- //* DATATABLES ( VER CUAL FUNCIONA ) -->
 <link rel="stylesheet" type="text/css"
     href="../Resources/DataTables/DataTables-1.10.18/css/dataTables.bootstrap4.css" />
 <link rel="stylesheet" type="text/css" href="../Resources/DataTables/Buttons-1.5.4/css/buttons.bootstrap4.css" />

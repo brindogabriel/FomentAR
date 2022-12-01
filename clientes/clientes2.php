@@ -102,8 +102,8 @@ include "../database/conexion.php";
     <div class="container-fluid mt-1">
         <div class="buscar-usuarios mb-4">
             <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>?nombre=$cliente" method="GET">
-                <input name="cliente" class="form-control w-50 ml-0" placeholder="buscar cliente...">
-                <button type="submit" class="btn btn-danger mt-2 w-25">Buscar</button>
+                <input type="search" name="cliente" class="form-control w-50 ml-0" placeholder="buscar cliente">
+                <button type="submit" class="btn btn-danger mt-2 w-25">Buscar <i class="bi bi-search"></i></button>
             </form>
         </div>
         <div class="row">
