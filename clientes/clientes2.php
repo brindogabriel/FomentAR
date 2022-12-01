@@ -18,7 +18,11 @@ include "../database/conexion.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/general.css">
+
+
+    <link rel="stylesheet" href="./Draggable Slider Tabs/style.css">
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
     <title>FomentAR</title>
 </head>
@@ -80,11 +84,25 @@ include "../database/conexion.php";
             <a class="btn btn-outline-danger" href="./database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
     </nav>
+    <!-- FILTRAR POR ACTIVIDAD -->
+    <div class="wrapper">
+        <div class="icon"><i id="left" class="bi bi-arrow-left"></i></div>
+        <ul class="tabs-box">
+            <li class="tab active">Todos los clientes</li>
+            <li class="tab"><a href="./clientes2.php?id_actividad=1">Basquet</a></li>
+            <li class="tab">Futbol</li>
+            <li class="tab">Voley</li>
+            <li class="tab">Arte</li>
+            <li class="tab">Taekwondo</li>
+            <li class="tab">Patin</li>
+        </ul>
+        <div class="icon"><i id="right" class="bi bi-arrow-right"></i></div>
+    </div>
     <!-- BUSCAR CLIENTE ANASHE -->
-    <div class="container-fluid">
+    <div class="container-fluid mt-1">
         <div class="buscar-usuarios mb-4">
-            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>?nombre=$client" method="GET">
-                Buscar: <input name="cliente" class="form-control w-50 ml-0" placeholder="buscar cliente...">
+            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>?nombre=$cliente" method="GET">
+                <input name="cliente" class="form-control w-50 ml-0" placeholder="buscar cliente...">
                 <button type="submit" class="btn btn-danger mt-2 w-25">Buscar</button>
             </form>
         </div>
