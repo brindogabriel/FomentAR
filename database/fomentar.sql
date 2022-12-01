@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2022 a las 15:45:05
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 01-12-2022 a las 20:18:46
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `actividades` (
   `id_actividad` int(11) NOT NULL,
   `nombre_actividad` varchar(45) NOT NULL,
   `color_act` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `actividades`
@@ -60,7 +60,30 @@ CREATE TABLE `categorias` (
   `categoria_detalle` varchar(100) DEFAULT NULL,
   `id_categoria` int(11) NOT NULL,
   `precios` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id_cat`, `id_actividad`, `edad_inicial`, `edad_final`, `id_genero`, `categoria_detalle`, `id_categoria`, `precios`) VALUES
+(5, 1, 6, 10, 1, 'PRE-MINI-BASQ-MIXTO ', 1, 500),
+(6, 1, 6, 10, 2, 'PRE-MINI-BASQ-MIXTO ', 1, 500),
+(7, 1, 11, 12, 1, 'MINI-BASQ-MIXTO ', 2, 550),
+(8, 1, 11, 12, 2, 'MINI-BASQ-MIXTO ', 2, 550),
+(9, 1, 13, 17, 1, 'SUB-15-FEM', 3, 600),
+(10, 1, 13, 15, 2, 'SUB-15-MASC', 4, 600),
+(11, 1, 16, 19, 2, 'SUB-17-MASC', 5, 650),
+(12, 1, 18, 45, 1, 'PRIMERA-FEM-BASQ', 6, 700),
+(13, 1, 20, 45, 2, 'PRIMERA-MASC-BASQ', 7, 700),
+(14, 2, 6, 10, 1, 'PRE-MINI-Fut-MIXTO', 1, 500),
+(15, 2, 6, 10, 2, 'PRE-MINI-Fut-MIXTO', 1, 500),
+(16, 2, 11, 12, 1, 'MINI-FUT-MIXTO ', 2, 550),
+(17, 2, 11, 12, 2, 'MINI-FUT-MIXTO ', 2, 550),
+(18, 3, 6, 10, 1, 'PRE-MINI-Voley-MIXTO	', 1, 500),
+(19, 3, 6, 10, 2, 'PRE-MINI-Voley-MIXTO	', 1, 500),
+(21, 3, 11, 12, 1, 'MINI-Voley-MIXTO', 2, 550),
+(22, 3, 11, 12, 2, 'MINI-voley-MIXTO', 2, 550);
 
 -- --------------------------------------------------------
 
@@ -80,7 +103,7 @@ CREATE TABLE `clientes` (
   `DNI` int(11) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `fecha_ingreso` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -93,7 +116,7 @@ CREATE TABLE `clientes_actividad` (
   `id_cliente` int(11) NOT NULL,
   `id_actividad` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -106,7 +129,7 @@ CREATE TABLE `detalle_factura` (
   `idfacctura` int(11) NOT NULL,
   `idcat` int(11) NOT NULL,
   `preciototal` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -118,7 +141,7 @@ CREATE TABLE `factura` (
   `idfactura` int(11) NOT NULL,
   `fecha` datetime DEFAULT NULL,
   `idcli` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -129,7 +152,7 @@ CREATE TABLE `factura` (
 CREATE TABLE `generos` (
   `id_genero` int(11) NOT NULL,
   `genero_descripcion` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `generos`
@@ -148,7 +171,7 @@ INSERT INTO `generos` (`id_genero`, `genero_descripcion`) VALUES
 CREATE TABLE `roles` (
   `id_rol` int(11) NOT NULL,
   `name_rol` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `roles`
@@ -169,7 +192,7 @@ CREATE TABLE `usuarios` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `id_rol` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='tabla de usuarios';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='tabla de usuarios';
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -262,7 +285,7 @@ ALTER TABLE `actividades`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
