@@ -51,42 +51,34 @@ include '..\database\conexion.php';
                 <li class="nav-item">
                     <a class='nav-link' href='../clientes'>Todos los Clientes</a>
                 </li>
-                <!-- <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Eventos
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="../eventos">Este mes</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="./historico">Historico</a>
-					</div>
-				</li>
-			-->
-                <!-- <li class="nav-item">
-					<?php
-$varsesion = $_SESSION['usuario'];
-if ($varsesion == "presidente") {
-    echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
-}
-?>
-				</li> -->
-                <!-- <li class="nav-item">
-					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
-				</li> -->
                 <li class="nav-item">
-                    <?php
-$varsesion = $_SESSION['usuario'];
-if ($varsesion == "presidente") {
-    echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
-}
-?>
+                    <a class='nav-link' href='../eventos'>Eventos</a>
                 </li>
+                <?php
+                if ($rol == 1) {
+                    echo "<li class='nav-item'>
+                        <a class='nav-link' href='../recaudacion_total'>Recaudacion</a>
+                        </li>";
+                }
+                ?>
+                <li class="nav-item">
+                    <a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
+                </li>
+                <?php
+                if ($rol == 1) {
+                    echo "
+                         <li class='nav-item'>
+                        <a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>
+                        </li>";
+                }
+                ?>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-echo $varsesion;
-?>
+                $varsesion = $_SESSION['usuario'];
+                echo $varsesion;
+                ?>
             </a>
             <a class="btn btn-outline-danger" href="../database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
@@ -127,32 +119,32 @@ echo $varsesion;
                 </tfoot>
                 <tbody>
                     <?php
-$clientes = "SELECT *
+                    $clientes = "SELECT *
 FROM
 	clientes";
-$resClientes = mysqli_query($conexion, $clientes);
+                    $resClientes = mysqli_query($conexion, $clientes);
 
-while ($mostrar = mysqli_fetch_array($resClientes)) {
-    $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['Fecha_nacimiento']));
-    $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['Fecha_ingreso']));
-    echo '<tr>
+                    while ($mostrar = mysqli_fetch_array($resClientes)) {
+                        $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
+                        $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
+                        echo '<tr>
 
-					<td style="text-transform:capitalize;">' . $mostrar['Nombre'] . '</td>
-					<td style="text-transform:capitalize;">' . $mostrar['Apellido'] . '</td>
-					<td style="text-transform:capitalize;">' . $mostrar['Domicilio'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['nombre'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['apellido'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['domicilio'] . '</td>
 					<td>' . $mostrar['DNI'] . '</td>
 					<td>' . $Fecha_nacimiento . '</td>
 				<td>' . $Fecha_ingreso . '</td>
-					<td style="text-transform:capitalize;">' . $mostrar['idSexo'] . '</td>
-					<td>' . $mostrar['idParametro_Socio'] . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['id_genero'] . '</td>
+					<td>' . $mostrar['num_socio'] . '</td>
                  <td  style="display: flex;justify-content: space-between;margin: 0 auto;">
-<a class="btn btn-warning m-1" href="./clientes_info?id=' . $mostrar['Nro_orden'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
-					<a class="btn btn-warning m-1" href="../edit/modificar5?id=' . $mostrar['Nro_orden'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
+<a class="btn btn-warning m-1" href="./clientes_info?id_clien=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
+					<a class="btn btn-warning m-1" href="../edit/modificar5?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
                     </td>
 
 					</tr>';
-}
-?>
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -250,7 +242,7 @@ while ($mostrar = mysqli_fetch_array($resClientes)) {
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-    <?php include "../scripts.php";?>
+    <?php include "../scripts.php"; ?>
     <script src="../js/select2.min.js"></script>
     <script>
     $.fn.select2.defaults.set("language", "es");

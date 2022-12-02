@@ -1,5 +1,8 @@
 <?php
-//! CONECTAR A LA BASE DE DATOS XD
+
+//! USAR DB FOMENTAR / NO USAR PRIMER FOMENTAR
+
+//! CONECTAR A LA BASE DE DATOS
 include "../database/conexion.php";
 //! VERIFICAR ERRORES DE CONEXION CON LA BASE DE DATOS
 if ($conexion->connect_error) {
@@ -14,8 +17,7 @@ if (isset($_POST['submit'])) {
     $dni = $_POST["DNI"];
     $fecha_nacimiento = $_POST["fecha_nacimiento"];
     $fecha_ingreso = $_POST["fecha_ingreso"];
-    $socio = 1;
-    $estado = 1;
+    $socio = $_POST["num_socio"];
     $sexo = $_POST["Sexo"];
     $actividades = $_POST["actividades"];
     $edad = $_POST["edad"];
@@ -23,7 +25,7 @@ if (isset($_POST['submit'])) {
     $diferencia_anios = intval($Edad / 60 / 60 / 24 / 365.25);
 
     // crear cadena de inserción SQL
-    $sql = "INSERT INTO clientes(Nombre,Apellido,Domicilio,DNI,Fecha_nacimiento,Fecha_ingreso,idParametro_Socio,idEstado,idSexo,edad) VALUES ('$nombre','$apellido','$domicilio','$dni','$fecha_nacimiento','$fecha_ingreso','$socio','$estado','$sexo', '$edad')";
+    $sql = "INSERT INTO clientes(nombre,apellido,domicilio,DNI,fecha_nacimiento,fecha_ingreso,num_socio,id_genero,edad) VALUES ('$nombre','$apellido','$domicilio','$dni','$fecha_nacimiento','$fecha_ingreso','$socio','$sexo', '$edad')";
 
     // Ejecutar y validar el comando SQL
     if ($conexion->query($sql) === true) {
@@ -32,10 +34,10 @@ if (isset($_POST['submit'])) {
         echo "Error: " . $sql . "<br>" . $conexion->error;
     }
 
-    $sqlNro_orden = "SELECT Nro_orden FROM clientes WHERE DNI = $dni LIMIT 1";
+    $sqlNro_orden = "SELECT id_cliente FROM clientes WHERE DNI = $dni LIMIT 1";
     $resultado = mysqli_query($conexion, $sqlNro_orden);
     $coso = mysqli_fetch_array($resultado);
-    $Nro_orden = $coso['Nro_orden'];
+    $id_cliente = $coso['id_cliente'];
 
     //! FOREACH POR CADA ACTIVIDAD ANASHE
 
@@ -52,12 +54,12 @@ if (isset($_POST['submit'])) {
         AND
         dis.idCategoria = cat.idCategoria
         AND
-        cli.Nro_orden = $Nro_orden";
+        cli.id_cliente = $id_cliente";
         $resultado = mysqli_query($conexion, $queryid_categoria);
         $coso = mysqli_fetch_array($resultado);
-        $id_categoria = $coso['idCategoria'];
+        $id_categoria = $coso['id_categoria'];
 
-        $query = "INSERT INTO actividades (Nro_Orden, idDisciplina) VALUES ('$Nro_orden', '$id_categoria')";
+        $query = "INSERT INTO actividades (Nro_Orden, idDisciplina) VALUES ('$id_cliente', '$id_categoria')";
         $query_run = mysqli_query($conexion, $query);
     }
 
