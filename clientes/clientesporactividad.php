@@ -89,7 +89,7 @@ include "../database/conexion.php";
         <div class="icon"><i id="left" class="bi bi-arrow-left"></i></div>
         <ul class="tabs-box">
             <li class="tab active">Todos los clientes</li>
-            <li class="tab"><a href="./clientes2.php?id_actividad=1">Basquet</a></li>
+            <li class="tab"><a href="./clientesporactividad.php?id_actividad=1">Basquet</a></li>
             <li class="tab">Futbol</li>
             <li class="tab">Voley</li>
             <li class="tab">Arte</li>
