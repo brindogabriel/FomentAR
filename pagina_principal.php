@@ -5,7 +5,7 @@ session_start();
 $varsesion = $_SESSION['usuario'];
 $rol = $_SESSION['id_rol'];
 
-if ($varsesion == null || $varsesion = '') {
+if ($varsesion == NULL || $varsesion = '' || empty($varsesion)) {
     header("location: ./errors/error_nologueado");
     die();
 }

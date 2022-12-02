@@ -30,7 +30,6 @@ include '..\database\conexion.php';
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
         <a class="navbar-brand mb-0 h1" href="../pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
@@ -96,10 +95,11 @@ include '..\database\conexion.php';
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Domicilio</th>
+                        <th>NUM DOMICILIO</th>
                         <th>DNI</th>
                         <th>Fecha_nacimiento</th>
                         <th>Fecha_ingreso</th>
-                        <th>Sexo</th>
+                        <th>genero</th>
                         <th>Numero de socio</th>
                         <th>Opciones</th>
                     </tr>
@@ -109,36 +109,36 @@ include '..\database\conexion.php';
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Domicilio</th>
+                        <th>NUM DOMICILIO</th>
                         <th>DNI</th>
                         <th>Fecha_nacimiento</th>
                         <th>Fecha_ingreso</th>
-                        <th>Sexo</th>
+                        <th>genero</th>
                         <th>Numero de socio</th>
                         <th>Opciones</th>
                     </tr>
                 </tfoot>
                 <tbody>
                     <?php
-                    $clientes = "SELECT *
-FROM
-	clientes";
+                    $clientes = "SELECT c.id_cliente,c.num_socio, c.nombre, c.apellido, c.edad, g.genero_descripcion, domicilio, num_domicilio, telefono, DNI, fecha_nacimiento, fecha_ingreso
+                    FROM
+	                clientes c JOIN generos g ON g.id_genero = c.id_genero";
                     $resClientes = mysqli_query($conexion, $clientes);
-
                     while ($mostrar = mysqli_fetch_array($resClientes)) {
                         $Fecha_nacimiento = date("d/m/Y", strtotime($mostrar['fecha_nacimiento']));
                         $Fecha_ingreso = date("d/m/Y", strtotime($mostrar['fecha_ingreso']));
                         echo '<tr>
-
 					<td style="text-transform:capitalize;">' . $mostrar['nombre'] . '</td>
 					<td style="text-transform:capitalize;">' . $mostrar['apellido'] . '</td>
 					<td style="text-transform:capitalize;">' . $mostrar['domicilio'] . '</td>
+					<td>' . $mostrar['num_domicilio'] . '</td>
 					<td>' . $mostrar['DNI'] . '</td>
 					<td>' . $Fecha_nacimiento . '</td>
-				<td>' . $Fecha_ingreso . '</td>
-					<td style="text-transform:capitalize;">' . $mostrar['id_genero'] . '</td>
-					<td>' . $mostrar['num_socio'] . '</td>
-                 <td  style="display: flex;justify-content: space-between;margin: 0 auto;">
-<a class="btn btn-warning m-1" href="./clientes_info?id_clien=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
+				    <td>' . $Fecha_ingreso . '</td>
+					<td style="text-transform:capitalize;">' . $mostrar['genero_descripcion'] . '</td>
+					<td>' . (($mostrar['num_socio']) ? $mostrar['num_socio'] : "No es socio") . '</td>
+                    <td  style="display: flex;justify-content: space-between;margin: 0 auto;">
+                    <a class="btn btn-warning m-1" href="./clientes_info?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="INFO"><i class="material-icons">find_in_page</i></a>
 					<a class="btn btn-warning m-1" href="../edit/modificar5?id_cliente=' . $mostrar['id_cliente'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
                     </td>
 
@@ -154,7 +154,7 @@ FROM
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo socio</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo cliente</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -46,29 +46,29 @@ include "../database/conexion.php";
                 </li>
                 <li class="nav-item">
                     <?php
-$varsesion = $_SESSION['usuario'];
-if ($varsesion == "presidente") {
-    echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
-}
-?>
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
+                    }
+                    ?>
                 </li>
                 <li class="nav-item">
                     <a class='nav-link' href='../reporte_errores'>Reporte Errores</a>
                 </li>
                 <li class="nav-item">
                     <?php
-$varsesion = $_SESSION['usuario'];
-if ($varsesion == "presidente") {
-    echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
-}
-?>
+                    $varsesion = $_SESSION['usuario'];
+                    if ($varsesion == "presidente") {
+                        echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
+                    }
+                    ?>
                 </li>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
-echo $varsesion;
-?>
+                echo $varsesion;
+                ?>
             </a>
             <a class="btn btn-outline-danger" href="../database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
@@ -80,19 +80,19 @@ echo $varsesion;
                     <div class="card-body">
                         <h5 class="card-title">Deportes de:
                             <?php
-$sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cli = cli.id and cli_act.id_act = act.id and cli.id = $_GET[id] LIMIT 1";
-$result = mysqli_query($conexion, $sql);
-while ($mostrar = mysqli_fetch_assoc($result)) {
-    echo $mostrar['nombre'];
-}
-?>
+                            $sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente] LIMIT 1";
+                            $result = mysqli_query($conexion, $sql);
+                            while ($mostrar = mysqli_fetch_assoc($result)) {
+                                echo $mostrar['nombre'];
+                            }
+                            ?>
                         </h5>
                         <?php
-$sql = "SELECT cli.nombre, act.nombre_actividad, act.color_act FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cli = cli.id and cli_act.id_act = act.id and cli.id = $_GET[id]";
-$result = mysqli_query($conexion, $sql);
-while ($mostrar = mysqli_fetch_assoc($result)) {
-    echo '<a href="#" class="badge badge-' . $mostrar['color_act'] . ' mr-2">' . $mostrar['nombre_actividad'] . '</a>';
-}?>
+                        $sql = "SELECT cli.nombre, act.nombre_actividad, act.color_act FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.id_cliente = $_GET[id_cliente]";
+                        $result = mysqli_query($conexion, $sql);
+                        while ($mostrar = mysqli_fetch_assoc($result)) {
+                            echo '<a href="#" class="badge badge-' . $mostrar['color_act'] . ' mr-2">' . $mostrar['nombre_actividad'] . '</a>';
+                        } ?>
                     </div>
                 </div>
             </div>
@@ -164,7 +164,7 @@ while ($mostrar = mysqli_fetch_assoc($result)) {
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
-    <?php include "../scripts.php";?>
+    <?php include "../scripts.php"; ?>
 </body>
 
 </html>
