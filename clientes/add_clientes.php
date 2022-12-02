@@ -37,17 +37,7 @@ if (isset($_POST['submit'])) {
     foreach ($actividades as $lista_actividades) {
         //? SELECCIONA ID_CATEGORIA DE CADA ACTIVIDAD SELECCIONADA
 
-        $queryid_categoria = "SELECT cat.id_actividad,cat.id_categoria, act.nombre_actividad, cat.categoria_detalle, cli.id
-        FROM categorias cat,clientes cli,actividades act
-        WHERE
-        cli.edad BETWEEN cat.edad_inicial and cat.edad_final
-        AND
-        cli.id_genero = cat.id_genero
-        AND
-         $lista_actividades = act.id
-        AND
-        act.id = cat.id_actividad
-        AND cli.id = $id_cli";
+        $queryid_categoria = "SELECT cat.id_actividad,cat.id_categoria, act.nombre_actividad, cat.categoria_detalle, cli.id_cliente FROM categorias cat,clientes cli,actividades act WHERE cli.edad BETWEEN cat.edad_inicial and cat.edad_final AND cli.id_genero = cat.id_genero AND 1 = act.id_actividad AND act.id_actividad = cat.id_actividad AND cli.id_cliente = 1;";
         $resultado = mysqli_query($conexion, $queryid_categoria);
         $coso = mysqli_fetch_array($resultado);
         $id_categoria = $coso['id_categoria'];

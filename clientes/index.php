@@ -90,7 +90,7 @@ include '..\database\conexion.php';
     <div class="contenedor">
         <div class="table-responsive p-2" class="w-100">
             <table id="example" class="table table-responsive display" width="100%" cellspacing="0">
-                <thead>
+                <thead class="thead-dark">
                     <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
@@ -104,7 +104,7 @@ include '..\database\conexion.php';
                         <th>Opciones</th>
                     </tr>
                 </thead>
-                <tfoot>
+                <tfoot class="thead-dark">
                     <tr>
                         <th>Nombre</th>
                         <th>Apellido</th>
