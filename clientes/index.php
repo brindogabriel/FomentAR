@@ -223,10 +223,10 @@ include '..\database\conexion.php';
                                     multiple="multiple" style="width:100%;" id="mySelect2" lang="es">
                                     <option value="1">Basquet</option>
                                     <option value="2">Futbol</option>
-                                    <option value="8">Voley</option>
-                                    <option value="11">Patin</option>
-                                    <option value=16">Taekwondo</option>
-                                    <option value="18">Arte</option>
+                                    <option value="3">Voley</option>
+                                    <option value="4">Patin</option>
+                                    <option value="5">Taekwondo</option>
+                                    <option value="6">Arte</option>
                                 </select>
                             </div>
                             <div class="dropdown-divider"></div>

@@ -44,17 +44,21 @@ if (isset($_POST['submit'])) {
     //! FOREACH POR CADA ACTIVIDAD ANASHE
 
     foreach ($actividades as $lista_actividades) {
-        //? SELECCIONA ID_CATEGORIA DE CADA ACTIVIDAD SELECCIONADA
-        //? ARREGLAR QUERY CON COLUMNAS ACTUALES
-        $queryid_categoria = "SELECT cat.id_actividad,cat.id_categoria, act.nombre_actividad, cat.categoria_detalle, cli.id_cliente, cli.id_genero
-        FROM categorias cat,clientes cli,actividades act 
-        WHERE cli.edad BETWEEN cat.edad_inicial and cat.edad_final
-         AND $id_genero = cat.id_genero 
-         AND $lista_actividades = act.id_actividad 
-         AND act.id_actividad = cat.id_actividad 
-         AND cli.id_cliente = $id_cliente;";
+        $queryid_categoria = "SELECT cat.id_categoria, cat.categoria_detalle
+        FROM categorias cat
+        JOIN clientes cli ON
+        cli.edad BETWEEN cat.edad_inicial AND cat.edad_final
+        JOIN actividades act ON
+        cat.id_actividad = act.id_actividad
+        AND
+        $lista_actividades = cat.id_actividad
+        AND
+        $id_genero = cat.id_genero
+        AND
+        $id_cliente = cli.id_cliente;";
         $resultado = mysqli_query($conexion, $queryid_categoria);
         $coso2 = mysqli_fetch_array($resultado);
+
         $id_categoria = $coso2['id_categoria'];
 
         $query = "INSERT INTO clientes_actividad (id_cliente,id_actividad,id_categoria) VALUES ('$id_cliente','$lista_actividades','$id_categoria')";
