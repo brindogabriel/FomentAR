@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2022 a las 22:35:05
+-- Tiempo de generación: 05-12-2022 a las 03:42:20
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -345,7 +345,7 @@ ALTER TABLE `clientes`
 -- Filtros para la tabla `clientes_actividad`
 --
 ALTER TABLE `clientes_actividad`
-  ADD CONSTRAINT `clientes_actividad_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`),
+  ADD CONSTRAINT `clientes_actividad_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id_categoria`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_clientes_actividad_actividades` FOREIGN KEY (`id_actividad`) REFERENCES `actividades` (`id_actividad`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_clientes_actividad_clientes` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id_cliente`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
