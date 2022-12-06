@@ -220,7 +220,7 @@ include '..\database\conexion.php';
                             </div>
                             <div class="form-group">
                                 <select class="form-control js-example-basic-multiple" name="actividades[]"
-                                    multiple="multiple" style="width:100%;" id="mySelect2" lang="es">
+                                    multiple="multiple" style="width:100%;" id="mySelect2" lang="es" required>
                                     <option value="1">Basquet</option>
                                     <option value="2">Futbol</option>
                                     <option value="3">Voley</option>
