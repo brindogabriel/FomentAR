@@ -106,59 +106,36 @@ include "../database/conexion.php";
                 <button type="submit" class="btn btn-danger mt-2 w-25">Buscar <i class="bi bi-search"></i></button>
             </form>
         </div>
-        <div class="row">
-            <div class="col">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Gabriel</h5>
-                        <p class="card-text">
-                            <a href="#" class="badge badge-dark">Futbol</a>
-                            <a href="#" class="badge badge-danger">Taekwondo</a>
-                        </p>
-                        <a href="futbol.html" class="btn btn-secondary">Ver + info</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
 
-                    <div class="card-body">
-                        <h5 class="card-title">Cristian</h5>
-                        <p class="card-text">
-                            <a href="#" class="badge badge-dark">Futbol</a>
-                            <a href="#" class="badge badge-warning">Basquet</a>
-                        </p>
-                        <a href="futbol.html" class="btn btn-secondary">Ver + info</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
+        <div class='row'>
 
-                    <div class="card-body">
-                        <h5 class="card-title">Marcelo</h5>
-                        <p class="card-text">
-                            <a href="#" class="badge badge-success">Arte</a>
-                            <a href="#" class="badge badge-danger">Taekwondo</a>
-                        </p>
-                        <a href="futbol.html" class="btn btn-secondary">Ver + info</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card" style="width: 18rem;">
+            <?php
 
-                    <div class="card-body">
-                        <h5 class="card-title">Facundo</h5>
-                        <p class="card-text">
-                            <a href="#" class="badge badge-dark">Futbol</a>
+            $id_actividad = $_GET['id_actividad'];
+            $sql = "SELECT c.nombre 
+FROM clientes_actividad cli_act
+JOIN clientes c ON c.id_cliente = cli_act.id_cliente
+AND cli_act.id_actividad = 2;";
 
-                            <a href="#" class="badge badge-success">Arte</a>
-                        </p>
-                        <a href="futbol.html" class="btn btn-secondary">Ver + info</a>
-                    </div>
-                </div>
-            </div>
+            $sql_run = mysqli_query($conexion, $sql);
+
+            while ($mostrar = mysqli_fetch_array($sql_run)) {
+                echo "
+            <div class='col'>
+                <div class='card' style='width: 18rem;'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
+        <p class='card-text'>
+            <a href='#' class='badge badge-dark'>Futbol</a>
+            <a href='#' class='badge badge-danger'>Taekwondo</a>
+        </p>
+        <a href='futbol.html' class='btn btn-secondary'>Ver + info</a>
+    </div>
+    </div>
+    </div>
+    ";
+            }
+            ?>
         </div>
     </div>
 
