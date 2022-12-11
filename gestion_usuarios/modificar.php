@@ -8,19 +8,19 @@ if ($varsesion == null || $varsesion = '') {
 }
 $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 
-$consulta = ConsultarProducto($_GET['Nombre']);
+$consulta = ConsultarProducto($_GET['username']);
 
-function ConsultarProducto($Nombre)
+function ConsultarProducto($username)
 {
     $conexion = mysqli_connect("localhost", "root", "", "fomentar");
-    $sentencia = "SELECT * FROM usuario WHERE Nombre='" . $Nombre . "' ";
+    $sentencia = "SELECT * FROM usuarios WHERE username='" . $username . "' ";
     $resultado = $conexion->query($sentencia) or die("Error al consultar usuario" . mysqli_error($conexion));
     $fila = $resultado->fetch_assoc();
 
     return [
-        $fila['Nombre'],
-        $fila['clave'],
-        $fila['idRoles']
+        $fila['username'],
+        $fila['password'],
+        $fila['id_rol']
     ];
 }
 ?>
@@ -47,7 +47,7 @@ function ConsultarProducto($Nombre)
     <div class="form-login">
         <form action="modificar2.php" method="post">
             <div class="form-group">
-                <input type="hidden" name="Usuario" value="<?php echo $_GET['Nombre'] ?>">
+                <input type="hidden" name="Usuario" value="<?php echo $_GET['username'] ?>">
                 <label>Modificar Usuario</label>
                 <input type="text" class="form-control" placeholder="Usuario" name="nombre"
                     value="<?php echo $consulta[0] ?>">
@@ -66,7 +66,7 @@ function ConsultarProducto($Nombre)
                 <?php
                 include '../database/conexion.php';
 
-                $consulta = "SELECT Nombre,idRoles FROM `usuario`";
+                $consulta = "SELECT u.id_user,u.username,u.password,r.name_rol,u.id_rol FROM usuarios u JOIN roles r ON u.id_rol = r.id_rol;";
                 $result = mysqli_query($conexion, $consulta);
                 $bandera = true;
                 ?>
@@ -75,18 +75,20 @@ function ConsultarProducto($Nombre)
                 <select class="form-control" id="exampleFormControlSelect1" name="tipo">
                     <?php
                     while ($filas = mysqli_fetch_array($result)) {
-                        $id_dato = $filas['idusuario']; // guarda el id del registro
-                        $dato = $filas['idRoles']; // guarda el dato del registro
+                        $id_rol = $filas['id_rol']; // guarda el id del registro
+                        $name_rol = $filas['name_rol']; // guarda el dato del registro
                     ?>
                     <!-- en el value se inyecta el id, con la bandera se verifica que sea la primera iteracion del bucle -->
-                    <option value="<?php echo $dato; ?>">
+                    <option value="<?php echo $id_rol; ?>">
 
-                        <?php if ($dato == "1") :  $dato = "presidente" ?>
+                        <?php if ($id_rol == 1):
+                            $dato = "presidente" ?>
 
-                        <?php else :  $dato = "usuario" ?>
+                        <?php else:
+                            $dato = "usuario" ?>
 
                         <?php endif ?>
-                        <?php echo $dato; /* imprime el sector en el option */ ?>
+                        <?php echo $name_rol; /* imprime el sector en el option */?>
                     </option>
                     <?php
                         $bandera = false;
