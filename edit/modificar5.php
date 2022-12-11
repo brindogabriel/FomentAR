@@ -9,24 +9,24 @@ if ($varsesion == null || $varsesion = '') {
 
 $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 
-$consulta = ConsultarCliente($_GET['DNI']);
+$consulta = ConsultarCliente($_GET['id_cliente']);
 
-function ConsultarCliente($DNI)
+function ConsultarCliente($id_cliente)
 {
-    $conexion = mysqli_connect("localhost", "root", "", "fomentar");
-    $sentencia = "SELECT * FROM clientes WHERE DNI='" . $DNI . "' ";
+    include "../database/conexion.php";
+    $sentencia = "SELECT * FROM clientes WHERE id_cliente='" . $id_cliente . "' ";
     $resultado1 = $conexion->query($sentencia) or die("Error al consultar cliente" . mysqli_error($conexion));
     $fila = mysqli_fetch_assoc($resultado1);
 
     return [
-        $fila['Nombre'],
-        $fila['Apellido'],
-        $fila['Nro_orden'],
-        $fila['Domicilio'],
+        $fila['nombre'],
+        $fila['apellido'],
+        $fila['id_cliente'],
+        $fila['domicilio'],
         $fila['DNI'],
-        $fila['Fecha_nacimiento'],
-        $fila['Fecha_ingreso'],
-        $fila['idParametro_Socio'],
+        $fila['fecha_nacimiento'],
+        $fila['fecha_ingreso'],
+        $fila['num_socio'],
 
     ];
 }
@@ -38,7 +38,7 @@ function ConsultarCliente($DNI)
 <html lang="es">
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/general.css">
@@ -51,7 +51,7 @@ function ConsultarCliente($DNI)
     <div class="contenedor p-1">
         <form action="modificar6.php" method="post">
             <div class="form-group">
-                <input type="hidden" name="Usuario" value="<?php echo $_GET['DNI'] ?>">
+                <input type="hidden" name="Usuario" value="<?php echo $_GET['id_cliente'] ?>">
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" placeholder="Nombre" name="nombre"
                     value="<?php echo $consulta[0] ?>" required>
@@ -59,7 +59,7 @@ function ConsultarCliente($DNI)
             <div class="form-group">
                 <label for="apellido">Apellido</label>
                 <input type="text" class="form-control" placeholder="Apellido" name="apellido"
-                    value="<?php echo utf8_encode($consulta[1]) ?>" required>
+                    value="<?php echo $consulta[1] ?>" required>
             </div>
             <div class="form-group">
                 <label for="domicilio">Domicilio</label>
@@ -88,7 +88,6 @@ function ConsultarCliente($DNI)
                     value="<?php echo $consulta[7] ?>">
                     <option value="1">Si</option>
                     <option value="2">No</option>
-
                 </select>
             </div>
             <!-- 			<div class="form-group">
