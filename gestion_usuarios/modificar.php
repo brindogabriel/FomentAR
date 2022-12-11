@@ -47,7 +47,7 @@ function ConsultarProducto($username)
     <div class="form-login">
         <form action="modificar2.php" method="post">
             <div class="form-group">
-                <input type="hidden" name="Usuario" value="<?php echo $_GET['username'] ?>">
+                <input type="hidden" name="username" value="<?php echo $_GET['username'] ?>">
                 <label>Modificar Usuario</label>
                 <input type="text" class="form-control" placeholder="Usuario" name="nombre"
                     value="<?php echo $consulta[0] ?>">
@@ -65,8 +65,13 @@ function ConsultarProducto($username)
                 <label for="exampleFormControlSelect1">Tipo De Usuario</label>
                 <?php
                 include '../database/conexion.php';
-                $username = $_GET['username'];
-                $consulta = "SELECT u.id_user,u.username,u.password,r.name_rol,u.id_rol FROM usuarios u JOIN roles r ON u.id_rol = r.id_rol AND u.username = '$username';";
+
+                //recorrer select con opcion seleccionada ?
+                
+
+
+
+                $consulta = "SELECT username,id_rol FROM `usuarios`";
                 $result = mysqli_query($conexion, $consulta);
                 $bandera = true;
                 ?>
@@ -75,12 +80,20 @@ function ConsultarProducto($username)
                 <select class="form-control" id="exampleFormControlSelect1" name="tipo">
                     <?php
                     while ($filas = mysqli_fetch_array($result)) {
-                        $id_rol = $filas['id_rol']; // guarda el id del registro
-                        $name_rol = $filas['name_rol']; // guarda el dato del registro
+                        $id_dato = $filas['username']; // guarda el id del registro
+                        $dato = $filas['id_rol']; // guarda el dato del registro
                     ?>
                     <!-- en el value se inyecta el id, con la bandera se verifica que sea la primera iteracion del bucle -->
-                    <option value="<?php echo $id_rol; ?>">
-                        <?php echo $name_rol; /* imprime el sector en el option */?>
+                    <option value="<?php echo $dato; ?>">
+
+                        <?php if ($dato == "1"):
+                            $dato = "presidente" ?>
+
+                        <?php else:
+                            $dato = "usuario" ?>
+
+                        <?php endif ?>
+                        <?php echo $dato; /* imprime el sector en el option */?>
                     </option>
                     <?php
                         $bandera = false;
