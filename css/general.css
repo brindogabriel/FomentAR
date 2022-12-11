@@ -272,6 +272,8 @@ input[type="number"] {
     max-width: 1000px;
     background: #fff;
     border-radius: 13px;
+    width: 80%;
+    margin: 2.5% 10%;
 }
 .wrapper .icon {
     position: absolute;

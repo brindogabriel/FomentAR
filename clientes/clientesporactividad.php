@@ -88,13 +88,13 @@ include "../database/conexion.php";
     <div class="wrapper">
         <div class="icon"><i id="left" class="bi bi-arrow-left"></i></div>
         <ul class="tabs-box">
-            <li class="tab active">Todos los clientes</li>
+            <li class="tab active"><a href="./clientesporactividad">Todos los clientes</a></li>
             <li class="tab"><a href="./clientesporactividad.php?id_actividad=1">Basquet</a></li>
-            <li class="tab">Futbol</li>
-            <li class="tab">Voley</li>
-            <li class="tab">Arte</li>
-            <li class="tab">Taekwondo</li>
-            <li class="tab">Patin</li>
+            <li class="tab"><a href="./clientesporactividad.php?id_actividad=2">Futbol</a></li>
+            <li class="tab"><a href="./clientesporactividad.php?id_actividad=3">Voley</a></li>
+            <li class="tab"><a href="./clientesporactividad.php?id_actividad=6">Arte</a></li>
+            <li class="tab"><a href="./clientesporactividad.php?id_actividad=5">Taekwondo</a></li>
+            <li class="tab"><a href="./clientesporactividad.php?id_actividad=4">Patin</a></li>
         </ul>
         <div class="icon"><i id="right" class="bi bi-arrow-right"></i></div>
     </div>
@@ -102,7 +102,7 @@ include "../database/conexion.php";
     <div class="container-fluid mt-1">
         <div class="buscar-usuarios mb-4">
             <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>?nombre=$cliente" method="GET">
-                <input type="search" name="cliente" class="form-control w-50 ml-0" placeholder="buscar cliente">
+                <input type="search" name="nombre" class="form-control w-50 ml-0" placeholder="buscar cliente">
                 <button type="submit" class="btn btn-danger mt-2 w-25">Buscar <i class="bi bi-search"></i></button>
             </form>
         </div>
@@ -110,31 +110,53 @@ include "../database/conexion.php";
         <div class='row'>
 
             <?php
-
             $id_actividad = $_GET['id_actividad'];
-            $sql = "SELECT c.nombre 
-FROM clientes_actividad cli_act
-JOIN clientes c ON c.id_cliente = cli_act.id_cliente
-AND cli_act.id_actividad = 2;";
+            if ($id_actividad) {
 
-            $sql_run = mysqli_query($conexion, $sql);
+                $sql = "SELECT c.id_cliente,c.nombre
+                    FROM clientes_actividad cli_act
+            JOIN clientes c ON c.id_cliente = cli_act.id_cliente
+                AND cli_act.id_actividad =  $id_actividad;";
 
-            while ($mostrar = mysqli_fetch_array($sql_run)) {
-                echo "
+                $sql_run = mysqli_query($conexion, $sql);
+
+                while ($mostrar = mysqli_fetch_array($sql_run)) {
+                    echo "
             <div class='col'>
                 <div class='card' style='width: 18rem;'>
                     <div class='card-body'>
                         <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
-        <p class='card-text'>
-            <a href='#' class='badge badge-dark'>Futbol</a>
-            <a href='#' class='badge badge-danger'>Taekwondo</a>
-        </p>
-        <a href='futbol.html' class='btn btn-secondary'>Ver + info</a>
+
+        <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
     </div>
     </div>
     </div>
     ";
+                }
+            } else {
+                unset($id_actividad);
+                $nombre = $_GET['nombre'];
+                if ($nombre) {
+                    $sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.nombre = '$nombre' LIMIT 1";
+
+                    $sql_run = mysqli_query($conexion, $sql);
+
+                    while ($mostrar = mysqli_fetch_array($sql_run)) {
+                        echo "
+            <div class='col'>
+                <div class='card' style='width: 18rem;'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
+
+        <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
+    </div>
+    </div>
+    </div>
+    ";
+                    }
+                }
             }
+
             ?>
         </div>
     </div>
