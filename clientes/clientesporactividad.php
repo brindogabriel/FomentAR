@@ -126,18 +126,17 @@ include "../database/conexion.php";
                 <div class='card' style='width: 18rem;'>
                     <div class='card-body'>
                         <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
-
-        <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
-    </div>
-    </div>
-    </div>
+            <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
+                    </div>
+                     </div>
+                    </div>
     ";
                 }
             } else {
-                unset($id_actividad);
+
                 $nombre = $_GET['nombre'];
                 if ($nombre) {
-                    $sql = "SELECT cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.nombre = '$nombre' LIMIT 1";
+                    $sql = "SELECT cli.id_cliente,cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.nombre = '$nombre' LIMIT 1";
 
                     $sql_run = mysqli_query($conexion, $sql);
 
