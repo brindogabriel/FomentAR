@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-12-2022 a las 03:42:20
+-- Tiempo de generación: 11-12-2022 a las 14:40:29
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -201,7 +201,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_user`, `username`, `password`, `id_rol`) VALUES
 (1, 'presidente', '1c4708df8cb006d2a007b3920a7b92a5', 1),
-(2, 'usuario', 'f8032d5cae3de20fcec887f395ec9a6a', 2);
+(5, 'usuario', 'f8032d5cae3de20fcec887f395ec9a6a', 2);
 
 --
 -- Índices para tablas volcadas
@@ -322,7 +322,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
