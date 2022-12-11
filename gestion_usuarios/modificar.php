@@ -65,8 +65,8 @@ function ConsultarProducto($username)
                 <label for="exampleFormControlSelect1">Tipo De Usuario</label>
                 <?php
                 include '../database/conexion.php';
-
-                $consulta = "SELECT u.id_user,u.username,u.password,r.name_rol,u.id_rol FROM usuarios u JOIN roles r ON u.id_rol = r.id_rol;";
+                $username = $_GET['username'];
+                $consulta = "SELECT u.id_user,u.username,u.password,r.name_rol,u.id_rol FROM usuarios u JOIN roles r ON u.id_rol = r.id_rol AND u.username = '$username';";
                 $result = mysqli_query($conexion, $consulta);
                 $bandera = true;
                 ?>
@@ -80,14 +80,6 @@ function ConsultarProducto($username)
                     ?>
                     <!-- en el value se inyecta el id, con la bandera se verifica que sea la primera iteracion del bucle -->
                     <option value="<?php echo $id_rol; ?>">
-
-                        <?php if ($id_rol == 1):
-                            $dato = "presidente" ?>
-
-                        <?php else:
-                            $dato = "usuario" ?>
-
-                        <?php endif ?>
                         <?php echo $name_rol; /* imprime el sector en el option */?>
                     </option>
                     <?php
