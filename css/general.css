@@ -343,3 +343,6 @@ input[type="number"] {
     background: #5372f0;
     border-color: transparent;
 }
+.tab a {
+    color: #000;
+}

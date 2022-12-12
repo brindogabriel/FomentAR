@@ -252,10 +252,11 @@ include '..\database\conexion.php';
             dropdownParent: $('#exampleModalCenter .modal-content'),
             language: "es",
             placeholder: 'Seleccione una o varias actividades',
-            theme: 'classic',
+
         });
     });
     </script>
+    <script src="../js/script.js"></script>
 </body>
 
 </html>
