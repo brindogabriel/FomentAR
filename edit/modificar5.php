@@ -14,20 +14,22 @@ $consulta = ConsultarCliente($_GET['id_cliente']);
 function ConsultarCliente($id_cliente)
 {
     include "../database/conexion.php";
-    $sentencia = "SELECT * FROM clientes WHERE id_cliente='" . $id_cliente . "' ";
+    $sentencia = "SELECT cli.num_socio,cli.domicilio,cli.fecha_nacimiento,cli.fecha_ingreso,cli.DNI,cli.id_cliente,cli.nombre, cli.apellido, act.nombre_actividad
+FROM
+clientes_actividad cli_act JOIN clientes cli ON cli_act.id_cliente = cli.id_cliente
+JOIN actividades act ON cli_act.id_actividad = act.id_actividad;";
     $resultado1 = $conexion->query($sentencia) or die("Error al consultar cliente" . mysqli_error($conexion));
     $fila = mysqli_fetch_assoc($resultado1);
 
     return [
-        $fila['nombre'],
-        $fila['apellido'],
-        $fila['id_cliente'],
-        $fila['domicilio'],
+        $fila['nombre'], // 0
+        $fila['apellido'], // 1
+        $fila['domicilio'], // 2
         $fila['DNI'],
         $fila['fecha_nacimiento'],
         $fila['fecha_ingreso'],
         $fila['num_socio'],
-
+        $fila['nombre_actividad']
     ];
 }
 
@@ -44,6 +46,8 @@ function ConsultarCliente($id_cliente)
     <link rel="stylesheet" href="../css/general.css">
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="../Resources/material-icons.css">
+    <link href="../css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/select2-bootstrap4.min.css">
     <title>FomentAR</title>
 </head>
 
@@ -64,23 +68,23 @@ function ConsultarCliente($id_cliente)
             <div class="form-group">
                 <label for="domicilio">Domicilio</label>
                 <input type="text" class="form-control" placeholder="Domicilio" name="domicilio"
-                    value="<?php echo $consulta[3] ?>" required>
+                    value="<?php echo $consulta[2] ?>" required>
             </div>
             <div class="form-group">
                 <label for="user">DNI</label>
                 <input type="number" class="form-control" placeholder="DNI" name="DNI" id="cantidad"
-                    value="<?php echo $consulta[4] ?>" required>
+                    value="<?php echo $consulta[3] ?>" required>
             </div>
             <div class="form-group">
                 <label for="fecha_nacimiento">Fecha de nacimiento</label>
                 <input type="date" name="fecha_nacimiento" max="3000-12-31" min="1000-01-01" class="form-control"
-                    placeholder="Fecha de nacimiento" name="fecha_nacimiento" value="<?php echo $consulta[5] ?>"
+                    placeholder="Fecha de nacimiento" name="fecha_nacimiento" value="<?php echo $consulta[4] ?>"
                     required>
             </div>
             <div class="form-group">
                 <label for="fecha_ingreso">Fecha de ingreso</label>
                 <input type="date" name="fecha_ingreso" max="3000-12-31" min="1000-01-01" class="form-control"
-                    placeholder="Fecha de ingreso" name="fecha_ingreso" value="<?php echo $consulta[6] ?>" required>
+                    placeholder="Fecha de ingreso" name="fecha_ingreso" value="<?php echo $consulta[5] ?>" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect">¿Es Socio?</label>
@@ -90,17 +94,17 @@ function ConsultarCliente($id_cliente)
                     <option value="2">No</option>
                 </select>
             </div>
-            <!-- 			<div class="form-group">
-				<label for="exampleFormControlSelect2">Actividad</label>
-				<select multiple class="form-control" id="exampleFormControlSelect2" name="" required>
-					<option value="basquet">Basquet</option>
-					<option value="patin">Patín</option>
-					<option value="futbol">Futbol</option>
-					<option value="arte">Arte</option>		
-					<option value="taekwondo">Taekwondo</option>
-					<option value="voley">Voley</option>
-				</select>
-			</div> -->
+            <div class="form-group">
+                <select class="form-control js-example-basic-multiple" name="actividades[]" multiple="multiple"
+                    style="width:100%;" id="mySelect2" lang="es" required>
+                    <option value="1">Basquet</option>
+                    <option value="2">Futbol</option>
+                    <option value="3">Voley</option>
+                    <option value="4">Patin</option>
+                    <option value="5">Taekwondo</option>
+                    <option value="6">Arte</option>
+                </select>
+            </div>
             <div class="dropdown-divider"></div>
             <button type="button" class="btn btn-secondary float-right" onclick="history.back()">Cancelar</button>
             <input type="submit" class="btn btn-primary" name="submit" value="Actualizar">
@@ -112,6 +116,18 @@ function ConsultarCliente($id_cliente)
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+    <script src="../js/select2.min.js"></script>
+    <script>
+    $.fn.select2.defaults.set("language", "es");
+    $(document).ready(function() {
+        $('#mySelect2').select2({
+
+            language: "es",
+            placeholder: 'Seleccione una o varias actividades',
+
+        });
+    });
+    </script>
     <script src="../js/script.js"></script>
 </body>
 

@@ -110,9 +110,9 @@ include "../database/conexion.php";
         <div class='row'>
 
             <?php
-            $id_actividad = $_GET['id_actividad'];
-            if ($id_actividad) {
 
+            if (isset($_GET['id_actividad'])) {
+                $id_actividad = $_GET['id_actividad'];
                 $sql = "SELECT c.id_cliente,c.nombre
                     FROM clientes_actividad cli_act
             JOIN clientes c ON c.id_cliente = cli_act.id_cliente
@@ -133,30 +133,30 @@ include "../database/conexion.php";
     ";
                 }
             } else {
-
+            }
+            if (isset($_GET['nombre'])) {
                 $nombre = $_GET['nombre'];
-                if ($nombre) {
-                    $sql = "SELECT cli.id_cliente,cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.nombre = '$nombre' LIMIT 1";
 
-                    $sql_run = mysqli_query($conexion, $sql);
+                $sql = "SELECT cli.id_cliente,cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli,
+    actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.nombre
+    = '$nombre' LIMIT 1";
 
-                    while ($mostrar = mysqli_fetch_array($sql_run)) {
-                        echo "
-            <div class='col'>
-                <div class='card' style='width: 18rem;'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
+                $sql_run = mysqli_query($conexion, $sql);
 
-        <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
+                while ($mostrar = mysqli_fetch_array($sql_run)) {
+                    echo "
+    <div class='col'>
+        <div class='card' style='width: 18rem;'>
+            <div class='card-body'>
+                <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
+
+                <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
     </div>
     </div>
     </div>
     ";
-                    }
                 }
-            }
-
-            ?>
+            } ?>
         </div>
     </div>
 
@@ -168,48 +168,48 @@ include "../database/conexion.php";
     <?php include "../scripts.php" ?>
 
     <script>
-        const tabsBox = document.querySelector(".tabs-box"),
-            allTabs = tabsBox.querySelectorAll(".tab"),
-            arrowIcons = document.querySelectorAll(".icon i");
+    const tabsBox = document.querySelector(".tabs-box"),
+        allTabs = tabsBox.querySelectorAll(".tab"),
+        arrowIcons = document.querySelectorAll(".icon i");
 
-        let isDragging = false;
+    let isDragging = false;
 
-        const handleIcons = (scrollVal) => {
-            let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
-            arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
-            arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
-        }
+    const handleIcons = (scrollVal) => {
+        let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
+        arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
+        arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
+    }
 
-        arrowIcons.forEach(icon => {
-            icon.addEventListener("click", () => {
-                // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
-                let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
-                handleIcons(scrollWidth);
-            });
+    arrowIcons.forEach(icon => {
+        icon.addEventListener("click", () => {
+            // if clicked icon is left, reduce 350 from tabsBox scrollLeft else add
+            let scrollWidth = tabsBox.scrollLeft += icon.id === "left" ? -340 : 340;
+            handleIcons(scrollWidth);
         });
+    });
 
-        allTabs.forEach(tab => {
-            tab.addEventListener("click", () => {
-                tabsBox.querySelector(".active").classList.remove("active");
-                tab.classList.add("active");
-            });
+    allTabs.forEach(tab => {
+        tab.addEventListener("click", () => {
+            tabsBox.querySelector(".active").classList.remove("active");
+            tab.classList.add("active");
         });
+    });
 
-        const dragging = (e) => {
-            if (!isDragging) return;
-            tabsBox.classList.add("dragging");
-            tabsBox.scrollLeft -= e.movementX;
-            handleIcons(tabsBox.scrollLeft)
-        }
+    const dragging = (e) => {
+        if (!isDragging) return;
+        tabsBox.classList.add("dragging");
+        tabsBox.scrollLeft -= e.movementX;
+        handleIcons(tabsBox.scrollLeft)
+    }
 
-        const dragStop = () => {
-            isDragging = false;
-            tabsBox.classList.remove("dragging");
-        }
+    const dragStop = () => {
+        isDragging = false;
+        tabsBox.classList.remove("dragging");
+    }
 
-        tabsBox.addEventListener("mousedown", () => isDragging = true);
-        tabsBox.addEventListener("mousemove", dragging);
-        document.addEventListener("mouseup", dragStop);
+    tabsBox.addEventListener("mousedown", () => isDragging = true);
+    tabsBox.addEventListener("mousemove", dragging);
+    document.addEventListener("mouseup", dragStop);
     </script>
 </body>
 

@@ -1,9 +1,7 @@
 <?php
 include "../database/conexion.php";
 
-if ($conexion->connect_error) {
-    die("Connection failed: " . $conexion->connect_error);
-}
+
 
 if (isset($_POST['submit'])) {
     $nombre = $_POST["nombre"];
