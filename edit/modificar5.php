@@ -14,10 +14,10 @@ $consulta = ConsultarCliente($_GET['id_cliente']);
 function ConsultarCliente($id_cliente)
 {
     include "../database/conexion.php";
-    $sentencia = "SELECT cli.num_socio,cli.domicilio,cli.fecha_nacimiento,cli.fecha_ingreso,cli.DNI,cli.id_cliente,cli.nombre, cli.apellido, act.nombre_actividad
+    $sentencia = "SELECT cli_act.id_actividad,cli.num_socio,cli.domicilio,cli.fecha_nacimiento,cli.fecha_ingreso,cli.DNI,cli.id_cliente,cli.nombre, cli.apellido, act.nombre_actividad
 FROM
 clientes_actividad cli_act JOIN clientes cli ON cli_act.id_cliente = cli.id_cliente
-JOIN actividades act ON cli_act.id_actividad = act.id_actividad;";
+JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_cliente = $id_cliente";
     $resultado1 = $conexion->query($sentencia) or die("Error al consultar cliente" . mysqli_error($conexion));
     $fila = mysqli_fetch_assoc($resultado1);
 
@@ -25,11 +25,12 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad;";
         $fila['nombre'], // 0
         $fila['apellido'], // 1
         $fila['domicilio'], // 2
-        $fila['DNI'],
-        $fila['fecha_nacimiento'],
-        $fila['fecha_ingreso'],
-        $fila['num_socio'],
-        $fila['nombre_actividad']
+        $fila['DNI'], //3
+        $fila['fecha_nacimiento'], //4
+        $fila['fecha_ingreso'], //5
+        $fila['num_socio'], //6
+        $fila['nombre_actividad'], //7
+        $fila['id_actividad'] // 8
     ];
 }
 
@@ -97,12 +98,10 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad;";
             <div class="form-group">
                 <select class="form-control js-example-basic-multiple" name="actividades[]" multiple="multiple"
                     style="width:100%;" id="mySelect2" lang="es" required>
-                    <option value="1">Basquet</option>
-                    <option value="2">Futbol</option>
-                    <option value="3">Voley</option>
-                    <option value="4">Patin</option>
-                    <option value="5">Taekwondo</option>
-                    <option value="6">Arte</option>
+                    <option value="<?php
+                    echo $consulta[8] ?>" selected>
+                        <?php echo $consulta[7] ?>
+                    </option>
                 </select>
             </div>
             <div class="dropdown-divider"></div>
