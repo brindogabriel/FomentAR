@@ -88,7 +88,6 @@ include "../database/conexion.php";
     <div class="wrapper">
         <div class="icon"><i id="left" class="bi bi-arrow-left"></i></div>
         <ul class="tabs-box">
-            <li class="tab active"><a href="./clientesporactividad">Todos los clientes</a></li>
             <li class="tab"><a href="./clientesporactividad.php?id_actividad=1">Basquet</a></li>
             <li class="tab"><a href="./clientesporactividad.php?id_actividad=2">Futbol</a></li>
             <li class="tab"><a href="./clientesporactividad.php?id_actividad=3">Voley</a></li>
@@ -118,8 +117,7 @@ include "../database/conexion.php";
                 $sql_run = mysqli_query($conexion, $sql);
 
                 while ($mostrar = mysqli_fetch_array($sql_run)) {
-                    echo "
-            <div class='col'>
+                    echo "<div class='col'>
                 <div class='card' style='width: 18rem;'>
                     <div class='card-body'>
                         <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
@@ -131,28 +129,6 @@ include "../database/conexion.php";
                     </div>
     ";
                 }
-            } else {
-                echo "<div class='col'>
-                <div class='card' style='width: 18rem;'>
-                    <div class='card-body'>
-                    <h5 class='card-title'>
-                        ";
-                $sql = "SELECT c.id_cliente,c.nombre, act.nombre_actividad, act.color_act, act.id_actividad FROM clientes_actividad cli_act JOIN clientes c ON c.id_cliente = cli_act.id_cliente AND cli_act.id_actividad = 1 OR cli_act.id_actividad = 2 OR cli_act.id_actividad = 3 OR cli_act.id_actividad = 4 OR cli_act.id_actividad = 5 OR cli_act.id_actividad = 6 JOIN actividades act ON act.id_actividad = cli_act.id_actividad GROUP BY cli_act.id_cliente";
-                $result = mysqli_query($conexion, $sql);
-                while ($mostrar = mysqli_fetch_assoc($result)) {
-                    echo $mostrar['nombre'];
-                }
-            ?>
-            </h5>
-            <?php
-                $sql = "SELECT cli.nombre, act.id_actividad,act.nombre_actividad, act.color_act FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad ";
-                $result = mysqli_query($conexion, $sql);
-                while ($mostrar = mysqli_fetch_assoc($result)) {
-                    echo '<a href="./clientesporactividad.php?id_actividad=' . $mostrar['id_actividad'] . '" class="badge badge-' . $mostrar['color_act'] . ' mr-2">' . $mostrar['nombre_actividad'] . '</a>';
-                }
-
-            ?>
-            <?php
             }
             if (isset($_GET['nombre'])) {
                 $nombre = $_GET['nombre'];
