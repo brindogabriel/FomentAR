@@ -148,7 +148,7 @@ include "../database/conexion.php";
                     <div class='card-body'>
                         <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
 
-                        <a href='./clientes_info.php?id_cliente=" . $mostrar[' id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
+                        <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
     </div>
     </div>
     </div>
