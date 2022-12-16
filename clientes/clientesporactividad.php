@@ -113,10 +113,7 @@ include "../database/conexion.php";
 
             if (isset($_GET['id_actividad'])) {
                 $id_actividad = $_GET['id_actividad'];
-                $sql = "SELECT c.id_cliente,c.nombre
-                    FROM clientes_actividad cli_act
-            JOIN clientes c ON c.id_cliente = cli_act.id_cliente
-                AND cli_act.id_actividad =  $id_actividad;";
+                $sql = "SELECT c.id_cliente,c.nombre, act.id_actividad, act.nombre_actividad, act.color_act FROM clientes_actividad cli_act JOIN clientes c ON c.id_cliente = cli_act.id_cliente AND cli_act.id_actividad = $id_actividad JOIN actividades act ON act.id_actividad = cli_act.id_actividad;";
 
                 $sql_run = mysqli_query($conexion, $sql);
 
@@ -126,6 +123,8 @@ include "../database/conexion.php";
                 <div class='card' style='width: 18rem;'>
                     <div class='card-body'>
                         <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
+                        <a href='./clientesporactividad.php?id_actividad=" . $mostrar['id_actividad'] . "' class='badge badge-" . $mostrar['color_act'] . " mr-2'>" . $mostrar['nombre_actividad'] . "</a>
+                        <br/>
             <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
                     </div>
                      </div>
@@ -133,24 +132,47 @@ include "../database/conexion.php";
     ";
                 }
             } else {
+                echo "<div class='col'>
+                <div class='card' style='width: 18rem;'>
+                    <div class='card-body'>
+                    <h5 class='card-title'>
+                        ";
+                $sql = "SELECT c.id_cliente,c.nombre, act.nombre_actividad, act.color_act, act.id_actividad FROM clientes_actividad cli_act JOIN clientes c ON c.id_cliente = cli_act.id_cliente AND cli_act.id_actividad = 1 OR cli_act.id_actividad = 2 OR cli_act.id_actividad = 3 OR cli_act.id_actividad = 4 OR cli_act.id_actividad = 5 OR cli_act.id_actividad = 6 JOIN actividades act ON act.id_actividad = cli_act.id_actividad GROUP BY cli_act.id_cliente";
+                $result = mysqli_query($conexion, $sql);
+                while ($mostrar = mysqli_fetch_assoc($result)) {
+                    echo $mostrar['nombre'];
+                }
+            ?>
+            </h5>
+            <?php
+                $sql = "SELECT cli.nombre, act.id_actividad,act.nombre_actividad, act.color_act FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad ";
+                $result = mysqli_query($conexion, $sql);
+                while ($mostrar = mysqli_fetch_assoc($result)) {
+                    echo '<a href="./clientesporactividad.php?id_actividad=' . $mostrar['id_actividad'] . '" class="badge badge-' . $mostrar['color_act'] . ' mr-2">' . $mostrar['nombre_actividad'] . '</a>';
+                }
+
+            ?>
+            <?php
             }
             if (isset($_GET['nombre'])) {
                 $nombre = $_GET['nombre'];
 
-                $sql = "SELECT cli.id_cliente,cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli,
-    actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and cli.nombre
-    = '$nombre' LIMIT 1";
+                $sql = "SELECT cli.id_cliente,cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes
+            cli,
+            actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and
+            cli.nombre
+            = '$nombre' LIMIT 1";
 
                 $sql_run = mysqli_query($conexion, $sql);
 
                 while ($mostrar = mysqli_fetch_array($sql_run)) {
                     echo "
-    <div class='col'>
-        <div class='card' style='width: 18rem;'>
-            <div class='card-body'>
-                <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
+            <div class='col'>
+                <div class='card' style='width: 18rem;'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
 
-                <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
+                        <a href='./clientes_info.php?id_cliente=" . $mostrar[' id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
     </div>
     </div>
     </div>
@@ -177,7 +199,8 @@ include "../database/conexion.php";
     const handleIcons = (scrollVal) => {
         let maxScrollableWidth = tabsBox.scrollWidth - tabsBox.clientWidth;
         arrowIcons[0].parentElement.style.display = scrollVal <= 0 ? "none" : "flex";
-        arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" : "flex";
+        arrowIcons[1].parentElement.style.display = maxScrollableWidth - scrollVal <= 1 ? "none" :
+            "flex";
     }
 
     arrowIcons.forEach(icon => {

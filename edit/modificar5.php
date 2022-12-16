@@ -19,7 +19,7 @@ FROM
 clientes_actividad cli_act JOIN clientes cli ON cli_act.id_cliente = cli.id_cliente
 JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_cliente = $id_cliente";
     $resultado1 = $conexion->query($sentencia) or die("Error al consultar cliente" . mysqli_error($conexion));
-    $fila = mysqli_fetch_assoc($resultado1);
+    $fila = mysqli_fetch_array($resultado1);
 
     return [
         $fila['nombre'], // 0
@@ -54,6 +54,7 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_c
 
 <body>
     <div class="contenedor p-1">
+
         <form action="modificar6.php" method="post">
             <div class="form-group">
                 <input type="hidden" name="Usuario" value="<?php echo $_GET['id_cliente'] ?>">
@@ -89,19 +90,23 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_c
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect">¿Es Socio?</label>
-                <select simple class="form-control" id="exampleFormControlSelect" name="socio" required
-                    value="<?php echo $consulta[7] ?>">
-                    <option value="1">Si</option>
-                    <option value="2">No</option>
-                </select>
+                <input type="number" class="form-control" id="exampleFormControlSelect" name="socio"
+                    placeholder="<?php echo ($consulta[6]) ? $consulta[6] : "No es socio"; ?>">
             </div>
             <div class="form-group">
+
+
                 <select class="form-control js-example-basic-multiple" name="actividades[]" multiple="multiple"
                     style="width:100%;" id="mySelect2" lang="es" required>
-                    <option value="<?php
-                    echo $consulta[8] ?>" selected>
-                        <?php echo $consulta[7] ?>
-                    </option>
+                    <?php
+                    $sql_actividades = "SELECT * FROM actividades";
+                    $sql_correr = mysqli_query($conexion, $sql_actividades);
+                    while ($mostrar = mysqli_fetch_array($sql_correr)) {
+                        echo "<option value=" . $mostrar['id_actividad'] . " selected>
+                       " . $mostrar['nombre_actividad'] . "
+                    </option>";
+                    }
+                    ?>
                 </select>
             </div>
             <div class="dropdown-divider"></div>
