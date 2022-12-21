@@ -6,11 +6,8 @@ if ($varsesion == null || $varsesion = '') {
     header("location: ../errors/error_nologueado");
     die();
 }
-
-$conexion = mysqli_connect("localhost", "root", "", "fomentar");
-
+include "../database/conexion.php";
 $consulta = ConsultarCliente($_GET['id_cliente']);
-
 function ConsultarCliente($id_cliente)
 {
     include "../database/conexion.php";
@@ -34,8 +31,6 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_c
     ];
 }
 
-
-
 ?>
 <!doctype html>
 <html lang="es">
@@ -54,10 +49,9 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_c
 
 <body>
     <div class="contenedor p-1">
-
         <form action="modificar6.php" method="post">
             <div class="form-group">
-                <input type="hidden" name="Usuario" value="<?php echo $_GET['id_cliente'] ?>">
+                <input type="hidden" name="id_cliente" value="<?php echo $_GET['id_cliente'] ?>">
                 <label for="nombre">Nombre</label>
                 <input type="text" class="form-control" placeholder="Nombre" name="nombre"
                     value="<?php echo $consulta[0] ?>" required>
@@ -93,18 +87,47 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_c
                 <input type="number" class="form-control" id="exampleFormControlSelect" name="socio"
                     placeholder="<?php echo ($consulta[6]) ? $consulta[6] : "No es socio"; ?>">
             </div>
+            <?php
+
+            if ($_GET['id_cliente']) {
+                $id_cliente = $_GET['id_cliente'];
+                $fetchquery = "SELECT cli_act.id_actividad,cli.num_socio,cli.domicilio,cli.fecha_nacimiento,cli.fecha_ingreso,cli.DNI,cli.id_cliente,cli.nombre, cli.apellido, act.nombre_actividad
+                FROM
+                clientes_actividad cli_act JOIN clientes cli ON cli_act.id_cliente = cli.id_cliente
+                JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_cliente = $id_cliente";
+                $fetchquery_run = mysqli_query($conexion, $fetchquery);
+
+
+
+
+
+                $useractividades = [];
+                foreach ($fetchquery_run as $fetchrow) {
+                    $useractividades[] = $fetchrow['id_actividad'];
+                }
+
+            }
+
+            ?>
             <div class="form-group">
-
-
                 <select class="form-control js-example-basic-multiple" name="actividades[]" multiple="multiple"
                     style="width:100%;" id="mySelect2" lang="es" required>
                     <?php
-                    $sql_actividades = "SELECT * FROM actividades";
-                    $sql_correr = mysqli_query($conexion, $sql_actividades);
-                    while ($mostrar = mysqli_fetch_array($sql_correr)) {
-                        echo "<option value=" . $mostrar['id_actividad'] . " selected>
-                       " . $mostrar['nombre_actividad'] . "
-                    </option>";
+                    $sqlactividades = "SELECT * FROM actividades";
+                    $sql_correr = mysqli_query($conexion, $sqlactividades);
+                    if (mysqli_num_rows($sql_correr) > 0) {
+                        foreach ($sql_correr as $row) {
+                    ?>
+                    <option value="<?= $row['id_actividad']; ?>"
+                        <?= in_array($row['id_actividad'], $useractividades[]) ? 'selected' : '' ?>>
+                        <?= $row['nombre_actividad']; ?>
+                    </option>
+                    <?php
+                        }
+                    } else {
+                    ?>
+                    <option value="">Sin actividades</option>
+                    <?php
                     }
                     ?>
                 </select>
