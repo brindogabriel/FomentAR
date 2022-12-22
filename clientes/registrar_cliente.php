@@ -1,8 +1,6 @@
 <?php
 include "../database/conexion.php";
 
-
-
 if (isset($_POST['submit'])) {
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
@@ -52,5 +50,5 @@ if (isset($_POST['submit'])) {
 
     echo "<script>history.go(-1);</script>";
 } else {
-    echo "volvó y llena el form xd";
+    echo "volvé y llena el form xd";
 }
