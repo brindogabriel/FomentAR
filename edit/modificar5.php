@@ -119,7 +119,7 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_c
                         foreach ($sql_correr as $row) {
                     ?>
                     <option value="<?= $row['id_actividad']; ?>"
-                        <?= in_array($row['id_actividad'], $useractividades[]) ? 'selected' : '' ?>>
+                        <?= in_array($row['id_actividad'], $useractividades) ? 'selected' : '' ?>>
                         <?= $row['nombre_actividad']; ?>
                     </option>
                     <?php
