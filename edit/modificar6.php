@@ -13,16 +13,17 @@ if (isset($_POST['submit'])) {
     $dni = $_POST["DNI"];
     $fecha_nacimiento = $_POST["fecha_nacimiento"];
     $fecha_ingreso = $_POST["fecha_ingreso"];
-    $socio = $_POST["num_socio"];
+    $socio = $_POST["socio"];
     $sexo = $_POST["Sexo"];
     $actividades = $_POST["actividades"];
     $edad = $_POST["edad"];
-    $id_cliente = $_GET["id_cliente"];
+    $id_cliente = $_POST["id_cliente"];
     $Edad = strtotime($fecha_ingreso) - strtotime($fecha_nacimiento);
     $diferencia_anios = intval($Edad / 60 / 60 / 24 / 365.25);
 
     //!ACTUALIZAR AL CLIENTE SEGUN EL CLIENTE
-    $sql = "UPDATE `clientes` SET `nombre` = '$nombre', `apellido` = '$apellido', `edad` = '$edad', `id_genero` = '$sexo', `domicilio` = '$domicilio', `num_domicilio` = '$num_domicilio', `telefono` = '$telefono', `DNI` = '$dni', `fecha_nacimiento` = '$fecha_nacimiento', `fecha_ingreso` = '$fecha_ingreso' WHERE `clientes`.`id_cliente` = $id_cliente";
+    $sql = "UPDATE clientes SET nombre='$nombre', apellido='$apellido', edad='$edad', id_genero='$sexo', domicilio='$domicilio',num_domicilio='$num_domicilio', telefono='$telefono', DNI='$dni', fecha_nacimiento='$fecha_nacimiento', fecha_ingreso= '$fecha_ingreso' WHERE id_cliente = $id_cliente";
+
     $query_run = mysqli_query($conexion, $sql);
 
     //! SELECCIONAR AL CLIENTE // CREO QUE ES INNECESARIO ACÁ XD 
@@ -59,7 +60,7 @@ if (isset($_POST['submit'])) {
         $query_run = mysqli_query($conexion, $query);
     }
 
-    echo "<script>history.go(-1);</script>";
+    echo "<script>history.go(-2);</script>";
 } else {
     echo "volvó y llena el form xd";
 }
