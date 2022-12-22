@@ -95,10 +95,7 @@ include "../database/conexion.php";
                 <tbody>
                     <?php
                     include "../database/conexion.php";
-                    $sql = "SELECT
-	s.id_evento, s.nombre_evento, s.fecha_inicio, s.fecha_fin, e.detalle_estado_evento, importe, opciones, a_nombre_de
-FROM
-	fomentar.eventos s, estado_eventos e where s.id_estado_evento = e.id_estado_evento;";
+                    $sql = "SELECT id_evento, descripcion, fecha_inicio, fecha_fin, id_estado FROM eventos";
 
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_assoc($result)) {
@@ -106,17 +103,16 @@ FROM
                         $fecha_inicio = date("d/m/Y H:m", strtotime($mostrar['fecha_inicio']));
                         $fecha_fin = date("d/m/Y H:m", strtotime($mostrar['fecha_fin']));
 
-                        //! calcular cuanto falta para el evento xd aunque podria ser desde el backend xd
-                        //? triggers ?? cron ??
+
                         $rol = $_SESSION['id_rol'];
 
 
                         echo '<tr>					
-					<td>' . $mostrar['nombre_evento'] . '</td>
+					<td>' . $mostrar['descripcion'] . '</td>
 					<td>' . $fecha_inicio . '</td>
-					<td>' . $fecha_fin  . '</td>
+					<td>' . $fecha_fin . '</td>
 					<td>' . $mostrar['detalle_estado_evento'] . '</td>
-					<td>$ ' . $mostrar['importe']  . '</td>
+					<td>$ ' . $mostrar['importe'] . '</td>
                     <td>
                     <a class="btn btn-warning m-1" href="./modificar_evento?id_evento=' . $mostrar['id_evento'] . '" data-toggle="tooltip" role="button" title="Editar"><i class="material-icons">edit</i></a>
 
