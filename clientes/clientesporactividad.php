@@ -136,8 +136,7 @@ include "../database/conexion.php";
                 $sql = "SELECT cli.id_cliente,cli.nombre,cli.apellido, act.nombre_actividad FROM clientes_actividad cli_act, clientes
             cli,
             actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and
-            cli.nombre
-            = '$nombre' LIMIT 1";
+            cli.nombre LIKE '%$nombre%'";
 
                 $sql_run = mysqli_query($conexion, $sql);
 
