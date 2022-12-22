@@ -88,7 +88,6 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_c
                     placeholder="<?php echo ($consulta[6]) ? $consulta[6] : "No es socio"; ?>">
             </div>
             <?php
-
             if ($_GET['id_cliente']) {
                 $id_cliente = $_GET['id_cliente'];
                 $fetchquery = "SELECT cli_act.id_actividad,cli.num_socio,cli.domicilio,cli.fecha_nacimiento,cli.fecha_ingreso,cli.DNI,cli.id_cliente,cli.nombre, cli.apellido, act.nombre_actividad
@@ -96,18 +95,11 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_c
                 clientes_actividad cli_act JOIN clientes cli ON cli_act.id_cliente = cli.id_cliente
                 JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_cliente = $id_cliente";
                 $fetchquery_run = mysqli_query($conexion, $fetchquery);
-
-
-
-
-
                 $useractividades = [];
                 foreach ($fetchquery_run as $fetchrow) {
                     $useractividades[] = $fetchrow['id_actividad'];
                 }
-
             }
-
             ?>
             <div class="form-group">
                 <select class="form-control js-example-basic-multiple" name="actividades[]" multiple="multiple"
@@ -148,7 +140,6 @@ JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_c
     $.fn.select2.defaults.set("language", "es");
     $(document).ready(function() {
         $('#mySelect2').select2({
-
             language: "es",
             placeholder: 'Seleccione una o varias actividades',
 

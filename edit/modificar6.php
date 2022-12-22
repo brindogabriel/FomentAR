@@ -1,5 +1,5 @@
 <?php
-
+//? ACTUALIZAR DATOS CLIENTE SEGUN CLIENTE Y ACTIVIDADES
 ModificarCliente($_POST['nombre'], $_POST['apellido'], $_POST['domicilio'], $_POST['DNI'], $_POST['fecha_nacimiento'], $_POST['fecha_ingreso'], $_POST['socio']);
 
 function ModificarCliente($nombre, $apellido, $domicilio, $dni, $fecha_nacimiento, $fecha_ingreso, $num_socio, $id_genero, $id_cliente)
