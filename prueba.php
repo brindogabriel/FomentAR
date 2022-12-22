@@ -10,6 +10,9 @@ var_dump($_SESSION);
 
 $año = date("Y");
 
+echo date('d.m.Y H:i:s');
+"\n";
+
 echo $año;
 
 // menor que  <
