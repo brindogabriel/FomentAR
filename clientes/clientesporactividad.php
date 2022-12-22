@@ -133,7 +133,7 @@ include "../database/conexion.php";
             if (isset($_GET['nombre'])) {
                 $nombre = $_GET['nombre'];
 
-                $sql = "SELECT cli.id_cliente,cli.nombre, act.nombre_actividad FROM clientes_actividad cli_act, clientes
+                $sql = "SELECT cli.id_cliente,cli.nombre,cli.apellido, act.nombre_actividad FROM clientes_actividad cli_act, clientes
             cli,
             actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and
             cli.nombre
@@ -146,7 +146,7 @@ include "../database/conexion.php";
             <div class='col'>
                 <div class='card' style='width: 18rem;'>
                     <div class='card-body'>
-                        <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
+                        <h5 class='card-title'>" . $mostrar['nombre'] . " " . $mostrar['apellido'] . "</h5>
                        
                         <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
     </div>
