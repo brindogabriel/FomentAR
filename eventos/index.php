@@ -2,6 +2,7 @@
 session_start();
 //error_reporting(0); -descomentar cuando se termina
 $varsesion = $_SESSION['usuario'];
+$rol = $_SESSION['id_rol'];
 if ($varsesion == null || $varsesion = '') {
     header("location: ../errors/error_nologueado");
     die();
@@ -46,31 +47,33 @@ include "../database/conexion.php";
                 <li class="nav-item active">
                     <a class='nav-link' href='./'>Eventos</a>
                 </li>
+                <?php
 
-                <li class="nav-item">
-                    <?php
-                    $varsesion = $_SESSION['usuario'];
-                    $rol = $_SESSION['id_rol'];
-                    if ($varsesion == 1) {
-                        echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
-                    }
-                    ?>
-                </li>
+                if ($rol == 1) {
+                    echo "<li class='nav-item'>	
+                        <a class='nav-link' href='../recaudacion'>Recaudacion</a>
+                        </li>";
+                }
+                ?>
+
                 <li class="nav-item">
                     <a class='nav-link' href='../reporte_errores'>Reporte Errores</a>
                 </li>
-                <li class="nav-item">
-                    <?php
-                    $varsesion = $_SESSION['usuario'];
-                    if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
-                    }
-                    ?>
-                </li>
+
+                <?php
+
+                if ($rol == 1) {
+                    echo " <li class='nav-item'>
+                        	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>
+                             </li>";
+                }
+                ?>
+
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
+                $varsesion = $_SESSION['usuario'];
                 echo $varsesion;
                 ?>
             </a>
