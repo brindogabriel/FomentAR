@@ -152,7 +152,7 @@ include '..\database\conexion.php';
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo cliente</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Nuevo evento</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -164,10 +164,11 @@ include '..\database\conexion.php';
                                 <label for="user">Nombre</label>
                                 <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
                             </div>
-                            <!-- <div class="form-group">
-                                    <label for="user">N° Matricula</label>
-                                    <input type="number" class="form-control" placeholder="N° Matricula" name="nombre" id="cantidad" required>
-                                </div> -->
+                            <div class="form-group">
+                                <label for="user">N° Matricula</label>
+                                <input type="number" class="form-control" placeholder="N° Matricula" name="n_matricula"
+                                    id="cantidad" required>
+                            </div>
                             <div class="form-group">
                                 <label>Fecha de alquiler</label>
                                 <input type="datetime-local" name="fecha_inicio" class="form-control"
