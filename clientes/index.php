@@ -6,7 +6,7 @@ $varsesion = $_SESSION['usuario'];
 $rol = $_SESSION['id_rol'];
 
 if ($varsesion == null || $varsesion = '') {
-    header("location: ./errors/error_nologueado");
+    header("location: ../errors/error_nologueado");
     die();
 }
 include '..\database\conexion.php';

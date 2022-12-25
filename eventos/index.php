@@ -6,7 +6,7 @@ $varsesion = $_SESSION['usuario'];
 $rol = $_SESSION['id_rol'];
 
 if ($varsesion == null || $varsesion = '') {
-    header("location: ./errors/error_nologueado");
+    header("location: ../errors/error_nologueado");
     die();
 }
 include '..\database\conexion.php';
@@ -172,12 +172,12 @@ include '..\database\conexion.php';
                             <div class="form-group">
                                 <label>Fecha de alquiler</label>
                                 <input type="datetime-local" name="fecha_inicio" class="form-control"
-                                    placeholder="Fecha de alquiler" required>
+                                    placeholder="Fecha de alquiler" required min="<?php echo date('Y-m-d H:i'); ?>">
                             </div>
                             <div class="form-group">
                                 <label>Dura hasta</label>
                                 <input type="datetime-local" name="fecha_fin" class="form-control"
-                                    placeholder="Fecha de alquiler" required>
+                                    placeholder="Fecha de alquiler" required min="<?php echo date('Y-m-d H:i'); ?>">
                             </div>
                             <div class="form-group">
                                 <label for="user">importe</label>
