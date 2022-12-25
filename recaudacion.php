@@ -30,7 +30,7 @@ include "./database/conexion.php";
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <a class="navbar-brand mb-0 h1" href="./pagina_principal">
+        <a class="navbar-brand mb-0 h1" href="pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />
                 <path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"
@@ -44,46 +44,42 @@ include "./database/conexion.php";
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="./pagina_principal">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class='nav-link' href='./clientes'>Todos los Clientes</a>
                 </li>
-                <!-- <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Eventos
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./eventos">Este mes</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="./historico">Historico</a>
-					</div>
-				</li>
-			-->
-                <!-- <li class="nav-item">
-					<?php
-                    $varsesion = $_SESSION['usuario'];
-                    if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='./recaudacionl'>Recaudacion</a>";
-                    }
-                    ?>							
-				</li> -->
-                <!-- <li class="nav-item">
-					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
-				</li> -->
                 <li class="nav-item">
-                    <?php
-                    $varsesion = $_SESSION['usuario'];
-                    if ($varsesion == "presidente") {
-                        echo "	<a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>";
-                    }
-                    ?>
+                    <a class='nav-link' href='./eventos'>Eventos</a>
                 </li>
+                <?php
+                if ($rol == 1) {
+                    echo "
+                <li class='nav-item active'>                        
+                        <a class='nav-link' href='./recaudacion'>Recaudacion</a>
+                          </li>";
+                }
+                ?>
+
+                <li class="nav-item">
+                    <a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
+                </li>
+
+                <?php
+                if ($rol == 1) {
+
+                    echo "<li class='nav-item'>
+                        <a class='nav-link' href='./gestion_usuarios'>Gestion de usuarios</a>
+                        </li>";
+                }
+                ?>
+
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
                 <?php
+                $varsesion = $_SESSION['usuario'];
                 echo $varsesion;
                 ?>
             </a>
