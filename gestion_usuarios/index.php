@@ -44,40 +44,32 @@ include '../database/conexion.php';
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="../pagina_principal">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class='nav-link' href='../clientes'>Todos los Clientes</a>
                 </li>
-                <!-- <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Eventos
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="./eventos">Este mes</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="./historico">Historico</a>
-					</div>
-				</li>
-			-->
-                <!-- <li class="nav-item">
-					<?php
-                    if ($rol == 1) {
-                        echo "	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>";
-                    }
-                    ?>
-				</li> -->
-                <!-- <li class="nav-item">
-					<a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
-				</li> -->
                 <li class="nav-item">
-                    <?php
-                    if ($rol == 1) {
-                        echo "	<a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>";
-                    }
-                    ?>
+                    <a class='nav-link' href='../eventos'>Eventos</a>
                 </li>
+                <?php
+                if ($rol == 1) {
+                    echo "<li class='nav-item'>
+                        	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>
+                            </li>";
+                }
+                ?>
+                <li class="nav-item">
+                    <a class='nav-link' href='../reporte_errores'>Reporte Errores</a>
+                </li>
+                <?php
+                if ($rol == 1) {
+                    echo "<li class='nav-item active'>
+                        <a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>
+                         </li>";
+                }
+                ?>
             </ul>
             <a class="btn btn-primary disabled text-white mr-2" role="button" disabled
                 style="text-transform: capitalize;">
@@ -91,9 +83,9 @@ include '../database/conexion.php';
         </div>
     </nav>
     <div class="general">
-        <div class="contenedor1">
+        <div class="contenedor">
             <div class="table-responsive">
-                <table id="table_id" class="table display AllDataTables" width="100%" cellspacing="0">
+                <table id="table_id" class="table display AllDataTables table-hover" width="100%" cellspacing="0">
                     <caption>Lista de usuarios</caption>
                     <thead class="thead-dark">
                         <tr>
