@@ -90,7 +90,7 @@ $(function () {
         var id = $(this).attr("data-id");
 
         if (!!scheds[id]) {
-            var _conf = confirm("Are you sure to delete this scheduled event?");
+            var _conf = confirm("Estas seguro de borrar este evento?");
             if (_conf === true) {
                 location.href = "./delete_schedule.php?id=" + id;
             }

@@ -90,8 +90,7 @@ include '..\database\conexion.php';
                 </li>
                 <?php
                 if ($rol == 1) {
-                    echo "
-                         <li class='nav-item'>
+                    echo "<li class='nav-item'>
                         <a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>
                         </li>";
                 }
@@ -147,9 +146,9 @@ include '..\database\conexion.php';
                     <div class="card-footer">
                         <div class="text-center">
                             <button class="btn btn-primary btn-sm rounded-0" type="submit" form="schedule-form"><i
-                                    class="fa fa-save mr-2"></i> Save</button>
+                                    class="fa fa-save mr-2"></i>Save</button>
                             <button class="btn btn-default border btn-sm rounded-0" type="reset" form="schedule-form"><i
-                                    class="fa fa-reset"></i> Cancel</button>
+                                    class="fa fa-reset mr-2"></i>Cancel</button>
                         </div>
                     </div>
                 </div>
@@ -162,18 +161,22 @@ include '..\database\conexion.php';
             <div class="modal-content rounded-0">
                 <div class="modal-header rounded-0">
                     <h5 class="modal-title">Schedule Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
                 </div>
                 <div class="modal-body rounded-0">
                     <div class="container-fluid">
                         <dl>
-                            <dt class="text-muted">Title</dt>
+                            <dt class="text-muted">Titulo</dt>
                             <dd id="title" class="fw-bold fs-4"></dd>
-                            <dt class="text-muted">Description</dt>
+                            <dt class="text-muted">Descripcion</dt>
                             <dd id="description" class=""></dd>
-                            <dt class="text-muted">Start</dt>
+                            <dt class="text-muted">Comienzo</dt>
                             <dd id="start" class=""></dd>
-                            <dt class="text-muted">End</dt>
+                            <dt class="text-muted">Fin</dt>
                             <dd id="end" class=""></dd>
                         </dl>
                     </div>
@@ -181,11 +184,11 @@ include '..\database\conexion.php';
                 <div class="modal-footer rounded-0">
                     <div class="text-end">
                         <button type="button" class="btn btn-primary btn-sm rounded-0" id="edit"
-                            data-id="">Edit</button>
+                            data-id="">Editar</button>
                         <button type="button" class="btn btn-danger btn-sm rounded-0" id="delete"
-                            data-id="">Delete</button>
+                            data-id="">Borrar</button>
                         <button type="button" class="btn btn-secondary btn-sm rounded-0"
-                            data-bs-dismiss="modal">Close</button>
+                            data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 </div>
             </div>
