@@ -29,5 +29,5 @@ if ($save) {
     echo "</pre>";
 }
 
-$conn->close();
+$conexion->close();
 ?>
