@@ -3,7 +3,7 @@ require_once('../database/conexion.php');
 
 if (!isset($_GET['id'])) {
     echo "<script> alert('Undefined Schedule ID.'); location.replace('./') </script>";
-    $conn->close();
+    $conexion->close();
     exit;
 }
 

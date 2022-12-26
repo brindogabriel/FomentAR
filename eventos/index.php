@@ -51,8 +51,8 @@ include '..\database\conexion.php';
         $sched_res[$row['id']] = $row;
     }
 
-    if (isset($conn))
-        $conn->close();
+    if (isset($conexion))
+        $conexion->close();
     ?>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand mb-0 h1" href="../pagina_principal">
