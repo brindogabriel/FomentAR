@@ -265,6 +265,17 @@ input[type="number"] {
     font-weight: bold;
 }
 
+.form-group:has(textarea:required) label:after {
+    content: " *";
+    margin-left: 3px;
+    color: red;
+    font-weight: bold;
+}
+
+textarea {
+    resize: none;
+}
+
 /** PILLS LIKE YOUTUBE */
 .wrapper {
     padding: 35px;

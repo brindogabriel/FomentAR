@@ -122,22 +122,22 @@ include '..\database\conexion.php';
                             <form action="save_schedule.php" method="post" id="schedule-form">
                                 <input type="hidden" name="id" value="">
                                 <div class="form-group mb-2">
-                                    <label for="title" class="control-label">Title</label>
+                                    <label for="title" class="control-label">Titulo</label>
                                     <input type="text" class="form-control form-control-sm rounded-0" name="title"
                                         id="title" required>
                                 </div>
                                 <div class="form-group mb-2">
-                                    <label for="description" class="control-label">Description</label>
+                                    <label for="description" class="control-label">Descripcion</label>
                                     <textarea rows="3" class="form-control form-control-sm rounded-0" name="description"
                                         id="description" required></textarea>
                                 </div>
                                 <div class="form-group mb-2">
-                                    <label for="start_datetime" class="control-label">Start</label>
+                                    <label for="start_datetime" class="control-label">Comienzo</label>
                                     <input type="datetime-local" class="form-control form-control-sm rounded-0"
                                         name="start_datetime" id="start_datetime" required>
                                 </div>
                                 <div class="form-group mb-2">
-                                    <label for="end_datetime" class="control-label">End</label>
+                                    <label for="end_datetime" class="control-label">Fin</label>
                                     <input type="datetime-local" class="form-control form-control-sm rounded-0"
                                         name="end_datetime" id="end_datetime" required>
                                 </div>
@@ -198,8 +198,8 @@ include '..\database\conexion.php';
     </script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.5/dist/fullcalendar.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
-    <script src="es.js"></script>
-    <script src="script.js"></script>
+    <script src="./es.js"></script>
+    <script src="./script.js"></script>
     <script>
     var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')
     </script>
