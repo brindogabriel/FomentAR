@@ -26,7 +26,6 @@ $(function () {
                 center: "title",
             },
             locale: "es",
-
             selectable: true,
             themeSystem: "bootstrap",
             events: events,
@@ -42,8 +41,18 @@ $(function () {
                 if (!!scheds[id]) {
                     details.find("#title").text(scheds[id].title);
                     details.find("#description").text(scheds[id].description);
-                    details.find("#start").text(scheds[id].sdate);
-                    details.find("#end").text(scheds[id].edate);
+                    details.find("#start").text(
+                        new Date(scheds[id].sdate).toLocaleString("es-ES", {
+                            dateStyle: "long",
+                            timeStyle: "short",
+                        })
+                    );
+                    details.find("#end").text(
+                        new Date(scheds[id].edate).toLocaleString("es-ES", {
+                            dateStyle: "long",
+                            timeStyle: "short",
+                        })
+                    );
                     details.find("#edit,#delete").attr("data-id", id);
                     details.modal("show");
                 } else {
