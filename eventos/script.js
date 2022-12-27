@@ -22,7 +22,7 @@ $(function () {
         calendar = new Calendar(document.getElementById("calendar"), {
             headerToolbar: {
                 left: "prev,next today",
-                right: "dayGridMonth,dayGridWeek,list",
+                right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
                 center: "title",
             },
             locale: "es",
@@ -99,3 +99,5 @@ $(function () {
         }
     });
 });
+
+calendar.setOption("locale", "es");

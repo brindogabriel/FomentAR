@@ -86,7 +86,8 @@ include '../database/conexion.php';
         <div class="contenedor">
             <div class="table-responsive">
                 <table id="table_id" class="table display AllDataTables table-hover" width="100%" cellspacing="0">
-                    <caption>Lista de usuarios</caption>
+                    <caption class="ml-2">Lista de usuarios | para cambiar la contraseña, hablar con los de sistemas xd
+                    </caption>
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Nombre de usuario</th>
