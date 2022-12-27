@@ -1,13 +1,11 @@
 <?php
 
-$pass = md5($_POST['password']);
+include '../database/conexion.php';
 
-ModificarUsuario($_POST['nombre'], $pass, $_POST['tipo'], $_POST['Usuario']);
+$tipo = $_POST['tipo'];
+$id_user = $_POST['id_user'];
 
-function ModificarUsuario($nombre, $password, $tipo, $Usuario)
-{
-	include '../database/conexion.php';
-	$sentencia = "UPDATE `usuario` SET `Nombre` = '$nombre', `clave` = '$password', `idRoles` = '$tipo'  WHERE Nombre='" . $Usuario . "' ";
-	$conexion->query($sentencia) or die("Error al actualizar datos " . mysqli_error($conexion));
-	echo "<script>history.go(-2);</script>";
-}
+
+$sentencia = "UPDATE `usuarios` SET `id_rol` = '$tipo'  WHERE id_user='" . $id_user . "' ";
+$conexion->query($sentencia) or die("Error al actualizar datos " . mysqli_error($conexion));
+echo "<script>history.go(-2);</script>";

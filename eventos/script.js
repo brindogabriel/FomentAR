@@ -26,9 +26,15 @@ $(function () {
                 center: "title",
             },
             locale: "es",
+
             selectable: true,
             themeSystem: "bootstrap",
             events: events,
+            eventTimeFormat: {
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+            },
             eventClick: function (info) {
                 var details = $("#event-details-modal");
                 var id = info.event.id;

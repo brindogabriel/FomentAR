@@ -97,7 +97,7 @@ include '../database/conexion.php';
                         </tr>
                     </thead>
                     <?php
-                    $sql = "SELECT usu.username,usu.id_rol,rol.name_rol FROM usuarios usu
+                    $sql = "SELECT usu.id_user,usu.username,usu.id_rol,rol.name_rol FROM usuarios usu
                             JOIN roles rol ON usu.id_rol = rol.id_rol;";
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_array($result)) {
@@ -113,10 +113,10 @@ include '../database/conexion.php';
                             </td>
                             <td scope="col">
                                 <?php echo "
-							<a class='btn btn-warning' href='./modificar?username=" . $mostrar['username'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
+							<a class='btn btn-warning' href='./modificar?id_user=" . $mostrar['id_user'] . "' data-toggle='tooltip' role='button' title='Editar'><i class='material-icons'>
 							edit
 							</i></a>
-							<a class='btn btn-danger' href='./borrar_usuario?username=" . $mostrar['username'] . "'data-toggle='tooltip' role='button' title='Eliminar usuario'><i class='material-icons'>
+							<a class='btn btn-danger' href='./borrar_usuario?id_user=" . $mostrar['id_user'] . "'data-toggle='tooltip' role='button' title='Eliminar usuario'><i class='material-icons'>
 							delete
 							</i></a>
 							"; ?>

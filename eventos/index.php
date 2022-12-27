@@ -198,6 +198,7 @@ include '..\database\conexion.php';
     </script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
     <script src="script.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/moment@6.0.1/index.global.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.0.1/locales-all.global.min.js"></script>
     <script>
     var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')

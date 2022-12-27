@@ -8,19 +8,18 @@ if ($varsesion == null || $varsesion = '') {
 }
 $conexion = mysqli_connect("localhost", "root", "", "fomentar");
 
-$consulta = ConsultarProducto($_GET['username']);
+$consulta = ConsultarProducto($_GET['id_user']);
 
-function ConsultarProducto($username)
+function ConsultarProducto($id_user)
 {
     $conexion = mysqli_connect("localhost", "root", "", "fomentar");
-    $sentencia = "SELECT * FROM usuarios WHERE username='" . $username . "' ";
+    $sentencia = "SELECT * FROM usuarios WHERE id_user='" . $id_user . "' ";
     $resultado = $conexion->query($sentencia) or die("Error al consultar usuario" . mysqli_error($conexion));
     $fila = $resultado->fetch_assoc();
 
     return [
         $fila['username'],
         $fila['password'],
-        $fila['id_rol']
     ];
 }
 ?>
@@ -33,6 +32,8 @@ function ConsultarProducto($username)
     <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/general.css">
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
+    <link href="../css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/select2-bootstrap4.min.css">
     <title>FomentAR</title>
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#343a40">
@@ -47,12 +48,12 @@ function ConsultarProducto($username)
     <div class="form-login">
         <form action="modificar2.php" method="post">
             <div class="form-group">
-                <input type="hidden" name="username" value="<?php echo $_GET['username'] ?>">
+                <input type="hidden" name="id_user" value="<?php echo $_GET['id_user'] ?>">
                 <label>Modificar Usuario</label>
                 <input type="text" class="form-control" placeholder="Usuario" name="nombre"
-                    value="<?php echo $consulta[0] ?>">
+                    value="<?php echo $consulta[0] ?>" disabled>
             </div>
-            <div class="input-group mb-3">
+            <!-- <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <input type="checkbox" onclick="myFunction()" title="Mostrar Contraseña">
@@ -60,48 +61,40 @@ function ConsultarProducto($username)
                 </div>
                 <input type="password" class="form-control" id="myInput" placeholder="Contraseña" name="password"
                     value="<?php echo $consulta[1] ?>">
-            </div>
+            </div> -->
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Tipo De Usuario</label>
+                <label for="exampleFormControlSelect1">Rol De Usuario</label>
                 <?php
                 include '../database/conexion.php';
-
-                //recorrer select con opcion seleccionada ?
-                
-
-
-
-                $consulta = "SELECT username,id_rol FROM `usuarios`";
+                $id_user = $_GET['id_user'];
+                $consulta = "SELECT username,id_rol FROM `usuarios` WHERE id_user=$id_user";
                 $result = mysqli_query($conexion, $consulta);
-                $bandera = true;
+                $usergenero = [];
+                foreach ($result as $fetchrow) {
+                    $userrol[] = $fetchrow['id_rol'];
+                }
                 ?>
-
-                <!-- en lugar del div.cajaselect -->
-                <select class="form-control" id="exampleFormControlSelect1" name="tipo">
+                <select simple class="form-control js-example-basic-single" id="exampleFormrControlSelect" name="tipo"
+                    required>
                     <?php
-                    while ($filas = mysqli_fetch_array($result)) {
-                        $id_dato = $filas['username']; // guarda el id del registro
-                        $dato = $filas['id_rol']; // guarda el dato del registro
+                    $sqlrol = "SELECT * FROM roles";
+                    $sql_correr = mysqli_query($conexion, $sqlrol);
+                    if (mysqli_num_rows($sql_correr) > 0) {
+                        foreach ($sql_correr as $row) {
                     ?>
-                    <!-- en el value se inyecta el id, con la bandera se verifica que sea la primera iteracion del bucle -->
-                    <option value="<?php echo $dato; ?>">
-
-                        <?php if ($dato == "1"):
-                            $dato = "presidente" ?>
-
-                        <?php else:
-                            $dato = "usuario" ?>
-
-                        <?php endif ?>
-                        <?php echo $dato; /* imprime el sector en el option */?>
+                    <option value="<?= $row['id_rol']; ?>" <?= in_array($row['id_rol'], $userrol) ? 'selected' : '' ?>>
+                        <?= $row['name_rol']; ?>
                     </option>
                     <?php
-                        $bandera = false;
+                        }
+                    } else {
+                    ?>
+                    <option value="">Sin rol</option>
+                    <?php
                     }
                     ?>
                 </select>
-            </div>
-            <input type="submit" name="submit" class="btn btn-primary" value="Actualizar">
+                <input type="submit" name="submit" class="btn btn-primary mt-2" value="Actualizar">
         </form>
     </div>
     <!-- Optional JavaScript -->
@@ -119,6 +112,7 @@ function ConsultarProducto($username)
         }
     }
     </script>
+    <script src="../js/select2.min.js"></script>
 </body>
 
 </html>
