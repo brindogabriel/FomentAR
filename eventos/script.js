@@ -99,5 +99,3 @@ $(function () {
         }
     });
 });
-
-calendar.setOption("locale", "es");
