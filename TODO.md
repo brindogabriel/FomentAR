@@ -1,16 +1,15 @@
 # TODO: LIST
 
--   [ ] CRUD CATEGORIAS
--   [ ] CRUD EVENTOS
--   [ ] AGREGAR FULLCALENDAR AL PROYECTO PARA LA PARTE DE EVENTOS XD por ejemplo: [full calendar con mysql y php](https://www.nicesnippets.com/blog/how-to-use-full-calendar-with-mysql-in-php)
--   [ ] REGISTRAR PAGOS
--   [ ] MOSTRAR ESTADO REAL DEL EVENTO
+-   [ ] CRUD CATEGORIAS ?
+-   [ ] REGISTRAR PAGOS ?
 
 # ERRORES
 
 -   [ ] -
 
 # ANOTACIONES O IDEAS DE POR AHI XD
+
+[full calendar con mysql y php](https://www.nicesnippets.com/blog/how-to-use-full-calendar-with-mysql-in-php)
 
 ##### ACTIVIDADES POR CLIENTE CON DATOS DEL CLIENTE
 
