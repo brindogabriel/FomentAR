@@ -11,6 +11,8 @@ $(function () {
                 title: row.title,
                 start: row.start_datetime,
                 end: row.end_datetime,
+                priority: row.priority,
+                color: row.color,
             });
         });
     }
@@ -25,6 +27,7 @@ $(function () {
                 right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
                 center: "title",
             },
+
             locale: "es",
             selectable: true,
             themeSystem: "bootstrap",
@@ -34,6 +37,7 @@ $(function () {
                 minute: "2-digit",
                 hour12: false,
             },
+            eventColor: "color",
             eventClick: function (info) {
                 var details = $("#event-details-modal");
                 var id = info.event.id;
@@ -41,6 +45,7 @@ $(function () {
                 if (!!scheds[id]) {
                     details.find("#title").text(scheds[id].title);
                     details.find("#description").text(scheds[id].description);
+
                     details.find("#start").text(
                         new Date(scheds[id].sdate).toLocaleString("es-ES", {
                             dateStyle: "long",
@@ -53,6 +58,15 @@ $(function () {
                             timeStyle: "short",
                         })
                     );
+
+                    details
+                        .find("#priority")
+                        .text(info.event.extendedProps.priority)
+                        .css(
+                            "background-color",
+                            info.event.extendedProps.color
+                        );
+
                     details.find("#edit,#delete").attr("data-id", id);
                     details.modal("show");
                 } else {

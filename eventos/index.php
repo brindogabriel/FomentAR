@@ -112,7 +112,7 @@ include '..\database\conexion.php';
                 <div id="calendar"></div>
             </div>
             <div class="col-md-3">
-                <div class="cardt rounded-0 shadow">
+                <div class="card rounded-0 shadow">
                     <div class="card-header bg-gradient bg-primary text-light">
                         <h5 class="card-title">Agregar Evento</h5>
                     </div>
@@ -140,7 +140,16 @@ include '..\database\conexion.php';
                                     <input type="datetime-local" class="form-control form-control-sm rounded-0"
                                         name="end_datetime" id="end_datetime" required>
                                 </div>
+                                <div class="form-group mb-2">
+                                    <label for="priority">Prioridad</label>
+                                    <select class="form-control form-control-sm rounded-0" name="color" id="priority"
+                                        required>
+                                        <option value="red">Muy Importante</option>
+                                        <option value="blue">Normal</option>
+                                    </select>
+                                </div>
                             </form>
+
                         </div>
                     </div>
                     <div class="card-footer">
@@ -167,16 +176,11 @@ include '..\database\conexion.php';
                 </div>
                 <div class="modal-body rounded-0">
                     <div class="container-fluid">
-                        <dl>
-                            <dt class="text-muted">Titulo</dt>
-                            <dd id="title" class="fw-bold fs-4"></dd>
-                            <dt class="text-muted">Descripcion</dt>
-                            <dd id="description" class=""></dd>
-                            <dt class="text-muted">Comienzo</dt>
-                            <dd id="start" class=""></dd>
-                            <dt class="text-muted">Fin</dt>
-                            <dd id="end" class=""></dd>
-                        </dl>
+                        <p><strong>Título:</strong> <span id="title"></span></p>
+                        <p><strong>Descripción:</strong> <span id="description"></span></p>
+                        <p><strong>Fecha de inicio:</strong> <span id="start"></span></p>
+                        <p><strong>Fecha de finalización:</strong> <span id="end"></span></p>
+                        <p><strong>Prioridad:</strong> <span id="priority" class="badge badge-pill"></span></p>
                     </div>
                 </div>
                 <div class="modal-footer rounded-0">
