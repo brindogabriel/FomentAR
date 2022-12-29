@@ -11,17 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 extract($_POST);
 $allday = isset($allday);
 
-if ($color = "red") {
-    $priority = "muy alta";
+if ($color = "#dc3545") {
+    $priority = "alta";
 }
-if ($color = "blue") {
+if ($color = "#007bff") {
     $priority = "normal";
 }
 
 if (empty($id)) {
     $sql = "INSERT INTO `schedule_list` (`title`,`description`,`start_datetime`,`end_datetime`,`priority`, `color`) VALUES ('$title','$description','$start_datetime','$end_datetime','$priority', '$color' )";
 } else {
-    $sql = "UPDATE `schedule_list` set `title` = '{$title}', `description` = '{$description}', `start_datetime` = '{$start_datetime}', `end_datetime` = '{$end_datetime}', `priority` = `{$priority}`, `color` = `{$color}` WHERE `id` = '{$id}'";
+    $sql = "UPDATE `schedule_list` set `title` = '{$title}', `description` = '{$description}', `start_datetime` = '{$start_datetime}', `end_datetime` = '{$end_datetime}', `priority` = '{$priority}', `color` = '{$color}' WHERE `id` = '{$id}'";
 }
 
 $save = $conexion->query($sql);

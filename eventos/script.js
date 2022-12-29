@@ -27,9 +27,8 @@ $(function () {
                 right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
                 center: "title",
             },
-
             locale: "es",
-            selectable: true,
+            selectable: false,
             themeSystem: "bootstrap",
             events: events,
             eventTimeFormat: {
@@ -58,15 +57,7 @@ $(function () {
                             timeStyle: "short",
                         })
                     );
-
-                    details
-                        .find("#priority")
-                        .text(info.event.extendedProps.priority)
-                        .css(
-                            "background-color",
-                            info.event.extendedProps.color
-                        );
-
+                    details.find("#priority").text(scheds[id].priority);
                     details.find("#edit,#delete").attr("data-id", id);
                     details.modal("show");
                 } else {
@@ -107,6 +98,7 @@ $(function () {
             form.find('[name="end_datetime"]').val(
                 String(scheds[id].end_datetime).replace(" ", "T")
             );
+            form.find('[name="color"]').val(scheds[id].color);
             $("#event-details-modal").modal("hide");
             form.find('[name="title"]').focus();
         } else {

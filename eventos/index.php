@@ -11,13 +11,10 @@ if ($varsesion == null || $varsesion = '') {
 }
 include '..\database\conexion.php';
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,11 +25,8 @@ include '..\database\conexion.php';
     <link href="../css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/select2-bootstrap4.min.css">
     <title>FomentAR</title>
-
-
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
 
 </head>
@@ -144,8 +138,9 @@ include '..\database\conexion.php';
                                     <label for="priority">Prioridad</label>
                                     <select class="form-control form-control-sm rounded-0" name="color" id="priority"
                                         required>
-                                        <option value="red">Muy Importante</option>
-                                        <option value="blue">Normal</option>
+                                        <option value="" selected disabled>Seleccionar una opcion</option>
+                                        <option value="#dc3545">Muy Importante</option>
+                                        <option value="#007bff">Normal</option>
                                     </select>
                                 </div>
                             </form>
@@ -180,7 +175,7 @@ include '..\database\conexion.php';
                         <p><strong>Descripción:</strong> <span id="description"></span></p>
                         <p><strong>Fecha de inicio:</strong> <span id="start"></span></p>
                         <p><strong>Fecha de finalización:</strong> <span id="end"></span></p>
-                        <p><strong>Prioridad:</strong> <span id="priority" class="badge badge-pill"></span></p>
+                        <p><strong>Prioridad:</strong> <span id="priority"></span></p>
                     </div>
                 </div>
                 <div class="modal-footer rounded-0">
@@ -197,11 +192,11 @@ include '..\database\conexion.php';
         </div>
     </div>
     <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
     <script src="script.js"></script>
+    <script src="./moment.js"></script>
     <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/moment@6.0.1/index.global.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.0.1/locales-all.global.min.js"></script>
     <script>
