@@ -31,7 +31,7 @@ include '..\database\conexion.php';
 
 </head>
 
-<body class="bg-light">
+<body>
 
     <?php
     require_once('../database/conexion.php');

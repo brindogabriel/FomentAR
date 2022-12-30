@@ -48,7 +48,7 @@ include '..\database\conexion.php';
                     <a class="nav-link" href="../pagina_principal">Inicio<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class='nav-link' href='../clientes'>Todos los Clientes</a>
+                    <a class='nav-link' href='./'>Todos los Clientes</a>
                 </li>
                 <li class="nav-item">
                     <a class='nav-link' href='../eventos'>Eventos</a>
@@ -56,12 +56,12 @@ include '..\database\conexion.php';
                 <?php
                 if ($rol == 1) {
                     echo "<li class='nav-item'>
-                        <a class='nav-link' href='../recaudacion_total'>Recaudacion</a>
+                        <a class='nav-link' href='../recaudacion'>Recaudacion</a>
                         </li>";
                 }
                 ?>
                 <li class="nav-item">
-                    <a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
+                    <a class='nav-link' href='../reporte_errores'>Reporte Errores</a>
                 </li>
                 <?php
                 if ($rol == 1) {

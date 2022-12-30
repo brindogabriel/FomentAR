@@ -27,7 +27,6 @@ include "./database/conexion.php";
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
         <a class="navbar-brand mb-0 h1" href="pagina_principal">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                 <path d="M0 0h24v24H0z" fill="none" />

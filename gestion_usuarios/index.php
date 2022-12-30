@@ -56,7 +56,7 @@ include '../database/conexion.php';
                 <?php
                 if ($rol == 1) {
                     echo "<li class='nav-item'>
-                        	<a class='nav-link' href='../recaudacion_total'>Recaudacion</a>
+                        	<a class='nav-link' href='../recaudacion'>Recaudacion</a>
                             </li>";
                 }
                 ?>
@@ -66,7 +66,7 @@ include '../database/conexion.php';
                 <?php
                 if ($rol == 1) {
                     echo "<li class='nav-item active'>
-                        <a class='nav-link' href='../gestion_usuarios'>Gestion de usuarios</a>
+                        <a class='nav-link' href='./'>Gestion de usuarios</a>
                          </li>";
                 }
                 ?>
@@ -101,7 +101,7 @@ include '../database/conexion.php';
                             JOIN roles rol ON usu.id_rol = rol.id_rol;";
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_array($result)) {
-                    ?>
+                        ?>
                     <tbody>
                         <tr>
                             <td scope="col">
@@ -124,7 +124,7 @@ include '../database/conexion.php';
                         </tr>
                         <?php
                     }
-                        ?>
+                    ?>
                     </tbody>
                 </table>
             </div>
