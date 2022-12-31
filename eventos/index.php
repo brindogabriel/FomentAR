@@ -25,7 +25,7 @@ include '..\database\conexion.php';
     <link href="../css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/select2-bootstrap4.min.css">
     <title>FomentAR</title>
-    <link rel="stylesheet" href="./all.css" />
+    <link rel="stylesheet" href="./fullcalendar/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./main.min.css">
 </head>
 
