@@ -11,10 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
 extract($_POST);
 $allday = isset($allday);
 
-if ($color = "#dc3545") {
+if ($color == "#dc3545") {
     $priority = "alta";
-}
-if ($color = "#007bff") {
+} else {
     $priority = "normal";
 }
 

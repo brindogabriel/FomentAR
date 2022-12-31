@@ -136,7 +136,7 @@ include '..\database\conexion.php';
                                 </div>
                                 <div class="form-group mb-2">
                                     <label for="priority">Prioridad</label>
-                                    <select class="form-control form-control-sm rounded-0" name="color" id="priority"
+                                    <select class="form-control form-control-sm rounded-0" name="color" id="color"
                                         required>
                                         <option value="" selected disabled>Seleccionar una opcion</option>
                                         <option value="#dc3545">Muy Importante</option>
