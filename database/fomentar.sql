@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-12-2022 a las 19:45:44
+-- Tiempo de generación: 31-12-2022 a las 01:28:31
 -- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Versión de PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -193,7 +193,9 @@ CREATE TABLE `schedule_list` (
   `title` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
   `start_datetime` datetime NOT NULL,
-  `end_datetime` datetime NOT NULL
+  `end_datetime` datetime NOT NULL,
+  `priority` varchar(15) NOT NULL,
+  `color` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
