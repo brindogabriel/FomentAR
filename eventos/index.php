@@ -25,10 +25,8 @@ include '..\database\conexion.php';
     <link href="../css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/select2-bootstrap4.min.css">
     <title>FomentAR</title>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
-
+    <link rel="stylesheet" href="./all.css" />
+    <link rel="stylesheet" href="./main.min.css">
 </head>
 
 <body>
@@ -197,16 +195,16 @@ include '..\database\conexion.php';
         </div>
     </div>
     <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+    <script src="./bootstrap.bundle.min.js"></script>
+    <script src="./main.min.js"></script>
     <script src="script.js"></script>
     <script src="./moment.js"></script>
-    <script src='https://cdn.jsdelivr.net/npm/@fullcalendar/moment@6.0.1/index.global.min.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.0.1/locales-all.global.min.js"></script>
+    <script src='./index.global.min.js'></script>
+    <script src="./locales-all.global.min.js"></script>
     <script>
     var scheds = $.parseJSON('<?= json_encode($sched_res) ?>')
     </script>
+
 </body>
 
 </html>
