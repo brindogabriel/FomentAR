@@ -20,9 +20,6 @@ include "../database/conexion.php";
     <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/general.css">
-
-
-    <link rel="stylesheet" href="./Draggable Slider Tabs/style.css">
     <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
     <title>FomentAR</title>
 </head>
