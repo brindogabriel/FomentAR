@@ -98,12 +98,12 @@ include '..\database\conexion.php';
             <a class="btn btn-outline-danger" href="../database/cerrar_sesion" role="button">Cerrar sesión</a>
         </div>
     </nav>
-    <div class="container py-5 bg-light mt-4" id="page-container">
+    <div class="container py-5  mt-4" id="page-container">
         <div class="row">
             <div class="col-md-9">
-                <div id="calendar"></div>
+                <div id="calendar" class="shadow p-3 bg-light"></div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 ">
                 <div class="card rounded-0 shadow">
                     <div class="card-header bg-gradient bg-primary text-light">
                         <h5 class="card-title">Agregar Evento</h5>
