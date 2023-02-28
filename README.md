@@ -21,14 +21,14 @@ Para el desarrollo de FomentAR se han utilizado las siguientes versiones de tecn
 ## TODO: LIST 📝
 En esta sección se listan las tareas pendientes que deben ser completadas en el futuro para mejorar y ampliar las funcionalidades del sistema. Las tareas que aparecen en esta lista son sugerencias para el equipo de desarrollo de FomentAR, y se espera que se implementen en futuras versiones del sistema.
 
--   [ ] CRUD CATEGORIAS: esta tarea consiste en la creación, lectura, actualización y eliminación de categorías de actividades. Esto permitirá una mejor organización de las actividades según su tipo o temática.
--   [ ] REGISTRAR PAGOS: esta tarea consiste en crear una funcionalidad para registrar y llevar un control de los pagos realizados por los clientes. Esto permitirá una mejor gestión de la facturación y una mayor transparencia en el proceso de cobros.
+-   [ ] CRUD CATEGORIAS: Esto permitirá una mejor organización de las actividades según su tipo o temática.
+-   [ ] REGISTRAR PAGOS: Esto permitirá una mejor gestión de la facturación y una mayor transparencia en el proceso de cobros.
 
 ## ERRORES ❌
 
 -   Por ahora no hay errores 😊
 
-### ANOTACIONES O IDEAS DE POR AHI XD 💡
+### ANOTACIONES O IDEAS 💡
 
 - 
 
