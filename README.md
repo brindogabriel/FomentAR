@@ -9,7 +9,7 @@ Con FomentAR podrás:
 -   💰 Llevar un registro de pagos y facturación de tus clientes
 
 
-## Usuarios por defecto para ingresar al sitio
+## Usuarios por defecto para ingresar al sitio 👨🏻‍💻
 
 | usuario  | contraseña | rol
 | ------------- |:-------------:| ------------------|
