@@ -6,12 +6,12 @@ FomentAR es un sistema de gestión de sociedades de fomento que te permite lleva
   <summary>Tabla de contenidos</summary>
   <ol>
     <li>
-      <a href="#FomentAR">Acerca de</a>
+      <a href="#fomentar">Acerca de</a>
     <li><a href="#¿Qué puedes hacer con FomentAR?">¿Qué puedes hacer con FomentAR?</a></li>
     <li><a href="#Usuarios por defecto para ingresar al sitio">Usuarios</a></li>
     <li><a href="#Versiones utilizadas 🛠️">Versiones utilizadas 🛠️</a></li>
     <li><a href="#TODO: LIST 📝">TODO: LIST 📝</a></li>
-     <li><a href="#ERRORES ❌">ERRORES ❌</a></li>
+     <li><a href="#errores">ERRORES ❌</a></li>
       <li><a href="#ANOTACIONES O IDEAS 💡">ANOTACIONES O IDEAS 💡</a></li>
        <li><a href="#ACTIVIDADES POR CLIENTE CON DATOS DEL CLIENTE 🧑‍💻"> ACTIVIDADES POR CLIENTE CON DATOS DEL CLIENTE 🧑‍💻</a></li>
         <li><a href=""APORTES">APORTES</a></li>
