@@ -8,6 +8,14 @@ Con FomentAR podrás:
 -   🗓️ Planificar y programar actividades para tus clientes utilizando el calendario de FullCalendar integrado
 -   💰 Llevar un registro de pagos y facturación de tus clientes
 
+
+## Usuarios por defecto para ingresar al sitio
+
+| usuario  | contraseña | rol
+| ------------- |:-------------:| ------------------|
+|    presidente  | presidente     | 1|
+| usuario      | usuario    | 2 |
+
 ## Versiones utilizadas 🛠️
 
 Para el desarrollo de FomentAR se han utilizado las siguientes versiones de tecnologías y frameworks:
