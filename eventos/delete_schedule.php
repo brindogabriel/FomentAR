@@ -7,7 +7,7 @@ if (!isset($_GET['id'])) {
     exit;
 }
 
-$delete = $conexion->query("DELETE FROM `schedule_list` where id = '{$_GET['id']}'");
+$delete = $conexion->query("DELETE FROM `eventos` where id = '{$_GET['id']}'");
 
 if ($delete) {
     echo "<script> alert('Evento eliminado correctamente!.'); location.replace('./') </script>";

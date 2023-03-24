@@ -34,7 +34,7 @@ include '..\database\conexion.php';
     <?php
     require_once('../database/conexion.php');
 
-    $schedules = $conexion->query("SELECT * FROM `schedule_list`");
+    $schedules = $conexion->query("SELECT * FROM `eventos`");
     $sched_res = [];
 
     foreach ($schedules->fetch_all(MYSQLI_ASSOC) as $row) {

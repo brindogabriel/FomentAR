@@ -18,9 +18,9 @@ if ($color == "#dc3545") {
 }
 
 if (empty($id)) {
-    $sql = "INSERT INTO `schedule_list` (`title`,`description`,`start_datetime`,`end_datetime`,`priority`, `color`) VALUES ('$title','$description','$start_datetime','$end_datetime','$priority', '$color' )";
+    $sql = "INSERT INTO `eventos` (`title`,`description`,`start_datetime`,`end_datetime`,`priority`, `color`) VALUES ('$title','$description','$start_datetime','$end_datetime','$priority', '$color' )";
 } else {
-    $sql = "UPDATE `schedule_list` set `title` = '{$title}', `description` = '{$description}', `start_datetime` = '{$start_datetime}', `end_datetime` = '{$end_datetime}', `priority` = '{$priority}', `color` = '{$color}' WHERE `id` = '{$id}'";
+    $sql = "UPDATE `eventos` set `title` = '{$title}', `description` = '{$description}', `start_datetime` = '{$start_datetime}', `end_datetime` = '{$end_datetime}', `priority` = '{$priority}', `color` = '{$color}' WHERE `id` = '{$id}'";
 }
 
 $save = $conexion->query($sql);

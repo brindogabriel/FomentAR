@@ -185,10 +185,10 @@ INSERT INTO `roles` (`id_rol`, `name_rol`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `schedule_list`
+-- Estructura de tabla para la tabla `eventos`
 --
 
-CREATE TABLE `schedule_list` (
+CREATE TABLE `eventos` (
   `id` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
   `description` varchar(50) NOT NULL,
