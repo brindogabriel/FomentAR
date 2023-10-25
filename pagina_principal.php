@@ -23,6 +23,18 @@ include "./database/conexion.php";
     <link rel="stylesheet" href="./css/general.css">
     <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon">
     <title>FomentAR</title>
+
+<meta name="msapplication-TileColor" content="#343a40" />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content="#343a40"
+        />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content="#343a40"
+        />
 </head>
 
 <body>
