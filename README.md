@@ -9,7 +9,7 @@ FomentAR es un sistema de gestión administrativa para sociedades de fomento que
       <a href="#fomentar-">Acerca de</a>
     <li><a href="#qué-puedes-hacer-con-fomentar">¿Qué puedes hacer con FomentAR?</a></li>
     <li><a href="#usuarios-por-defecto-para-ingresar-al-sitio-">Usuarios</a></li>
-    <li><a href="#versiones-utilizadas-%EF%B8%8F">Versiones utilizadas 🛠️</a></li>
+    <li><a href="#versiones-utilizadas-">Versiones utilizadas 🛠️</a></li>
     <li><a href="#todo-list-">TODO: LIST 📝</a></li>
      <li><a href="#errores-">ERRORES ❌</a></li>
       <li><a href="#anotaciones-o-ideas-">ANOTACIONES O IDEAS 💡</a></li>
@@ -43,7 +43,7 @@ Para el desarrollo de FomentAR se han utilizado las siguientes versiones de tecn
 -   Select2 💡
 -   FullCalendar 🗓️
 
-## TODO: LIST 📝
+## TODO 📝:
 
 En esta sección se listan las tareas pendientes que deben ser completadas en el futuro para mejorar y ampliar las funcionalidades del sistema. Las tareas que aparecen en esta lista son sugerencias para el equipo de desarrollo de FomentAR, y se espera que se implementen en futuras versiones del sistema.
 
