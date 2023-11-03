@@ -5,17 +5,16 @@ FomentAR es un sistema de gestión administrativa para sociedades de fomento que
 <details>
   <summary>Tabla de contenidos</summary>
   <ol>
-    <li><a href="#fomentar-">Acerca de</a></li>
-    <li><a href="#qué-puedes-hacer-con-fomentar">¿Qué puedes hacer con FomentAR?</a></li>
-    <li><a href="#usuarios-por-defecto-para-ingresar-al-sitio">Usuarios</a></li>
-    <li><a href="#versiones-utilizadas-">Versiones utilizadas 🛠️</a></li>
-    <li><a href="#todo-list-">TODO: LIST 📝</a></li>
-    <li><a href="#errores-">ERRORES ❌</a></li>
-    <li><a href="#anotaciones-o-ideas-">ANOTACIONES O IDEAS 💡</a></li>
-    <li><a href="#actividades-por-cliente-con-datos-del-cliente-">ACTIVIDADES POR CLIENTE CON DATOS DEL CLIENTE 🧑‍💻</a></li>
+    <li><a href="#usuarios">Usuarios</a></li>
+    <li><a href="#versiones-utilizadas">Versiones utilizadas 🛠️</a></li>
+    <li><a href="#todo">TODO: LIST 📝</a></li>
+    <li><a href="#errores">ERRORES ❌</a></li>
+    <li><a href="#anotaciones-o-ideas">ANOTACIONES O IDEAS 💡</a></li>
+    <li><a href="#actividades-por-cliente-con-datos-del-cliente">ACTIVIDADES POR CLIENTE CON DATOS DEL CLIENTE 🧑‍💻</a></li>
     <li><a href="#aportes">APORTES</a></li>
   </ol>
 </details>
+
 
 ## ¿Qué puedes hacer con FomentAR?
 
