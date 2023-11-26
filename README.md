@@ -1,9 +1,11 @@
 # FomentAR 📈
+
 FomentAR es un sistema de gestión de sociedades de fomento que te permite llevar el control de tus actividades, clientes y pagos de manera eficiente y organizada. Este proyecto fue realizado como proyecto de fin del ultimo año de secundaria en el año 2018
 
 ## ¿Qué puedes hacer con FomentAR?
 
 Con FomentAR podrás:
+
 -   ✅ Registrar y administrar tus clientes y sus datos personales
 -   🗓️ Planificar y programar actividades para tus clientes utilizando el calendario de FullCalendar integrado
 -   💰 Llevar un registro de pagos y facturación de tus clientes
@@ -19,10 +21,12 @@ Para el desarrollo de FomentAR se han utilizado las siguientes versiones de tecn
 -   FullCalendar 🗓️
 
 ## TODO: LIST 📝
+
 En esta sección se listan las tareas pendientes que deben ser completadas en el futuro para mejorar y ampliar las funcionalidades del sistema. Las tareas que aparecen en esta lista son sugerencias para el equipo de desarrollo de FomentAR, y se espera que se implementen en futuras versiones del sistema.
 
 -   [ ] CRUD CATEGORIAS: Esto permitirá una mejor organización de las actividades según su tipo o temática.
 -   [ ] REGISTRAR PAGOS: Esto permitirá una mejor gestión de la facturación y una mayor transparencia en el proceso de cobros.
+-   [ ] FACTURACION:
 
 ## ERRORES ❌
 
@@ -30,7 +34,7 @@ En esta sección se listan las tareas pendientes que deben ser completadas en el
 
 ### ANOTACIONES O IDEAS 💡
 
-- 
+-
 
 ### ACTIVIDADES POR CLIENTE CON DATOS DEL CLIENTE 🧑‍💻
 
@@ -43,6 +47,6 @@ clientes_actividad cli_act JOIN clientes cli ON cli_act.id_cliente = cli.id_clie
 JOIN actividades act ON cli_act.id_actividad = act.id_actividad AND cli_act.id_cliente = $id_cliente
 ```
 
-## APORTES 
+## APORTES
 
 Si tienes alguna sugerencia o correccion para mejorar el sistema, puedes realizar la PR correspondiente!
