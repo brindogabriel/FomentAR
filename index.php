@@ -14,6 +14,40 @@ if (isset($_SESSION['usuario'])) {
     <link rel="shortcut icon" href="./Images/logo.png" />
     <link rel="stylesheet" href="./Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/general.css">
+    <!-- Primary Meta Tags -->
+<title>FomentAR</title>
+<meta name="title" content="FomentAR">
+<meta name="description" content="Este es un sistema de gestion para sociedades de fomento">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://proyectofomentar.000webhostapp.com/">
+<meta property="og:title" content="FomentAR">
+<meta property="og:description" content="Este es un sistema de gestion para sociedades de fomento">
+<meta property="og:image" content="./Images/iniciofomentar.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://proyectofomentar.000webhostapp.com/">
+<meta property="twitter:title" content="FomentAR">
+<meta property="twitter:description" content="Este es un sistema de gestion para sociedades de fomento">
+<meta property="twitter:image" content="./Images/iniciofomentar.png">
+
+
+ <meta name="msapplication-TileColor" content="#343a40" />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content="#343a40"
+        />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content="#343a40"
+        />
+
+
+
     <title>FomentAR | Login</title>
 </head>
 

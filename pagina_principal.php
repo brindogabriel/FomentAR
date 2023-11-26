@@ -22,9 +22,7 @@ include "./database/conexion.php";
     <link rel="stylesheet" href="./Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/general.css">
     <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon">
-    <title>FomentAR</title>
-
-<meta name="msapplication-TileColor" content="#343a40" />
+     <meta name="msapplication-TileColor" content="#343a40" />
         <meta
           name="theme-color"
           media="(prefers-color-scheme: light)"
@@ -35,6 +33,8 @@ include "./database/conexion.php";
           media="(prefers-color-scheme: dark)"
           content="#343a40"
         />
+
+    <title>FomentAR</title>
 </head>
 
 <body>
@@ -220,7 +220,15 @@ include "./database/conexion.php";
     <!-- Begin page content -->
     <footer class="footer bg-dark p-4 text-center">
         <div class="container">
-            <span class="text-white">Página diseñada y desarrollada por Brindo Gabriel y Villavicencio Cristian - 2018
+            <span class="text-white">Página diseñada y desarrollada por <a
+                                    href="https://www.linkedin.com/in/gabrielsebastianbrindo"
+                                    target="_blank"
+                                    ><strong>Brindo Gabriel</strong>
+                                </a> y  <a
+                                    href="https://www.linkedin.com/in/cristian-villavicencio-19572a177"
+                                    target="_blank"
+                                    ><strong>Villavicencio Cristian</strong>
+                                </a> - 2018
                 ©</span>
         </div>
     </footer>

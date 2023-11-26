@@ -1,12 +1,17 @@
 <?php
 session_start();
 //error_reporting(0); -descomentar cuando se termina
+
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion= '') {
-	header("location: ./errors/error_nologueado");
-	die();
+$rol = $_SESSION['id_rol'];
+
+if ($varsesion == NULL || $varsesion = '' || empty($varsesion)) {
+    header("location: ./errors/error_nologueado");
+    die();
 }
-$conexion=mysqli_connect("localhost","root","","fomentar");
+
+include "./database/conexion.php";
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -22,7 +27,7 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
 
 <body>
     <div class="container-fluid mt-5">
-        <div class="contacto">
+        <div class="contacto container d-flex justify-content-center m-auto align-items-center">
             <div class="col">
                 <h3 class="text-center">En caso de algun error, contactarse con:</h3><br />
                 <div class="col">
@@ -39,7 +44,7 @@ $conexion=mysqli_connect("localhost","root","","fomentar");
                 </div>
                 <div class="col">
                     <a class="btn btn-outline-success p-3"
-                        href="https://wa.me/5491132405941?text=Me comunico de la sociedad de fomento para reportar un error :("
+                        href="#"
                         role="button" target="_blank"><img src="./Images/login.ico" alt=""
                             class="img-wsp">&nbsp;&nbsp;&nbsp;&nbsp;<svg aria-hidden="true" data-prefix="fab"
                             data-icon="whatsapp" class="svg-inline--fa fa-whatsapp fa-w-14" role="img"
