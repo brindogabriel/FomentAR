@@ -74,7 +74,9 @@ include "./database/conexion.php";
                 <li class="nav-item">
                     <a class='nav-link' href='./reporte_errores'>Reporte Errores</a>
                 </li>
-
+ <li class="nav-item">
+                    <a class='nav-link' href='./facturacion'>Facturacion</a>
+                </li>
                 <?php
                 if ($rol == 1) {
 

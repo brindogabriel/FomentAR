@@ -1,12 +1,16 @@
 <?php
 session_start();
-//error_reporting(0); -descomentar cuando se termina
+
 $varsesion = $_SESSION['usuario'];
-if ($varsesion == null || $varsesion = '') {
+$rol = $_SESSION['id_rol'];
+
+if ($varsesion == NULL || $varsesion = '' || empty($varsesion)) {
     header("location: ./errors/error_nologueado");
     die();
 }
-$conexion = mysqli_connect("localhost", "root", "", "fomentar");
+
+include "./database/conexion.php";
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -88,41 +92,38 @@ $conexion = mysqli_connect("localhost", "root", "", "fomentar");
             <table id="example" class="table table-responsive w-100" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>idFacturacion</th>
-                        <th>Nro_orden</th>
-                        <th>idDisciplina</th>
-                        <th>Anio</th>
-                        <th>Mes</th>
-                        <th>pago</th>
+                        <th>nombre</th>
+                        <th>actividad</th>
+                        <th>fecha</th>
+                       <th>saldo</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>idFacturacion</th>
-                        <th>Nro_orden</th>
-                        <th>idDisciplina</th>
-                        <th>Anio</th>
-                        <th>Mes</th>
-                        <th>pago</th>
+                       <th>nombre</th>
+                        <th>actividad</th>
+                        <th>fecha</th>
+                       <th>saldo</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    <?php
-                    $resfact = mysqli_query($conexion, "SELECT fact.idFacturacion,cli.Apellido,disc.Detalle,fact.anio,fact.mes,fact.pago FROM facturacion fact,clientes cli,disciplinas disc,actividades act WHERE fact.Nro_orden = cli.Nro_orden and act.idDisciplina = disc.idDisciplina;");
-                    while ($mostrar = mysqli_fetch_array($resfact)) {
-                        echo '<tr>
-        <td>' . $mostrar['idFacturacion'] . '</td>
-        <td>' . $mostrar['Apellido'] . '</td>
-        <td>' . $mostrar['Detalle'] . '</td>
-       
-        <td>' . $mostrar['anio'] . '</td>
-        <td>' . $mostrar['mes'] . '</td>
-        <td>' . $mostrar['pago'] . '</td>
 
-        </tr>';
-                    }
-                    ?>
-                    <!--  <td>'.$mostrar['pago'].'</td> esto va debajo de "idcategoria"  -->
+               <?php
+$resfact = mysqli_query($conexion, "SELECT c.id_cliente, c.nombre AS nombre_cliente, act.id_actividad, act.nombre_actividad, fact.PersonaID, fact.ActividadID, fact.SaldoActual, fact.fechaTransaccion FROM Transacciones fact JOIN clientes c ON c.id_cliente = fact.PersonaID JOIN actividades act ON act.id_actividad = fact.ActividadID;");
+
+while ($mostrar = mysqli_fetch_array($resfact)) {
+    // Aplicar estilos según el valor del saldo
+    $estilo_fondo = $mostrar['SaldoActual'] >= 0 ? 'background-color: green;' : 'background-color: red;';
+
+    echo '<tr style="' . $estilo_fondo . '">
+        <td>' . $mostrar['nombre_cliente'] . '</td>
+        <td>' . $mostrar['nombre_actividad'] . '</td>
+        <td>' . $mostrar['fechaTransaccion'] . '</td>
+        <td>' . $mostrar['SaldoActual'] . '</td>
+    </tr>';
+}
+?>
+                    
                 </tbody>
             </table>
         </div>
