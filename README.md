@@ -23,6 +23,7 @@ En esta sección se listan las tareas pendientes que deben ser completadas en el
 
 -   [ ] CRUD CATEGORIAS: Esto permitirá una mejor organización de las actividades según su tipo o temática.
 -   [ ] REGISTRAR PAGOS: Esto permitirá una mejor gestión de la facturación y una mayor transparencia en el proceso de cobros.
+-   [ ] RECAUDACION: Esto permitirá visualizar la recaudación de la institución
 
 ## ERRORES ❌
 
