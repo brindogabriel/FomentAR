@@ -526,3 +526,15 @@ ul.teeth li:last-child {
 .hands .glove-r:before {
   right: -7px;
 }
+
+img[alt="www.000webhost.com"],
+img[alt="www.000webhost.com"][style],
+img[src*="000webhost"],
+img[src*="000webhost"][style],
+body > div:nth-last-of-type(1)[style]{
+	opacity: 0 !important;
+	pointer-events:none !important;
+	width: 0px !important;
+	height: 0px !important;
+	visibility:hidden !important;
+	
