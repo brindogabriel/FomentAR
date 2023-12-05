@@ -21,6 +21,18 @@ Con FomentAR podrás:
 > -   Select2 💡
 > -   FullCalendar 🗓️
 
+> [!NOTE]
+>  ## USUARIOS Y CONTRASEÑAS PRECONFIGURADAS 	
+>  
+>  |  USUARIO 	|  CONTRASEÑA | ROL |
+>  |:-------------:|:-------------:|:-------------:|
+>  |  presidente 	|  presidente 	|  1 - presidente |	
+>  |   admin	|  admin  	| 2 - admin |
+
+
+
+
+
 ## TODO: LIST 📝
 
 En esta sección se listan las tareas pendientes que deben ser completadas en el futuro para mejorar y ampliar las funcionalidades del sistema. Las tareas que aparecen en esta lista son sugerencias para el equipo de desarrollo de FomentAR, y se espera que se implementen en futuras versiones del sistema.
