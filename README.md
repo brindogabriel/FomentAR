@@ -49,7 +49,7 @@ En esta sección se listan las tareas pendientes que deben ser completadas en el
 > [!TIP]
 > ### ANOTACIONES O IDEAS 💡
 >
-> -
+> - ACTUALIZAR A LARAVEL O NEXTJS CON SUPABASE ??
 
 
 
