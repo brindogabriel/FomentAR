@@ -1,6 +1,6 @@
 <?php
 session_start();
-//error_reporting(0); -descomentar cuando se termina
+error_reporting(0); 
 
 $varsesion = $_SESSION['usuario'];
 $rol = $_SESSION['id_rol'];
