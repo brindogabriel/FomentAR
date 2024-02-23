@@ -1,6 +1,6 @@
 # FomentAR 📈
 
-**FomentAR** es un sistema de gestión de sociedades de fomento que te permite llevar el control de tus actividades, clientes y pagos de manera eficiente y organizada. Este proyecto fue realizado como proyecto de fin del ultimo año de secundaria en el año 2018
+**FomentAR** es un sistema de gestión de sociedades de fomento que te permite llevar el control de tus actividades, clientes y pagos de manera eficiente y organizada. Este proyecto fue realizado como proyecto de fin del ultimo año de secundaria en el año 2018 cocreado con <a href="https://github.com/Cris-1320" target="_blank">@Cris-1320</a>
 
 ## ¿Qué puedes hacer con FomentAR?
 
