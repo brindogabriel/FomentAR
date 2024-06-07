@@ -11,41 +11,34 @@ if (isset($_SESSION['usuario'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/png" href="Images/logo-negro.png">
-   <link rel="icon" type="image/png" href="Images/logo-blanco.png" media="(prefers-color-scheme:dark)"> 
+    <link rel="icon" type="image/png" href="Images/logo-negro.png">
+    <link rel="icon" type="image/png" href="Images/logo-blanco.png" media="(prefers-color-scheme:dark)">
     <link rel="stylesheet" href="./Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="./css/general.css">
     <!-- Primary Meta Tags -->
-<title>FomentAR</title>
-<meta name="title" content="FomentAR">
-<meta name="description" content="Este es un sistema de gestion para sociedades de fomento">
+    <title>FomentAR</title>
+    <meta name="title" content="FomentAR">
+    <meta name="description" content="Este es un sistema de gestion para sociedades de fomento">
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://proyectofomentar.000webhostapp.com/">
-<meta property="og:title" content="FomentAR">
-<meta property="og:description" content="Este es un sistema de gestion para sociedades de fomento">
-<meta property="og:image" content="./Images/iniciofomentar.png">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://proyectofomentar.000webhostapp.com/">
+    <meta property="og:title" content="FomentAR">
+    <meta property="og:description" content="Este es un sistema de gestion para sociedades de fomento">
+    <meta property="og:image" content="./Images/iniciofomentar.png">
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://proyectofomentar.000webhostapp.com/">
-<meta property="twitter:title" content="FomentAR">
-<meta property="twitter:description" content="Este es un sistema de gestion para sociedades de fomento">
-<meta property="twitter:image" content="./Images/iniciofomentar.png">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://proyectofomentar.000webhostapp.com/">
+    <meta property="twitter:title" content="FomentAR">
+    <meta property="twitter:description" content="Este es un sistema de gestion para sociedades de fomento">
+    <meta property="twitter:image" content="./Images/iniciofomentar.png">
 
 
- <meta name="msapplication-TileColor" content="#343a40" />
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: light)"
-          content="#343a40"
-        />
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: dark)"
-          content="#343a40"
-        />
+    <meta name="msapplication-TileColor" content="#343a40" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#343a40" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40" />
 
 
 
@@ -65,9 +58,11 @@ if (isset($_SESSION['usuario'])) {
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            <span for="checkk" id="check">Mostrar&nbsp;</span>
+                            <span for="checkk" id="check" onclick="triggerCheckbox()">
+                                <i class='bi bi-eye-fill'></i>&nbsp;
+                            </span>
                             <input type="checkbox" onclick="myFunction()" title="Mostrar Contraseña"
-                                data-toggle="tooltip" data-placement="top" class="w-20" id="checkk">
+                                data-toggle="tooltip" data-placement="top" class="w-20 d-none" id="checkk">
                         </div>
                     </div>
                     <input type="password" class="form-control w-80" id="myInput" placeholder="Contraseña"
@@ -83,11 +78,15 @@ if (isset($_SESSION['usuario'])) {
         let y = document.getElementById("check");
         if (x.type === "password") {
             x.type = "text";
-            y.innerHTML = "Ocultar&nbsp;";
+            y.innerHTML = "<i class='bi bi-eye-slash-fill'></i>&nbsp;";
         } else {
             x.type = "password";
-            y.innerHTML = "Mostrar&nbsp;";
+            y.innerHTML = "<i class='bi bi-eye-fill'></i>&nbsp;";
         }
+    }
+
+    function triggerCheckbox() {
+        document.getElementById('checkk').click();
     }
     </script>
     <script src="./js/jquery-3.3.1.slim.min.js"></script>
