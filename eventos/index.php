@@ -199,6 +199,7 @@ include '..\database\conexion.php';
     <script src="./main.min.js"></script>
     <script src="script.js"></script>
     <script src="./moment.js"></script>
+    <script src="./fullcalendar/js/locale/es.js"></script>
     <script src='./index.global.min.js'></script>
     <script src="./locales-all.global.min.js"></script>
     <script>
