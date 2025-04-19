@@ -24,18 +24,133 @@ include "./database/conexion.php";
     <link rel="shortcut icon" href="./Images/logo.png" type="image/x-icon">
     <link rel="icon" type="image/png" href="Images/logo-negro.png">
     <link rel="icon" type="image/png" href="Images/logo-blanco.png" media="(prefers-color-scheme:dark)">
-     <meta name="msapplication-TileColor" content="#343a40" />
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: light)"
-          content="#343a40"
-        />
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: dark)"
-          content="#343a40"
-        />
+    <meta name="msapplication-TileColor" content="#343a40" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#343a40" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40" />
+    <link rel="stylesheet" href="./css/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(45deg, #343a40, #495057);
+        }
+        
+        body {
+            background-color: #f8f9fa;
+        }
 
+        .navbar {
+            background: var(--primary-gradient) !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card-columns {
+            padding: 2rem;
+            column-count: 3;
+        }
+
+        @media (max-width: 768px) {
+            .card-columns {
+                column-count: 2;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card-columns {
+                column-count: 1;
+            }
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .card-text {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #343a40;
+        }
+
+        .card-text:nth-child(2) {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .btn-secondary {
+            background: var(--primary-gradient);
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .footer {
+            background: var(--primary-gradient) !important;
+            margin-top: 2rem;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #007bff;
+        }
+
+        .activity-count {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007bff;
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-divider {
+            margin: 1rem 0;
+            opacity: 0.2;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .navbar-brand svg {
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover svg {
+            transform: scale(1.1);
+        }
+    </style>
     <title>FomentAR</title>
 </head>
 
@@ -104,16 +219,17 @@ include "./database/conexion.php";
             <a href="./clientes/clientesporactividad.php?id_actividad=2"><img class="card-img-top "
                     src="Images/futbol.jpg" alt="Card image cap"></a>
             <div class="card-body text-center">
-                <p class="card-text">Fútbol</p>
-                <p class="card-text">
+                <h5 class="card-text">Fútbol</h5>
+                <div class="activity-count">
                     <?php
                     $sql = "SELECT COALESCE(COUNT(id_cliente), 0) as personas  from clientes_actividad where id_actividad = 2;";
                     $result = mysqli_query($conexion, $sql);
                     while ($mostrar = mysqli_fetch_assoc($result)) {
                         echo $mostrar['personas'];
                     }
-                    ?> clientes
-                </p>
+                    ?>
+                    <small>clientes</small>
+                </div>
                 <div class="dropdown-divider"></div>
                 <a class="btn btn-secondary btn-block mt-3" href="./clientes/clientesporactividad.php?id_actividad=2"
                     role="button">Ver Clientes</a>
