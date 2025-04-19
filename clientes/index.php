@@ -1,7 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
-//? VARIABLES GLOBALES ?????
+
 $varsesion = $_SESSION['usuario'];
 $rol = $_SESSION['id_rol'];
 
