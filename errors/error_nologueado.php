@@ -9,7 +9,8 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
+    <link rel="icon" type="image/png" href="../Images/logo-negro.png">
+    <link rel="icon" type="image/png" href="../Images/logo-blanco.png" media="(prefers-color-scheme:dark)">
     <link rel="stylesheet" href="error_nologueado.scss">
     <!-- Chrome, Firefox OS and Opera -->
     <meta name="theme-color" content="#eceff1">

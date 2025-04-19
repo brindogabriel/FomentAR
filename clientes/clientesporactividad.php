@@ -20,8 +20,13 @@ include "../database/conexion.php";
     <link rel="stylesheet" href="../Resources/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/general.css">
-    <link rel="shortcut icon" href="../Images/logo.png" type="image/x-icon">
+    <link rel="icon" type="image/png" href="../Images/logo-negro.png">
+    <link rel="icon" type="image/png" href="../Images/logo-blanco.png" media="(prefers-color-scheme:dark)">
     <title>FomentAR</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -82,83 +87,76 @@ include "../database/conexion.php";
         </div>
     </nav>
     <!-- FILTRAR POR ACTIVIDAD -->
-    <div class="wrapper">
-        <div class="icon"><i id="left" class="bi bi-arrow-left"></i></div>
-        <ul class="tabs-box">
-            <li class="tab"><a href="./clientesporactividad.php?id_actividad=1">Basquet</a></li>
-            <li class="tab"><a href="./clientesporactividad.php?id_actividad=2">Futbol</a></li>
-            <li class="tab"><a href="./clientesporactividad.php?id_actividad=3">Voley</a></li>
-            <li class="tab"><a href="./clientesporactividad.php?id_actividad=6">Arte</a></li>
-            <li class="tab"><a href="./clientesporactividad.php?id_actividad=5">Taekwondo</a></li>
-            <li class="tab"><a href="./clientesporactividad.php?id_actividad=4">Patin</a></li>
-        </ul>
-        <div class="icon"><i id="right" class="bi bi-arrow-right"></i></div>
+    <div class="container mt-4">
+        <div class="d-flex justify-content-around">
+            <a href="./clientesporactividad.php?id_actividad=1" class="btn btn-outline-primary">Basquet</a>
+            <a href="./clientesporactividad.php?id_actividad=2" class="btn btn-outline-primary">Futbol</a>
+            <a href="./clientesporactividad.php?id_actividad=3" class="btn btn-outline-primary">Voley</a>
+            <a href="./clientesporactividad.php?id_actividad=6" class="btn btn-outline-primary">Arte</a>
+            <a href="./clientesporactividad.php?id_actividad=5" class="btn btn-outline-primary">Taekwondo</a>
+            <a href="./clientesporactividad.php?id_actividad=4" class="btn btn-outline-primary">Patin</a>
+        </div>
     </div>
     <!-- BUSCAR CLIENTE ANASHE -->
-    <div class="container-fluid mt-1">
-        <div class="buscar-usuarios mb-4">
-            <form action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>?nombre=$cliente" method="GET">
-                <input type="search" name="nombre" class="form-control w-50 ml-0" placeholder="buscar cliente">
-                <button type="submit" class="btn btn-danger mt-2 w-25">Buscar <i class="bi bi-search"></i></button>
-            </form>
-        </div>
+    <div class="container mt-4">
+        <form class="form-inline" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>?nombre=$cliente"
+            method="GET">
+            <div class="input-group w-100">
+                <input type="search" name="nombre" class="form-control" placeholder="Buscar cliente">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        <div class='row'>
-
+    <div class="container mt-4">
+        <div class="row">
             <?php
-
             if (isset($_GET['id_actividad'])) {
                 $id_actividad = $_GET['id_actividad'];
-                $sql = "SELECT c.id_cliente,c.nombre, act.id_actividad, act.nombre_actividad, act.color_act FROM clientes_actividad cli_act JOIN clientes c ON c.id_cliente = cli_act.id_cliente AND cli_act.id_actividad = $id_actividad JOIN actividades act ON act.id_actividad = cli_act.id_actividad;";
-
+                $sql = "SELECT c.id_cliente, c.nombre, act.id_actividad, act.nombre_actividad, act.color_act FROM clientes_actividad cli_act JOIN clientes c ON c.id_cliente = cli_act.id_cliente AND cli_act.id_actividad = $id_actividad JOIN actividades act ON act.id_actividad = cli_act.id_actividad;";
                 $sql_run = mysqli_query($conexion, $sql);
 
+                echo "<div class='card-columns'>";
+
                 while ($mostrar = mysqli_fetch_array($sql_run)) {
-                    echo "<div class='col'>
-                <div class='card' style='width: 18rem;'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>" . $mostrar['nombre'] . "</h5>
-                        <a href='./clientesporactividad.php?id_actividad=" . $mostrar['id_actividad'] . "' class='badge badge-" . $mostrar['color_act'] . " mr-2'>" . $mostrar['nombre_actividad'] . "</a>
-                        <br/>
-            <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
-                    </div>
-                     </div>
-                    </div>
-    ";
+                    echo "<div class='card'>
+                            <div class='card-body'>
+                                <h5 class='card-title'>" . htmlspecialchars($mostrar['nombre']) . "</h5>
+                                <a href='./clientesporactividad.php?id_actividad=" . htmlspecialchars($mostrar['id_actividad']) . "' class='badge badge-" . htmlspecialchars($mostrar['color_act']) . "'>" . htmlspecialchars($mostrar['nombre_actividad']) . "</a>
+                                <br/>
+                                <a href='./clientes_info.php?id_cliente=" . htmlspecialchars($mostrar['id_cliente']) . "' class='btn btn-secondary mt-2'>Ver + info</a>
+                            </div>
+                        </div>";
                 }
+                echo "</div>";
             }
             if (isset($_GET['nombre'])) {
                 $nombre = $_GET['nombre'];
-
-                $sql = "SELECT cli.id_cliente,cli.nombre,cli.apellido, act.nombre_actividad FROM clientes_actividad cli_act, clientes
-            cli,
-            actividades act WHERE cli_act.id_cliente = cli.id_cliente and cli_act.id_actividad = act.id_actividad and
-            cli.nombre LIKE '%$nombre%'";
-
+                $sql = "SELECT cli.id_cliente, cli.nombre, cli.apellido, act.nombre_actividad FROM clientes_actividad cli_act, clientes cli, actividades act WHERE cli_act.id_cliente = cli.id_cliente AND cli_act.id_actividad = act.id_actividad AND cli.nombre LIKE '%$nombre%'";
                 $sql_run = mysqli_query($conexion, $sql);
 
                 while ($mostrar = mysqli_fetch_array($sql_run)) {
-                    echo "
-            <div class='col'>
-                <div class='card' style='width: 18rem;'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>" . $mostrar['nombre'] . " " . $mostrar['apellido'] . "</h5>
-                       
-                        <a href='./clientes_info.php?id_cliente=" . $mostrar['id_cliente'] . "' class='btn btn-secondary'>Ver + info</a>
-    </div>
-    </div>
-    </div>
-    ";
+                    echo "<div class='col-md-4 mb-4'>
+                            <div class='card'>
+                                <div class='card-body'>
+                                    <h5 class='card-title'>" . htmlspecialchars($mostrar['nombre']) . " " . htmlspecialchars($mostrar['apellido']) . "</h5>
+                                    <a href='./clientes_info.php?id_cliente=" . htmlspecialchars($mostrar['id_cliente']) . "' class='btn btn-secondary mt-2'>Ver + info</a>
+                                </div>
+                            </div>
+                        </div>";
                 }
-            } ?>
+            }
+            ?>
         </div>
     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../js/jquery-3.3.1.slim.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../Resources/bootstrap-4.1.3-dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <?php include "../scripts.php" ?>
 
     <script>
