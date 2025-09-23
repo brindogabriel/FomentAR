@@ -49,7 +49,7 @@ En esta sección se listan las tareas pendientes que deben ser completadas en el
 > [!TIP]
 > ### ANOTACIONES O IDEAS 💡
 >
-> - ACTUALIZAR A LARAVEL O NEXTJS CON SUPABASE ??
+> - ACTUALIZAR A LARAVEL COMO API CON BREEZE EN EL BACKEND Y NEXTJS EN EL FRONTEND
 
 
 
